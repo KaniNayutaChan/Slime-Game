@@ -5,10 +5,15 @@ using UnityEngine;
 public class RoomManager : MonoBehaviour
 {
     public static RoomManager instance;
+
     public GameObject transition;
     public GameObject[] listOfRooms;
 
+    [HideInInspector] public int lastSavedRoomNumber;
+    [HideInInspector] public Vector2 respawnPos;
+
     [HideInInspector] public GameObject currentRoom;
+    [HideInInspector] public int currentRoomNumber;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +25,7 @@ public class RoomManager : MonoBehaviour
             instance = this;
         }
 
-        if(currentRoom == null)
+        if (currentRoom == null)
         {
             currentRoom = Instantiate(listOfRooms[0]);
         }
@@ -35,6 +40,7 @@ public class RoomManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
         Destroy(RoomManager.instance.currentRoom);
+        currentRoomNumber = room;
         currentRoom = Instantiate(listOfRooms[room]);
         Player.instance.transform.position = spawnPos;
         Player.instance.canMove = true;

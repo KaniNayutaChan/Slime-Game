@@ -55,19 +55,21 @@ public class Player : MonoBehaviour
 
         playerRB = GetComponent<Rigidbody2D>();
         currentDamage = startingDamage + (level * 3);
-        currentHealth = startingHealth + (level * 3);
+
+        ResetHealth();
+
         canMove = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
-        Jump();
-        Attack();
-        IFrames();
-        Die();
-        Experience();
+        CheckForMove();
+        CheckForJump();
+        CheckForAttack();
+        CheckForIFrames();
+        CheckForDie();
+        CheckForLevelUp();
     }
 
     private void FixedUpdate()
@@ -78,7 +80,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Move()
+    void CheckForMove()
     {
         if (Input.GetKey(KeyCode.LeftArrow))
         {
@@ -96,7 +98,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Jump()
+    void CheckForJump()
     {
         isGrounded = Physics2D.OverlapCircle(feetPos.position, feetSize, whatIsGround);
 
@@ -129,7 +131,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Attack()
+    void CheckForAttack()
     {
         if(Input.GetKeyDown(KeyCode.X) && hasAttack && attackCooldown < 0)
         {
@@ -169,7 +171,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void IFrames()
+    void CheckForIFrames()
     {
         if(IFrameTime > 0)
         {
@@ -181,15 +183,21 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Die()
+    void CheckForDie()
     {
         if(currentHealth <= 0)
         {
-
+            RoomManager.instance.SpawnRoom(RoomManager.instance.lastSavedRoomNumber, RoomManager.instance.respawnPos);
+            Instantiate(RoomManager.instance.transition);
+            isJumping = false;
+            playerRB.velocity = Vector2.zero;
+            canMove = false;
+            experience /= 2;
+            ResetHealth();
         }
     }
 
-    void Experience()
+    void CheckForLevelUp()
     {
         if(experience >= Mathf.Pow(3, level))
         {
@@ -202,9 +210,12 @@ public class Player : MonoBehaviour
         level += 1;
         experience = experienceOverflow;
         currentDamage = startingDamage + (level * 3);
-        currentHealth = startingHealth + (level * 3);
-        sizeVector.Set(0.5f + (0.01f * currentHealth), 0.5f + (0.01f * currentHealth), 0.5f + (0.01f * currentHealth));
-        transform.localScale = sizeVector;
+        ResetHealth();
+    }
+
+    public void Heal()
+    {
+       ResetHealth();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -239,5 +250,12 @@ public class Player : MonoBehaviour
                 collision.GetComponent<Enemy>().health -= currentDamage;
             }
         }
+    }
+
+    void ResetHealth()
+    {
+        currentHealth = startingHealth + (level * 3);
+        sizeVector.Set(0.5f + (0.01f * currentHealth), 0.5f + (0.01f * currentHealth), 0.5f + (0.01f * currentHealth));
+        transform.localScale = sizeVector;
     }
 }
