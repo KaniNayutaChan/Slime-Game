@@ -38,7 +38,7 @@ public class RoomManager : MonoBehaviour
 
     IEnumerator InstantiateRoom(int room, Vector3 spawnPos)
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1.3f);
         Destroy(RoomManager.instance.currentRoom);
         currentRoomNumber = room;
         currentRoom = Instantiate(listOfRooms[room]);

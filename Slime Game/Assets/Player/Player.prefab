@@ -114,15 +114,18 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  feetSize: 0.5
+  feetSize: 0.1
   attackUpForce: 400
   attackSideForce: 600
   startAttackCooldown: 1
   hasAttack: 0
   maxLevel: 20
+  level: 0
   startingDamage: 10
   startingHealth: 10
   experience: 0
+  currentHealth: 0
+  currentDamage: 0
   startIFrameTime: 1
 --- !u!212 &1721146684308831191
 SpriteRenderer:

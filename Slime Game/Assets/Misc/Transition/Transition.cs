@@ -8,6 +8,7 @@ public class Transition : MonoBehaviour
     bool isFadingIn = true;
     Vector4 colorVector = new Vector4();
     public float amountToFade;
+    public float waitTime;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,8 @@ public class Transition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.position = Player.instance.transform.position;
+     
         if (isFadingIn)
         {
             if (spriteRenderer.color.a <= 1)
@@ -30,6 +33,10 @@ public class Transition : MonoBehaviour
             {
                 isFadingIn = false;
             }
+        }
+        else if(waitTime > 0)
+        {
+            waitTime -= Time.deltaTime;
         }
         else
         {

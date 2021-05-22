@@ -13,7 +13,7 @@ public class Bench : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Vector2.Distance(transform.position, Player.instance.transform.position) < 0.1f)
+        if(Vector2.Distance(transform.position, Player.instance.transform.position) < 1f)
         {
             if(Input.GetKeyDown(KeyCode.UpArrow))
             {
