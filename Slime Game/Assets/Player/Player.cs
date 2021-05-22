@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     public Transform feetPos;
     float jumpTime;
     bool isJumping;
-    public bool isGrounded;
+    [HideInInspector] public bool isGrounded;
     public LayerMask whatIsGround;
     public Vector2 feetSize;
 
@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     float attackCooldown;
     [HideInInspector] public bool hasAttack;
     Vector2 attackVector = new Vector2();
+    bool isAttacking;
 
     [Space]
     public float maxHealth;
@@ -91,9 +92,11 @@ public class Player : MonoBehaviour
     void Jump()
     {
         isGrounded = Physics2D.OverlapBox(feetPos.position, feetSize, whatIsGround);
+
         if(isGrounded)
         {
             hasAttack = true;
+            isAttacking = false;
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -125,6 +128,7 @@ public class Player : MonoBehaviour
         {
             hasAttack = false;
             isJumping = false;
+            isAttacking = true;
             attackCooldown = startAttackCooldown;
             playerRB.velocity = Vector2.zero;
 
@@ -186,6 +190,7 @@ public class Player : MonoBehaviour
             RoomManager.instance.currentRoom = Instantiate(RoomManager.instance.listOfRooms[collision.GetComponent<Door>().connectedRoom]); ;
             transform.position = collision.GetComponent<Door>().spawnPos;
             playerRB.velocity = Vector2.zero;
+            isJumping = false;
         }
 
         if (collision.CompareTag("Skill"))
@@ -195,6 +200,14 @@ public class Player : MonoBehaviour
                 currentHealth -= 1;
                 hasIFrames = true;
                 IFrameTime = startIFrameTime;
+            }
+        }
+
+        if(collision.CompareTag("Enemy"))
+        {
+            if(isAttacking)
+            {
+
             }
         }
     }
