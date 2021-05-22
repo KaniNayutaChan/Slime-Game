@@ -8,10 +8,14 @@ public class Grounded : MonoBehaviour
     {
         if(collision.CompareTag("Arena"))
         {
-            Player.instance.isGrounded = true;
             Player.instance.playerRB.velocity = Vector2.zero;
-            Player.instance.hasAttack = true;
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Player.instance.isGrounded = true;
+        Player.instance.hasAttack = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)

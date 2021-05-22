@@ -32,9 +32,9 @@ public class Player : MonoBehaviour
     float currentHealth;
 
     [Space]
-    public bool hasIFrames;
+    bool hasIFrames;
     public float startIFrameTime;
-    public float IFrameTime;
+    float IFrameTime;
 
     // Start is called before the first frame update
     void Start()
@@ -168,6 +168,14 @@ public class Player : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if(collision.CompareTag("Door"))
+        {
+            Destroy(RoomManager.instance.currentRoom);
+            RoomManager.instance.currentRoom = Instantiate(RoomManager.instance.listOfRooms[collision.GetComponent<Door>().connectedRoom]); ;
+            transform.position = collision.GetComponent<Door>().spawnPos;
+            
+        }
+
         if (collision.CompareTag("Skill"))
         {
             if (!hasIFrames)
