@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     bool isJumping;
     [HideInInspector] public bool isGrounded;
     public LayerMask whatIsGround;
-    public Vector2 feetSize;
+    public float feetSize;
 
     [Space]
     public float attackUpForce;
@@ -52,11 +52,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hasAttack)
-        {
-            Move();
-        }
-
+        Move();
         Jump();
         Attack();
         IFrames();
@@ -91,7 +87,7 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        isGrounded = Physics2D.OverlapBox(feetPos.position, feetSize, whatIsGround);
+        isGrounded = Physics2D.OverlapCircle(feetPos.position, feetSize, whatIsGround);
 
         if(isGrounded)
         {

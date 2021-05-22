@@ -113,9 +113,9 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  feetSize: {x: 0, y: 0}
-  attackUpForce: 600
-  attackSideForce: 800
+  feetSize: 0.5
+  attackUpForce: 400
+  attackSideForce: 600
   startAttackCooldown: 1
   hasAttack: 0
   maxHealth: 30
@@ -186,7 +186,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
