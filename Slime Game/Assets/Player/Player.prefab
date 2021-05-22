@@ -117,11 +117,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 017be83fca3a6cd418c301737492b6c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRB: {fileID: 0}
   movementSpeed: 5
   jumpForce: 8
   startJumpTime: 0.5
   grounded: {fileID: 5712773861394830165}
   isGrounded: 0
+  attackUpForce: 600
+  attackSideForce: 600
 --- !u!212 &1721146684308831191
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -193,7 +196,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &6456666481762101230
 BoxCollider2D:
   m_ObjectHideFlags: 0

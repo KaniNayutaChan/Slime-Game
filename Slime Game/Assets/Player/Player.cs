@@ -6,10 +6,11 @@ public class Player : MonoBehaviour
 {
     public static Player instance;
 
-    Rigidbody2D playerRB;
+    [HideInInspector] public Rigidbody2D playerRB;
 
     [Space]
     public float movementSpeed;
+    float moveInput;
 
     [Space]
     public float jumpForce;
@@ -18,6 +19,11 @@ public class Player : MonoBehaviour
     float jumpTime;
     bool isJumping;
     [HideInInspector] public bool isGrounded;
+
+    [Space]
+    public float attackUpForce;
+    public float attackSideForce;
+    [HideInInspector] public bool hasAttack;
 
     // Start is called before the first frame update
     void Start()
@@ -37,8 +43,22 @@ public class Player : MonoBehaviour
 
     void Move()
     {
-        var movement = Input.GetAxis("Horizontal");
-        transform.position += new Vector3(movement, 0, 0) * movementSpeed * Time.deltaTime;
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            moveInput = -1;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            moveInput = 1;
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        else
+        {
+            moveInput = 0;
+        }
+
+        transform.position += new Vector3(moveInput, 0, 0) * movementSpeed * Time.deltaTime;
     }
 
     void Jump()
@@ -68,6 +88,32 @@ public class Player : MonoBehaviour
 
     void Attack()
     {
+        if(Input.GetKeyDown(KeyCode.X) && hasAttack)
+        {
+            hasAttack = false;
+            playerRB.velocity = Vector2.zero;
 
+            if (IsFacingLeft())
+            {
+                playerRB.AddForce(new Vector2(-attackSideForce, attackUpForce));
+            }
+            else
+            {
+                playerRB.AddForce(new Vector2(attackSideForce, attackUpForce));
+            }
+        }
+        
+    }
+
+    bool IsFacingLeft()
+    {
+        if (transform.rotation.eulerAngles.y == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
