@@ -23,7 +23,18 @@ public class Player : MonoBehaviour
     [Space]
     public float attackUpForce;
     public float attackSideForce;
+    public float startAttackCooldown;
+    float attackCooldown;
     [HideInInspector] public bool hasAttack;
+
+    [Space]
+    public float maxHealth;
+    float currentHealth;
+
+    [Space]
+    public bool hasIFrames;
+    public float startIFrameTime;
+    public float IFrameTime;
 
     // Start is called before the first frame update
     void Start()
@@ -31,14 +42,29 @@ public class Player : MonoBehaviour
         instance = this;
 
         playerRB = GetComponent<Rigidbody2D>();
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if (hasAttack)
+        {
+            Move();
+        }
+
         Jump();
         Attack();
+        IFrames();
+        Die();
+    }
+
+    private void FixedUpdate()
+    {
+        if (hasAttack)
+        {
+            transform.position += new Vector3(moveInput, 0, 0) * movementSpeed * Time.deltaTime;
+        }
     }
 
     void Move()
@@ -57,8 +83,6 @@ public class Player : MonoBehaviour
         {
             moveInput = 0;
         }
-
-        transform.position += new Vector3(moveInput, 0, 0) * movementSpeed * Time.deltaTime;
     }
 
     void Jump()
@@ -88,10 +112,11 @@ public class Player : MonoBehaviour
 
     void Attack()
     {
-        if(Input.GetKeyDown(KeyCode.X) && hasAttack)
+        if(Input.GetKeyDown(KeyCode.X) && hasAttack && attackCooldown < 0)
         {
             hasAttack = false;
             playerRB.velocity = Vector2.zero;
+            attackCooldown = startAttackCooldown;
 
             if (IsFacingLeft())
             {
@@ -103,6 +128,10 @@ public class Player : MonoBehaviour
             }
         }
         
+        if(attackCooldown >= 0)
+        {
+            attackCooldown -= Time.deltaTime;
+        }
     }
 
     bool IsFacingLeft()
@@ -114,6 +143,39 @@ public class Player : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    void IFrames()
+    {
+        if(IFrameTime > 0)
+        {
+            IFrameTime -= Time.deltaTime;
+        }
+        else
+        {
+            hasIFrames = false;
+        }
+    }
+
+    void Die()
+    {
+        if(currentHealth <= 0)
+        {
+
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Skill"))
+        {
+            if (!hasIFrames)
+            {
+                currentHealth -= 1;
+                hasIFrames = true;
+                IFrameTime = startIFrameTime;
+            }
         }
     }
 }

@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3773408330239743881}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.46, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.1, z: 2}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 0.9, y: 0.3, z: 2}
   m_Children: []
   m_Father: {fileID: 9044178609372303038}
   m_RootOrder: 0
@@ -124,7 +124,9 @@ MonoBehaviour:
   grounded: {fileID: 5712773861394830165}
   isGrounded: 0
   attackUpForce: 600
-  attackSideForce: 600
+  attackSideForce: 800
+  startAttackCooldown: 1
+  hasAttack: 0
 --- !u!212 &1721146684308831191
 SpriteRenderer:
   m_ObjectHideFlags: 0
