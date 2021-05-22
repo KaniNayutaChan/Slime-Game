@@ -15,10 +15,12 @@ public class Player : MonoBehaviour
     [Space]
     public float jumpForce;
     public float startJumpTime;
-    public Transform grounded;
+    public Transform feetPos;
     float jumpTime;
     bool isJumping;
-    [HideInInspector] public bool isGrounded;
+    public bool isGrounded;
+    public LayerMask whatIsGround;
+    public Vector2 feetSize;
 
     [Space]
     public float attackUpForce;
@@ -26,6 +28,7 @@ public class Player : MonoBehaviour
     public float startAttackCooldown;
     float attackCooldown;
     [HideInInspector] public bool hasAttack;
+    Vector2 attackVector = new Vector2();
 
     [Space]
     public float maxHealth;
@@ -87,6 +90,12 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
+        isGrounded = Physics2D.OverlapBox(feetPos.position, feetSize, whatIsGround);
+        if(isGrounded)
+        {
+            hasAttack = true;
+        }
+
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             jumpTime = startJumpTime;
@@ -115,20 +124,23 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.X) && hasAttack && attackCooldown < 0)
         {
             hasAttack = false;
-            playerRB.velocity = Vector2.zero;
+            isJumping = false;
             attackCooldown = startAttackCooldown;
+            playerRB.velocity = Vector2.zero;
 
             if (IsFacingLeft())
             {
-                playerRB.AddForce(new Vector2(-attackSideForce, attackUpForce));
+                attackVector.Set(-attackSideForce, attackUpForce);
             }
             else
             {
-                playerRB.AddForce(new Vector2(attackSideForce, attackUpForce));
+                attackVector.Set(attackSideForce, attackUpForce);
             }
+
+            playerRB.AddForce(attackVector);
         }
-        
-        if(attackCooldown >= 0)
+
+        if (attackCooldown >= 0)
         {
             attackCooldown -= Time.deltaTime;
         }
@@ -173,7 +185,7 @@ public class Player : MonoBehaviour
             Destroy(RoomManager.instance.currentRoom);
             RoomManager.instance.currentRoom = Instantiate(RoomManager.instance.listOfRooms[collision.GetComponent<Door>().connectedRoom]); ;
             transform.position = collision.GetComponent<Door>().spawnPos;
-            
+            playerRB.velocity = Vector2.zero;
         }
 
         if (collision.CompareTag("Skill"))
