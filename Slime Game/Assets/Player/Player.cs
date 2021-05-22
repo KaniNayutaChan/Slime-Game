@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [Space]
     public float movementSpeed;
     float moveInput;
+    [HideInInspector] public bool canMove;
 
     [Space]
     public float jumpForce;
@@ -47,6 +48,7 @@ public class Player : MonoBehaviour
 
         playerRB = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
+        canMove = true;
     }
 
     // Update is called once per frame
@@ -61,7 +63,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (hasAttack)
+        if (hasAttack && canMove)
         {
             transform.position += new Vector3(moveInput, 0, 0) * movementSpeed * Time.deltaTime;
         }
@@ -182,11 +184,13 @@ public class Player : MonoBehaviour
     {
         if(collision.CompareTag("Door"))
         {
-            Destroy(RoomManager.instance.currentRoom);
-            RoomManager.instance.currentRoom = Instantiate(RoomManager.instance.listOfRooms[collision.GetComponent<Door>().connectedRoom]); ;
-            transform.position = collision.GetComponent<Door>().spawnPos;
-            playerRB.velocity = Vector2.zero;
+            RoomManager.instance.SpawnRoom(collision.GetComponent<Door>().connectedRoom, collision.GetComponent<Door>().spawnPos);
+            Instantiate(RoomManager.instance.transition);
             isJumping = false;
+            playerRB.velocity = Vector2.zero;
+            canMove = false;
+
+            Destroy(collision);
         }
 
         if (collision.CompareTag("Skill"))

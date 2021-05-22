@@ -5,6 +5,7 @@ using UnityEngine;
 public class RoomManager : MonoBehaviour
 {
     public static RoomManager instance;
+    public GameObject transition;
     public GameObject[] listOfRooms;
 
     [HideInInspector] public GameObject currentRoom;
@@ -25,9 +26,17 @@ public class RoomManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SpawnRoom(int room, Vector3 spawnPos)
     {
-        
+        StartCoroutine(InstantiateRoom(room, spawnPos));
+    }
+
+    IEnumerator InstantiateRoom(int room, Vector3 spawnPos)
+    {
+        yield return new WaitForSeconds(0.3f);
+        Destroy(RoomManager.instance.currentRoom);
+        currentRoom = Instantiate(listOfRooms[room]);
+        Player.instance.transform.position = spawnPos;
+        Player.instance.canMove = true;
     }
 }
