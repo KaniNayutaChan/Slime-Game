@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3309263829815314066}
   - component: {fileID: 3061561952589254092}
   - component: {fileID: 288440987196129690}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arena
   m_TagString: Arena
   m_Icon: {fileID: 0}
