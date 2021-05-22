@@ -199,9 +199,9 @@ public class Player : MonoBehaviour
 
     void CheckForLevelUp()
     {
-        if(experience >= Mathf.Pow(3, level))
+        if(experience >= Mathf.Pow(2, level))
         {
-            LevelUp(Mathf.Pow(3, level) - experience);
+            LevelUp(Mathf.Pow(2, level) - experience);
         }
     }
 
