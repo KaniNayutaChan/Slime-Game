@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public LayerMask whatIsGround;
     public float feetSize;
 
+
     [Space]
     public float attackUpForce;
     public float attackSideForce;
@@ -33,8 +34,14 @@ public class Player : MonoBehaviour
     bool isAttacking;
 
     [Space]
-    public float maxHealth;
-    float currentHealth;
+    public int maxLevel;
+    public int level = 0;
+    public float startingDamage;
+    public float startingHealth;
+    public float experience;
+    public float currentHealth;
+    public float currentDamage;
+    Vector3 sizeVector = new Vector3();
 
     [Space]
     bool hasIFrames;
@@ -47,7 +54,8 @@ public class Player : MonoBehaviour
         instance = this;
 
         playerRB = GetComponent<Rigidbody2D>();
-        currentHealth = maxHealth;
+        currentDamage = startingDamage + (level * 3);
+        currentHealth = startingHealth + (level * 3);
         canMove = true;
     }
 
@@ -59,6 +67,7 @@ public class Player : MonoBehaviour
         Attack();
         IFrames();
         Die();
+        Experience();
     }
 
     private void FixedUpdate()
@@ -180,6 +189,24 @@ public class Player : MonoBehaviour
         }
     }
 
+    void Experience()
+    {
+        if(experience >= Mathf.Pow(3, level))
+        {
+            LevelUp(Mathf.Pow(3, level) - experience);
+        }
+    }
+
+    void LevelUp(float experienceOverflow)
+    {
+        level += 1;
+        experience = experienceOverflow;
+        currentDamage = startingDamage + (level * 3);
+        currentHealth = startingHealth + (level * 3);
+        sizeVector.Set(0.5f + (0.01f * currentHealth), 0.5f + (0.01f * currentHealth), 0.5f + (0.01f * currentHealth));
+        transform.localScale = sizeVector;
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.CompareTag("Door"))
@@ -198,6 +225,8 @@ public class Player : MonoBehaviour
             if (!hasIFrames)
             {
                 currentHealth -= 1;
+                sizeVector.Set(0.5f + (0.05f * currentHealth), 0.5f + (0.05f * currentHealth), 0.5f + (0.05f * currentHealth));
+                transform.localScale = sizeVector;
                 hasIFrames = true;
                 IFrameTime = startIFrameTime;
             }
@@ -207,7 +236,7 @@ public class Player : MonoBehaviour
         {
             if(isAttacking)
             {
-
+                collision.GetComponent<Enemy>().health -= currentDamage;
             }
         }
     }

@@ -321,8 +321,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db96a998b9fdf904790e194007cd1181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 810089124055874239, guid: de2087fc1b4eeab489cf25c66804a3eb, type: 3}
   listOfRooms:
   - {fileID: 8306673048785316087, guid: 30f3db6072c019e4cbf97afcc9504690, type: 3}
   - {fileID: 8306673048785316087, guid: ed1bce9eea248d4418f297d7b783de25, type: 3}
-  transition: {fileID: 810089124055874239, guid: de2087fc1b4eeab489cf25c66804a3eb, type: 3}
   currentRoom: {fileID: 0}

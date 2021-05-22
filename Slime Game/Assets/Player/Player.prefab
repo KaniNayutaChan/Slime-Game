@@ -106,6 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRB: {fileID: 0}
   movementSpeed: 8
+  canMove: 0
   jumpForce: 6
   startJumpTime: 0.5
   feetPos: {fileID: 3537662715522462788}
@@ -118,8 +119,11 @@ MonoBehaviour:
   attackSideForce: 600
   startAttackCooldown: 1
   hasAttack: 0
-  maxHealth: 30
-  startIFrameTime: 0
+  maxLevel: 20
+  startingDamage: 10
+  startingHealth: 10
+  experience: 0
+  startIFrameTime: 1
 --- !u!212 &1721146684308831191
 SpriteRenderer:
   m_ObjectHideFlags: 0
