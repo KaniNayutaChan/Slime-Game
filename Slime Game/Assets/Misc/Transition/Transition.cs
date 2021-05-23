@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Transition : MonoBehaviour
 {
-    SpriteRenderer spriteRenderer;
+    Image image;
     bool isFadingIn = true;
     Vector4 colorVector = new Vector4();
     public float amountToFade;
@@ -13,21 +14,19 @@ public class Transition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        colorVector.w = spriteRenderer.color.a;
+        image = GetComponent<Image>();
+        colorVector.w = image.color.a;
     }
 
     // Update is called once per frame
     void Update()
-    {
-        transform.position = Player.instance.transform.position;
-     
+    {    
         if (isFadingIn)
         {
-            if (spriteRenderer.color.a <= 1)
+            if (image.color.a <= 1)
             {
                 colorVector.w += amountToFade * Time.deltaTime;
-                spriteRenderer.color = colorVector;
+                image.color = colorVector;
             }
             else
             {
@@ -40,14 +39,14 @@ public class Transition : MonoBehaviour
         }
         else
         {
-            if (spriteRenderer.color.a >= 0.001f)
+            if (image.color.a >= 0.001f)
             {
                 colorVector.w -= amountToFade * Time.deltaTime;
-                spriteRenderer.color = colorVector;
+                image.color = colorVector;
             }
             else
             {
-                Destroy(gameObject);
+                Destroy(GetComponentInParent<Canvas>().gameObject);
             }
         }
     }

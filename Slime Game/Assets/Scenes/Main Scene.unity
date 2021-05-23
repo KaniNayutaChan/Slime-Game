@@ -147,7 +147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 39175901}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -366.5047, y: -51.070385, z: -378.45834}
+  m_LocalPosition: {x: -395.99997, y: 87, z: -378.45834}
   m_LocalScale: {x: 1.6681148, y: 1.6681148, z: 1.6681148}
   m_Children:
   - {fileID: 1598874672}
@@ -488,7 +488,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606583153}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -366.5047, y: -51.070385, z: -378.45834}
+  m_LocalPosition: {x: -396, y: 87, z: -378.45834}
   m_LocalScale: {x: 1.6681148, y: 1.6681148, z: 1.6681148}
   m_Children:
   - {fileID: 1846231499}
@@ -520,7 +520,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 958038172}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -366.5047, y: -51.070385, z: -378.45834}
+  m_LocalPosition: {x: -395.99997, y: 87, z: -378.45834}
   m_LocalScale: {x: 1.6681148, y: 1.6681148, z: 1.6681148}
   m_Children:
   - {fileID: 316481204}
@@ -563,7 +563,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -844.0001, y: 318.99997}
+  m_AnchoredPosition: {x: -873.4954, y: 457.07037}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1095702459
@@ -1282,7 +1282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db96a998b9fdf904790e194007cd1181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: {fileID: 2217317742288331404, guid: 89ecd8a7209f84546a09e526ca57ff4a, type: 3}
+  transition: {fileID: 320107546014614382, guid: f461eed50b1c9314a8a91484e794ae6a, type: 3}
   lastSavedRoomNumber: 0
   respawnPos: {x: 0, y: 0}
   currentRoom: {fileID: 0}
