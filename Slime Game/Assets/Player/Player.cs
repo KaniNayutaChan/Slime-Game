@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
     public LayerMask whatIsGround;
     public float feetSize;
 
-
     [Space]
     public float attackUpForce;
     public float attackSideForce;
@@ -31,17 +30,23 @@ public class Player : MonoBehaviour
     float attackCooldown;
     [HideInInspector] public bool hasAttack;
     Vector2 attackVector = new Vector2();
-    bool isAttacking;
 
     [Space]
     public int maxLevel;
     public int level = 0;
-    public float startingDamage;
-    public float startingHealth;
     public float experience;
-    public float currentHealth;
+
+    public float startingDamage;
     public float currentDamage;
+    public float startingHealth;
+    public float currentHealth;
+    public float startingSpell;
+    public float currentSpell;
     Vector3 sizeVector = new Vector3();
+
+    [Space]
+    public float spellDamage;
+    public float spellCost;
 
     [Space]
     bool hasIFrames;
@@ -56,7 +61,7 @@ public class Player : MonoBehaviour
         playerRB = GetComponent<Rigidbody2D>();
         currentDamage = startingDamage + (level * 3);
 
-        ResetHealth();
+        HealToFull();
 
         canMove = true;
     }
@@ -70,6 +75,7 @@ public class Player : MonoBehaviour
         CheckForIFrames();
         CheckForDie();
         CheckForLevelUp();
+        CheckForHeal();
     }
 
     private void FixedUpdate()
@@ -105,7 +111,6 @@ public class Player : MonoBehaviour
         if(isGrounded)
         {
             hasAttack = true;
-            isAttacking = false;
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -137,7 +142,6 @@ public class Player : MonoBehaviour
         {
             hasAttack = false;
             isJumping = false;
-            isAttacking = true;
             attackCooldown = startAttackCooldown;
             playerRB.velocity = Vector2.zero;
 
@@ -193,7 +197,7 @@ public class Player : MonoBehaviour
             playerRB.velocity = Vector2.zero;
             canMove = false;
             experience /= 2;
-            ResetHealth();
+            HealToFull();
         }
     }
 
@@ -210,12 +214,27 @@ public class Player : MonoBehaviour
         level += 1;
         experience = experienceOverflow;
         currentDamage = startingDamage + (level * 3);
-        ResetHealth();
+        HealToFull();
     }
 
-    public void Heal()
+    void CheckForHeal()
     {
-       ResetHealth();
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            currentHealth += currentSpell / 2;
+            currentSpell = 0;
+
+            if(currentHealth > startingHealth + (level * 3))
+            {
+                currentSpell = 2 * (currentHealth - startingHealth + (level * 3));
+                currentHealth = startingHealth + (level * 3);
+            }
+        }
+    }
+
+    public void Save()
+    {
+        HealToFull();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -236,26 +255,23 @@ public class Player : MonoBehaviour
             if (!hasIFrames)
             {
                 currentHealth -= 1;
-                sizeVector.Set(0.5f + (0.05f * currentHealth), 0.5f + (0.05f * currentHealth), 0.5f + (0.05f * currentHealth));
-                transform.localScale = sizeVector;
+                SetSizeToHealth();
                 hasIFrames = true;
                 IFrameTime = startIFrameTime;
             }
         }
-
-        if(collision.CompareTag("Enemy"))
-        {
-            if(isAttacking)
-            {
-                collision.GetComponent<Enemy>().health -= currentDamage;
-            }
-        }
     }
 
-    void ResetHealth()
+    void HealToFull()
     {
+        currentSpell = startingSpell + (level * 3);
         currentHealth = startingHealth + (level * 3);
-        sizeVector.Set(0.5f + (0.01f * currentHealth), 0.5f + (0.01f * currentHealth), 0.5f + (0.01f * currentHealth));
+        SetSizeToHealth();
+    }
+
+    void SetSizeToHealth()
+    {
+        sizeVector.Set(0.5f + (0.05f * currentHealth), 0.5f + (0.05f * currentHealth), 0.5f + (0.05f * currentHealth));
         transform.localScale = sizeVector;
     }
 }

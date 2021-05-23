@@ -55,7 +55,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.05}
+  m_Size: {x: 0.45, y: 0.05}
   m_EdgeRadius: 0
 --- !u!1 &6451364772139142213
 GameObject:
@@ -121,11 +121,13 @@ MonoBehaviour:
   hasAttack: 0
   maxLevel: 20
   level: 0
-  startingDamage: 10
-  startingHealth: 10
   experience: 0
-  currentHealth: 0
+  startingDamage: 10
   currentDamage: 0
+  startingHealth: 10
+  currentHealth: 0
+  startingSpell: 10
+  currentSpell: 0
   startIFrameTime: 1
 --- !u!212 &1721146684308831191
 SpriteRenderer:

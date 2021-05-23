@@ -17,7 +17,7 @@ public class Bench : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.UpArrow))
             {
-                Player.instance.Heal();
+                Player.instance.Save();
                 RoomManager.instance.lastSavedRoomNumber = RoomManager.instance.currentRoomNumber;
                 RoomManager.instance.respawnPos = transform.position;
             }
