@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     public LayerMask whatIsGround;
     public float feetSize;
     float currentFeetSize;
+    bool isTouchingWallJump;
+    public LayerMask whatIsWallJump;
 
     [Space]
     public int maxAttacks;
@@ -41,7 +43,6 @@ public class Player : MonoBehaviour
     public int maxLevel;
     public int level = 0;
     public float experience;
-
     public float startingDamage;
     public float currentDamage;
     public float startingHealth;
@@ -130,6 +131,7 @@ public class Player : MonoBehaviour
     void CheckForJump()
     {
         isGrounded = Physics2D.OverlapCircle(feetPos.position, currentFeetSize, whatIsGround);
+        isTouchingWallJump = Physics2D.OverlapCircle(feetPos.position, currentFeetSize, whatIsWallJump);
 
         if (Physics2D.OverlapCircle(headPos.position, currentFeetSize, whatIsGround))
         {
@@ -141,7 +143,7 @@ public class Player : MonoBehaviour
             attackCounter = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded || isTouchingWallJump && PowerUpManager.instance.hasWallJump)
         {
             jumpTime = startJumpTime;
             isJumping = true;
