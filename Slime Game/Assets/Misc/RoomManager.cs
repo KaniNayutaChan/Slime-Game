@@ -55,13 +55,7 @@ public class RoomManager : MonoBehaviour
     {
         for (int i = 0; i < rooms.Length; i++)
         {
-            for (int j = 0; j < rooms[i].enemies.Length; j++)
-            {
-                if (rooms[i].enemies.Length > 0)
-                {
-                    rooms[i].aliveEnemies[j] = rooms[i].enemies[j];
-                }
-            }
+            rooms[i].aliveEnemies = (int[])rooms[i].enemies.Clone();
         }
     }
 

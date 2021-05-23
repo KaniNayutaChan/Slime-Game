@@ -221,13 +221,15 @@ public class Player : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Z))
         {
-            currentHealth += currentSpell / 2;
-            currentSpell = 0;
-
-            if(currentHealth > startingHealth + (level * 3))
+            if(currentHealth + (currentSpell / 2) > startingHealth + (level * 3))
             {
-                currentSpell = 2 * (currentHealth - startingHealth + (level * 3));
+                currentSpell -= 2 * (startingHealth + (level * 3) - currentHealth);
                 currentHealth = startingHealth + (level * 3);
+            }
+            else
+            {
+                currentHealth += currentSpell / 2;
+                currentSpell = 0;
             }
         }
     }

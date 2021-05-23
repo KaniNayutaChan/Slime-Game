@@ -5,7 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public bool notRespawnable;
-    public float health;
+    public float maxHealth;
+    float currentHealth;
     public float experience;
     [HideInInspector] public int number;
     Animator animator;
@@ -15,12 +16,13 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(health <= 0 && !hasDied)
+        if(currentHealth <= 0 && !hasDied)
         {
             hasDied = true;
             Die(); 
@@ -30,8 +32,17 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         //animator.Play("death");
+
+        if(Player.instance.currentSpell + maxHealth > Player.instance.startingSpell + (Player.instance.level * 3))
+        {
+            Player.instance.currentSpell = Player.instance.startingSpell + (Player.instance.level * 3);
+        }
+        else
+        {
+            Player.instance.currentSpell += maxHealth;
+        }
+
         Player.instance.experience += experience;
-        Player.instance.currentSpell += health;
         RoomManager.instance.rooms[RoomManager.instance.currentRoomNumber].aliveEnemies[number] = 0;
 
         if (notRespawnable)
