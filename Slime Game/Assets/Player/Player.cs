@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
     float holdAttackTime;
     public float startAttackCooldown;
     float attackCooldown;
+    bool isAttacking;
 
     [Space]
     public int maxLevel;
@@ -261,14 +262,16 @@ public class Player : MonoBehaviour
             Time.timeScale = 1;
             attackVector.y += 0.3f;
             playerRB.AddForce(attackVector.normalized * attackForce);
-
-            if(attackCounter == maxAttacks)
-            {
-                attackCooldown = startAttackCooldown;
-            }
+            isAttacking = true;
         }
 
-        if(attackCooldown >= 0)
+        if(isAttacking && isGrounded)
+        {
+            attackCooldown = startAttackCooldown;
+            isAttacking = false;
+        }
+
+        if (attackCooldown >= 0)
         {
             attackCooldown -= Time.deltaTime;
         }
