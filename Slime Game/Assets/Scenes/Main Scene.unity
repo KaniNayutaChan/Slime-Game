@@ -1376,27 +1376,20 @@ MonoBehaviour:
   respawnPos: {x: 0, y: 0}
   currentRoom: {fileID: 0}
   currentRoomNumber: 0
+  enemyList:
+  - {fileID: 0}
+  - {fileID: 7244590742416062611, guid: 4c76726e68726884ebb85bc579d74b29, type: 3}
   rooms:
   - room: {fileID: 8306673048785316087, guid: 30f3db6072c019e4cbf97afcc9504690, type: 3}
-    enemies: []
+    enemies: 
     positions: []
-    aliveEnemies: []
+    aliveEnemies: 
   - room: {fileID: 8306673048785316087, guid: ed1bce9eea248d4418f297d7b783de25, type: 3}
-    enemies:
-    - {fileID: 7244590742416062611, guid: 4c76726e68726884ebb85bc579d74b29, type: 3}
-    - {fileID: 7244590742416062611, guid: 4c76726e68726884ebb85bc579d74b29, type: 3}
+    enemies: 0100000001000000
     positions:
     - {x: -3, y: 1}
     - {x: 8, y: 4}
-    aliveEnemies: []
-  - room: {fileID: 8306673048785316087, guid: 7a228a891e362904d8048658386139b0, type: 3}
-    enemies:
-    - {fileID: 7244590742416062611, guid: 4c76726e68726884ebb85bc579d74b29, type: 3}
-    - {fileID: 7244590742416062611, guid: 4c76726e68726884ebb85bc579d74b29, type: 3}
-    positions:
-    - {x: 0, y: 0}
-    - {x: 0, y: 0}
-    aliveEnemies: []
+    aliveEnemies: 
 --- !u!1 &2004123833
 GameObject:
   m_ObjectHideFlags: 0

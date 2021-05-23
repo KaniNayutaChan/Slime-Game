@@ -14,6 +14,8 @@ public class RoomManager : MonoBehaviour
     [HideInInspector] public GameObject currentRoom;
     [HideInInspector] public int currentRoomNumber;
 
+    public GameObject[] enemyList;
+
     GameObject[] currentActiveEnemies = new GameObject[10];
 
     [System.Serializable]
@@ -23,10 +25,10 @@ public class RoomManager : MonoBehaviour
         public GameObject room;
 
         [Space]
-        public GameObject[] enemies;
+        public int[] enemies;
         public Vector2[] positions;
         
-        [HideInInspector] public GameObject[] aliveEnemies;
+        [HideInInspector] public int[] aliveEnemies;
     }
 
     public RoomList[] rooms;
@@ -53,7 +55,13 @@ public class RoomManager : MonoBehaviour
     {
         for (int i = 0; i < rooms.Length; i++)
         {
-            rooms[i].aliveEnemies = rooms[i].enemies;
+            for (int j = 0; j < rooms[i].enemies.Length; j++)
+            {
+                if (rooms[i].enemies.Length > 0)
+                {
+                    rooms[i].aliveEnemies[j] = rooms[i].enemies[j];
+                }
+            }
         }
     }
 
@@ -82,9 +90,9 @@ public class RoomManager : MonoBehaviour
 
         for (int i = 0; i < rooms[room].aliveEnemies.Length; i++)
         {
-            if(rooms[room].aliveEnemies[i] != null)
+            if(rooms[room].aliveEnemies[i] != 0)
             {
-                GameObject enemy = Instantiate(rooms[room].aliveEnemies[i], rooms[room].positions[i], transform.rotation);
+                GameObject enemy = Instantiate(enemyList[rooms[room].aliveEnemies[i]], rooms[room].positions[i], transform.rotation);
                 enemy.GetComponent<Enemy>().number = i;
                 currentActiveEnemies[i] = enemy;
             }

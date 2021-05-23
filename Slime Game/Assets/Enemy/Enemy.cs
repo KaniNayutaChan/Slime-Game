@@ -7,8 +7,9 @@ public class Enemy : MonoBehaviour
     public bool notRespawnable;
     public float health;
     public float experience;
-    public int number;
+    [HideInInspector] public int number;
     Animator animator;
+    bool hasDied = false;
 
     // Start is called before the first frame update
     void Start()
@@ -19,17 +20,23 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(health <= 0)
+        if(health <= 0 && !hasDied)
         {
-            //animator.Play("death");
-            Player.instance.experience += experience;
-            Player.instance.currentSpell += health;
-            RoomManager.instance.rooms[RoomManager.instance.currentRoomNumber].aliveEnemies[number] = null;
+            hasDied = true;
+            Die(); 
+        }
+    }
 
-            if(notRespawnable)
-            {
-                RoomManager.instance.rooms[RoomManager.instance.currentRoomNumber].enemies[number] = null;
-            }
+    void Die()
+    {
+        //animator.Play("death");
+        Player.instance.experience += experience;
+        Player.instance.currentSpell += health;
+        RoomManager.instance.rooms[RoomManager.instance.currentRoomNumber].aliveEnemies[number] = 0;
+
+        if (notRespawnable)
+        {
+            RoomManager.instance.rooms[RoomManager.instance.currentRoomNumber].enemies[number] = 0;
         }
     }
 }
