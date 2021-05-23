@@ -15,6 +15,19 @@ public class RoomManager : MonoBehaviour
     [HideInInspector] public GameObject currentRoom;
     [HideInInspector] public int currentRoomNumber;
 
+    GameObject[] currentActiveEnemies = new GameObject[10];
+
+    [System.Serializable]
+    public class RoomList
+    {
+        public GameObject[] enemies;
+        public Vector2[] positions;
+
+        [HideInInspector] public GameObject[] aliveEnemies;
+    }
+
+    public RoomList[] rooms;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +42,16 @@ public class RoomManager : MonoBehaviour
         {
             currentRoom = Instantiate(listOfRooms[0]);
         }
+
+        RespawnEnemies();
+    }
+
+    public void RespawnEnemies()
+    {
+        for (int i = 0; i < rooms.Length; i++)
+        {
+            rooms[i].aliveEnemies = rooms[i].enemies;
+        }
     }
 
     public void SpawnRoom(int room, Vector3 spawnPos)
@@ -39,10 +62,29 @@ public class RoomManager : MonoBehaviour
     IEnumerator InstantiateRoom(int room, Vector3 spawnPos)
     {
         yield return new WaitForSeconds(1.3f);
-        Destroy(RoomManager.instance.currentRoom);
+        Destroy(currentRoom);
         currentRoomNumber = room;
         currentRoom = Instantiate(listOfRooms[room]);
         Player.instance.transform.position = spawnPos;
         Player.instance.canMove = true;
+
+
+        foreach (var item in currentActiveEnemies)
+        {
+            if (item != null)
+            {
+                Destroy(item);
+            }
+        }
+
+        for (int i = 0; i < rooms[room].aliveEnemies.Length; i++)
+        {
+            if(rooms[room].aliveEnemies[i] != null)
+            {
+                GameObject enemy = Instantiate(rooms[room].aliveEnemies[i], rooms[room].positions[i], transform.rotation);
+                enemy.GetComponent<Enemy>().number = i;
+                currentActiveEnemies[i] = enemy;
+            }
+        }
     }
 }

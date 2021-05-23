@@ -361,6 +361,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c027dc11a76b104c87851b69e0a0c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasSpell: 0
+  hasMinimise: 0
+  hasStickToWalls: 0
+  hasResistance: 0
+  hasHighJump: 0
+  hasGlide: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,6 +1380,24 @@ MonoBehaviour:
   respawnPos: {x: 0, y: 0}
   currentRoom: {fileID: 0}
   currentRoomNumber: 0
+  rooms:
+  - enemies: []
+    positions: []
+    aliveEnemies: []
+  - enemies:
+    - {fileID: 7244590742416062611, guid: 4c76726e68726884ebb85bc579d74b29, type: 3}
+    - {fileID: 7244590742416062611, guid: 4c76726e68726884ebb85bc579d74b29, type: 3}
+    positions:
+    - {x: -3, y: 1}
+    - {x: 8, y: 4}
+    aliveEnemies: []
+  - enemies:
+    - {fileID: 7244590742416062611, guid: 4c76726e68726884ebb85bc579d74b29, type: 3}
+    - {fileID: 7244590742416062611, guid: 4c76726e68726884ebb85bc579d74b29, type: 3}
+    positions:
+    - {x: 0, y: 0}
+    - {x: 0, y: 0}
+    aliveEnemies: []
 --- !u!1 &2004123833
 GameObject:
   m_ObjectHideFlags: 0

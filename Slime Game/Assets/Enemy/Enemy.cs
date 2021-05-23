@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public float health;
     public float experience;
+    public int number;
     Animator animator;
 
     // Start is called before the first frame update
@@ -21,6 +22,8 @@ public class Enemy : MonoBehaviour
         {
             //animator.Play("death");
             Player.instance.experience += experience;
+            Player.instance.currentSpell += health;
+            RoomManager.instance.rooms[RoomManager.instance.currentRoomNumber].aliveEnemies[number] = null;
         }
     }
 }

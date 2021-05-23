@@ -235,6 +235,7 @@ public class Player : MonoBehaviour
     public void Save()
     {
         HealToFull();
+        RoomManager.instance.RespawnEnemies();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -271,7 +272,7 @@ public class Player : MonoBehaviour
 
     void SetSizeToHealth()
     {
-        sizeVector.Set(0.5f + (0.05f * currentHealth), 0.5f + (0.05f * currentHealth), 0.5f + (0.05f * currentHealth));
+        sizeVector.Set(0.3f + (0.02f * currentHealth), 0.3f + (0.02f * currentHealth), 0.3f + (0.02f * currentHealth));
         transform.localScale = sizeVector;
     }
 }
