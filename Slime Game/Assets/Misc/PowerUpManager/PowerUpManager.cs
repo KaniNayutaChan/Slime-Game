@@ -8,7 +8,7 @@ public class PowerUpManager : MonoBehaviour
 
     public bool hasSpell = false;
     public bool hasMinimise = false;
-    public bool hasStickToWalls = false;
+    public bool hasWallJump = false;
     public bool hasResistance = false;
     public bool hasDoubleAttack = false;
 
