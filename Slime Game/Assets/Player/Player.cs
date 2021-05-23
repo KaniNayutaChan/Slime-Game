@@ -30,10 +30,11 @@ public class Player : MonoBehaviour
     int attackCounter;
     Vector2 attackVector = new Vector2();
     public float attackForce;
-    bool isAttacking;
     bool isHoldingAttack;
     public float startHoldAttackTime;
     float holdAttackTime;
+    public float startAttackCooldown;
+    float attackCooldown;
 
     [Space]
     public int maxLevel;
@@ -101,7 +102,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isAttacking && canMove && !isHealing)
+        if (canMove && !isHealing)
         {
             transform.position += new Vector3(moveInput, 0, 0) * movementSpeed * Time.deltaTime;
         }
@@ -137,7 +138,6 @@ public class Player : MonoBehaviour
         if(isGrounded)
         {
             attackCounter = 0;
-            isAttacking = false;
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -167,7 +167,7 @@ public class Player : MonoBehaviour
 
     void CheckForAttack()
     {
-        if(Input.GetKeyDown(KeyCode.X) && attackCounter < maxAttacks && !isGrounded)
+        if(Input.GetKeyDown(KeyCode.X) && attackCounter < maxAttacks && attackCooldown < 0 && !isGrounded)
         {
             Time.timeScale = 0.5f;
             attackCounter++;
@@ -257,11 +257,20 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.X) && isHoldingAttack)
         {
             isHoldingAttack = false;
-            isAttacking = true;
             playerRB.velocity = Vector2.zero;
             Time.timeScale = 1;
             attackVector.y += 0.3f;
             playerRB.AddForce(attackVector.normalized * attackForce);
+
+            if(attackCounter == maxAttacks)
+            {
+                attackCooldown = startAttackCooldown;
+            }
+        }
+
+        if(attackCooldown >= 0)
+        {
+            attackCooldown -= Time.deltaTime;
         }
 
         if (PowerUpManager.instance.hasDoubleAttack)

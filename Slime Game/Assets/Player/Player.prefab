@@ -178,6 +178,7 @@ MonoBehaviour:
   maxAttacks: 1
   attackForce: 700
   startHoldAttackTime: 0.5
+  startAttackCooldown: 2
   maxLevel: 20
   level: 0
   experience: 0
