@@ -202,6 +202,24 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.X) && isHoldingAttack)
         {
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                attackVector.y = 1;
+            }
+            else if (Input.GetKey(KeyCode.DownArrow))
+            {
+                attackVector.y = -1;
+            }
+
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                attackVector.x = -1;
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                attackVector.x = 1;
+            }
+
             if (holdAttackTime > 0)
             {
                 holdAttackTime -= Time.deltaTime;
