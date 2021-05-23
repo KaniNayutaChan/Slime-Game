@@ -10,7 +10,7 @@ public class PowerUpManager : MonoBehaviour
     public bool hasMinimise = false;
     public bool hasStickToWalls = false;
     public bool hasResistance = false;
-    public bool hasHighJump = false;
+    public bool hasDoubleAttack = false;
     public bool hasGlide = false;
 
     // Start is called before the first frame update

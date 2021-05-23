@@ -17,18 +17,19 @@ public class Player : MonoBehaviour
     public float jumpForce;
     public float startJumpTime;
     public Transform feetPos;
+    public Transform headPos;
     float jumpTime;
     bool isJumping;
     [HideInInspector] public bool isGrounded;
     public LayerMask whatIsGround;
     public float feetSize;
+    bool isAttacking;
 
     [Space]
     public float attackUpForce;
     public float attackSideForce;
-    public float startAttackCooldown;
-    float attackCooldown;
-    [HideInInspector] public bool hasAttack;
+    public int maxAttacks;
+    int attackCounter;
     Vector2 attackVector = new Vector2();
 
     [Space]
@@ -80,7 +81,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (hasAttack && canMove)
+        if (!isAttacking && canMove)
         {
             transform.position += new Vector3(moveInput, 0, 0) * movementSpeed * Time.deltaTime;
         }
@@ -108,9 +109,15 @@ public class Player : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(feetPos.position, feetSize, whatIsGround);
 
+        if (Physics2D.OverlapCircle(headPos.position, feetSize, whatIsGround))
+        {
+            isJumping = false;
+        }
+
         if(isGrounded)
         {
-            hasAttack = true;
+            attackCounter = 0;
+            isAttacking = false;
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -138,11 +145,11 @@ public class Player : MonoBehaviour
 
     void CheckForAttack()
     {
-        if(Input.GetKeyDown(KeyCode.X) && hasAttack && attackCooldown < 0)
+        if(Input.GetKeyDown(KeyCode.X) && attackCounter < maxAttacks && !isGrounded)
         {
-            hasAttack = false;
+            attackCounter++;
             isJumping = false;
-            attackCooldown = startAttackCooldown;
+            isAttacking = true;
             playerRB.velocity = Vector2.zero;
 
             if (IsFacingLeft())
@@ -155,11 +162,6 @@ public class Player : MonoBehaviour
             }
 
             playerRB.AddForce(attackVector);
-        }
-
-        if (attackCooldown >= 0)
-        {
-            attackCooldown -= Time.deltaTime;
         }
     }
 

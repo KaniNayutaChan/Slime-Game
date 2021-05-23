@@ -365,7 +365,7 @@ MonoBehaviour:
   hasMinimise: 0
   hasStickToWalls: 0
   hasResistance: 0
-  hasHighJump: 0
+  hasDoubleAttack: 0
   hasGlide: 0
 --- !u!1 &519420028
 GameObject:
