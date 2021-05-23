@@ -6,17 +6,18 @@ public class Enemy : MonoBehaviour
 {
     public bool notRespawnable;
     public float maxHealth;
-    float currentHealth;
+    public float currentHealth;
     public float experience;
     [HideInInspector] public int number;
     Animator animator;
-    bool hasDied = false;
+    bool hasDied;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         currentHealth = maxHealth;
+        hasDied = false;
     }
 
     // Update is called once per frame
@@ -24,8 +25,8 @@ public class Enemy : MonoBehaviour
     {
         if(currentHealth <= 0 && !hasDied)
         {
+            Die();
             hasDied = true;
-            Die(); 
         }
     }
 

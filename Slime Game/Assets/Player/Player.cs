@@ -23,14 +23,16 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool isGrounded;
     public LayerMask whatIsGround;
     public float feetSize;
-    bool isAttacking;
 
     [Space]
-    public float attackUpForce;
-    public float attackSideForce;
     public int maxAttacks;
     int attackCounter;
     Vector2 attackVector = new Vector2();
+    public float attackForce;
+    bool isAttacking;
+    bool isHoldingAttack;
+    public float startHoldAttackTime;
+    float holdAttackTime;
 
     [Space]
     public int maxLevel;
@@ -48,6 +50,11 @@ public class Player : MonoBehaviour
     [Space]
     public float spellDamage;
     public float spellCost;
+
+    [Space]
+    public float startHealTime;
+    float healTime;
+    bool isHealing = false;
 
     [Space]
     bool hasIFrames;
@@ -81,7 +88,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isAttacking && canMove)
+        if (!isAttacking && canMove && !isHealing)
         {
             transform.position += new Vector3(moveInput, 0, 0) * movementSpeed * Time.deltaTime;
         }
@@ -147,21 +154,81 @@ public class Player : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.X) && attackCounter < maxAttacks && !isGrounded)
         {
+            Time.timeScale = 0.5f;
             attackCounter++;
             isJumping = false;
             isAttacking = true;
-            playerRB.velocity = Vector2.zero;
+            isHoldingAttack = true;
+            holdAttackTime = startHoldAttackTime;
 
-            if (IsFacingLeft())
+            if(Input.GetKey(KeyCode.UpArrow))
             {
-                attackVector.Set(-attackSideForce, attackUpForce);
+                attackVector.y = 1;
+            }
+            else if(Input.GetKey(KeyCode.DownArrow))
+            {
+                attackVector.y = -1;
             }
             else
             {
-                attackVector.Set(attackSideForce, attackUpForce);
+                attackVector.y = 0;
             }
 
-            playerRB.AddForce(attackVector);
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                attackVector.x = -1;
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                attackVector.x = 1;
+            }
+            else
+            {
+                attackVector.x = 0;
+            }
+
+            if(!Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow))
+            {
+                if(IsFacingLeft())
+                {
+                    attackVector.x = -1;
+                }
+                else
+                {
+                    attackVector.x = 1;
+                }
+            }
+        }
+
+        if (Input.GetKey(KeyCode.X) && isHoldingAttack)
+        {
+            if (holdAttackTime > 0)
+            {
+                holdAttackTime -= Time.deltaTime;
+            }
+            else
+            {
+                isHoldingAttack = false;
+                playerRB.velocity = Vector2.zero;
+                Time.timeScale = 1;
+                playerRB.AddForce(attackVector.normalized * attackForce);
+            }
+
+            if(isGrounded)
+            {
+                isHoldingAttack = false;
+                Time.timeScale = 1;
+            }
+        }
+
+
+        if (Input.GetKeyUp(KeyCode.X) && isHoldingAttack)
+        {
+            isHoldingAttack = false;
+            playerRB.velocity = Vector2.zero;
+            Time.timeScale = 1;
+            attackVector.y += 0.3f;
+            playerRB.AddForce(attackVector.normalized * attackForce);
         }
     }
 
@@ -221,8 +288,11 @@ public class Player : MonoBehaviour
 
     void CheckForHeal()
     {
-        if(Input.GetKeyDown(KeyCode.Z))
+        if(Input.GetKeyDown(KeyCode.Z) && isGrounded)
         {
+            healTime = startHealTime;
+            isHealing = true;
+
             if(currentHealth + (currentSpell / 2) > startingHealth + (level * 3))
             {
                 currentSpell -= 2 * (startingHealth + (level * 3) - currentHealth);
@@ -233,6 +303,15 @@ public class Player : MonoBehaviour
                 currentHealth += currentSpell / 2;
                 currentSpell = 0;
             }
+        }
+
+        if(healTime > 0)
+        {
+            healTime -= Time.deltaTime;
+        }
+        else
+        {
+            isHealing = false;
         }
     }
 

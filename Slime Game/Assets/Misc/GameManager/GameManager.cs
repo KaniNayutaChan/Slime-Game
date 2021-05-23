@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public GameObject pause;
     bool isPaused = false;
+    float currentTimeScale = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
         {
             if(!isPaused)
             {
+                currentTimeScale = Time.timeScale;
                 isPaused = true;
                 Time.timeScale = 0;
                 pause.SetActive(true);
@@ -31,7 +33,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 isPaused = false;
-                Time.timeScale = 1;
+                Time.timeScale = currentTimeScale;
                 pause.SetActive(false);
             }
         }
