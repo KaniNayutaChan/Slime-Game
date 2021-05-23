@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool isGrounded;
     public LayerMask whatIsGround;
     public float feetSize;
+    float currentFeetSize;
 
     [Space]
     public int maxAttacks;
@@ -126,9 +127,9 @@ public class Player : MonoBehaviour
 
     void CheckForJump()
     {
-        isGrounded = Physics2D.OverlapCircle(feetPos.position, feetSize, whatIsGround);
+        isGrounded = Physics2D.OverlapCircle(feetPos.position, currentFeetSize, whatIsGround);
 
-        if (Physics2D.OverlapCircle(headPos.position, feetSize, whatIsGround))
+        if (Physics2D.OverlapCircle(headPos.position, currentFeetSize, whatIsGround))
         {
             isJumping = false;
         }
@@ -160,6 +161,8 @@ public class Player : MonoBehaviour
         {
             isJumping = false;
         }
+
+        currentFeetSize = transform.localScale.x / feetSize;
     }
 
     void CheckForAttack()
@@ -169,9 +172,9 @@ public class Player : MonoBehaviour
             Time.timeScale = 0.5f;
             attackCounter++;
             isJumping = false;
-            isAttacking = true;
             isHoldingAttack = true;
             holdAttackTime = startHoldAttackTime;
+
 
             if(Input.GetKey(KeyCode.UpArrow))
             {
@@ -199,9 +202,9 @@ public class Player : MonoBehaviour
                 attackVector.x = 0;
             }
 
-            if(!Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow))
+            if (!Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
             {
-                if(IsFacingLeft())
+                if (IsFacingLeft())
                 {
                     attackVector.x = -1;
                 }
@@ -251,14 +254,19 @@ public class Player : MonoBehaviour
             }
         }
 
-
         if (Input.GetKeyUp(KeyCode.X) && isHoldingAttack)
         {
             isHoldingAttack = false;
+            isAttacking = true;
             playerRB.velocity = Vector2.zero;
             Time.timeScale = 1;
             attackVector.y += 0.3f;
             playerRB.AddForce(attackVector.normalized * attackForce);
+        }
+
+        if (PowerUpManager.instance.hasDoubleAttack)
+        {
+            maxAttacks = 2;
         }
     }
 
@@ -437,5 +445,12 @@ public class Player : MonoBehaviour
             sizeVector.Set(0.3f + (0.02f * currentHealth), 0.3f + (0.02f * currentHealth), 0.3f + (0.02f * currentHealth));
             transform.localScale = sizeVector;
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(feetPos.position, currentFeetSize);
+        Gizmos.DrawWireSphere(headPos.position, currentFeetSize);
     }
 }
