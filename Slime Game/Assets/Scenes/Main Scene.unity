@@ -363,7 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasSpell: 1
   hasMinimise: 1
-  hasWallJump: 0
+  hasWallJump: 1
   hasResistance: 1
   hasDoubleAttack: 0
 --- !u!1 &519420028
