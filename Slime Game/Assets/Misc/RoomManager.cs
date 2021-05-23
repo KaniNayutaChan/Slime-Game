@@ -7,7 +7,6 @@ public class RoomManager : MonoBehaviour
     public static RoomManager instance;
 
     public GameObject transition;
-    public GameObject[] listOfRooms;
 
     [HideInInspector] public int lastSavedRoomNumber;
     [HideInInspector] public Vector2 respawnPos;
@@ -20,9 +19,13 @@ public class RoomManager : MonoBehaviour
     [System.Serializable]
     public class RoomList
     {
+        [Space]
+        public GameObject room;
+
+        [Space]
         public GameObject[] enemies;
         public Vector2[] positions;
-
+        
         [HideInInspector] public GameObject[] aliveEnemies;
     }
 
@@ -40,7 +43,7 @@ public class RoomManager : MonoBehaviour
 
         if (currentRoom == null)
         {
-            currentRoom = Instantiate(listOfRooms[0]);
+            currentRoom = Instantiate(rooms[0].room);
         }
 
         RespawnEnemies();
@@ -64,7 +67,7 @@ public class RoomManager : MonoBehaviour
         yield return new WaitForSeconds(1.3f);
         Destroy(currentRoom);
         currentRoomNumber = room;
-        currentRoom = Instantiate(listOfRooms[room]);
+        currentRoom = Instantiate(rooms[room].room);
         Player.instance.transform.position = spawnPos;
         Player.instance.canMove = true;
 

@@ -1372,26 +1372,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 2217317742288331404, guid: 89ecd8a7209f84546a09e526ca57ff4a, type: 3}
-  listOfRooms:
-  - {fileID: 8306673048785316087, guid: 30f3db6072c019e4cbf97afcc9504690, type: 3}
-  - {fileID: 8306673048785316087, guid: ed1bce9eea248d4418f297d7b783de25, type: 3}
-  - {fileID: 8306673048785316087, guid: 7a228a891e362904d8048658386139b0, type: 3}
   lastSavedRoomNumber: 0
   respawnPos: {x: 0, y: 0}
   currentRoom: {fileID: 0}
   currentRoomNumber: 0
   rooms:
-  - enemies: []
+  - room: {fileID: 8306673048785316087, guid: 30f3db6072c019e4cbf97afcc9504690, type: 3}
+    enemies: []
     positions: []
     aliveEnemies: []
-  - enemies:
+  - room: {fileID: 8306673048785316087, guid: ed1bce9eea248d4418f297d7b783de25, type: 3}
+    enemies:
     - {fileID: 7244590742416062611, guid: 4c76726e68726884ebb85bc579d74b29, type: 3}
     - {fileID: 7244590742416062611, guid: 4c76726e68726884ebb85bc579d74b29, type: 3}
     positions:
     - {x: -3, y: 1}
     - {x: 8, y: 4}
     aliveEnemies: []
-  - enemies:
+  - room: {fileID: 8306673048785316087, guid: 7a228a891e362904d8048658386139b0, type: 3}
+    enemies:
     - {fileID: 7244590742416062611, guid: 4c76726e68726884ebb85bc579d74b29, type: 3}
     - {fileID: 7244590742416062611, guid: 4c76726e68726884ebb85bc579d74b29, type: 3}
     positions:

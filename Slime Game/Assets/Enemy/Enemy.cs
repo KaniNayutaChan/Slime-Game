@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public bool notRespawnable;
     public float health;
     public float experience;
     public int number;
@@ -24,6 +25,11 @@ public class Enemy : MonoBehaviour
             Player.instance.experience += experience;
             Player.instance.currentSpell += health;
             RoomManager.instance.rooms[RoomManager.instance.currentRoomNumber].aliveEnemies[number] = null;
+
+            if(notRespawnable)
+            {
+                RoomManager.instance.rooms[RoomManager.instance.currentRoomNumber].enemies[number] = null;
+            }
         }
     }
 }
