@@ -61,6 +61,17 @@ public class Player : MonoBehaviour
     public float startIFrameTime;
     float IFrameTime;
 
+    [Space]
+    Vector3 shrinkVector = new Vector3();
+    public float shrinkSpeed;
+    public float minSize;
+    public float startShrinkTime;
+    float shrinkTime;
+    public float startShrinkCooldown;
+    float shrinkCooldown;
+    bool isShrinking;
+    bool isExpanding;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,6 +95,7 @@ public class Player : MonoBehaviour
         CheckForDie();
         CheckForLevelUp();
         CheckForHeal();
+        CheckForMinimise();
     }
 
     private void FixedUpdate()
@@ -333,6 +345,53 @@ public class Player : MonoBehaviour
         }
     }
 
+    void CheckForMinimise()
+    {
+        if(PowerUpManager.instance.hasMinimise && shrinkCooldown <= 0)
+        {
+            if(Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                shrinkCooldown = startShrinkCooldown;
+                isShrinking = true;
+                shrinkTime = startShrinkTime;
+                shrinkVector.Set((transform.localScale.x - minSize), (transform.localScale.x - minSize), (transform.localScale.x - minSize));
+            }
+        }
+
+        if (isShrinking)
+        {
+            if (transform.localScale.x > minSize)
+            {
+                transform.localScale -= shrinkVector * shrinkSpeed * Time.deltaTime;
+            }
+            else if (shrinkTime > 0)
+            {
+                shrinkTime -= Time.deltaTime;
+            }
+            else
+            {
+                isShrinking = false;
+                isExpanding = true;
+            }
+        }
+        if(isExpanding)
+        {
+            if (transform.localScale.x < 0.3f + (0.02f * currentHealth))
+            {
+                transform.localScale += shrinkVector * shrinkSpeed * Time.deltaTime;
+            }
+            else
+            {
+                isExpanding = false;
+            }
+        }
+
+        if(shrinkCooldown > 0)
+        {
+            shrinkCooldown -= Time.deltaTime;
+        }
+    }
+
     public void Save()
     {
         HealToFull();
@@ -373,7 +432,10 @@ public class Player : MonoBehaviour
 
     void SetSizeToHealth()
     {
-        sizeVector.Set(0.3f + (0.02f * currentHealth), 0.3f + (0.02f * currentHealth), 0.3f + (0.02f * currentHealth));
-        transform.localScale = sizeVector;
+        if (isShrinking || isExpanding)
+        {
+            sizeVector.Set(0.3f + (0.02f * currentHealth), 0.3f + (0.02f * currentHealth), 0.3f + (0.02f * currentHealth));
+            transform.localScale = sizeVector;
+        }
     }
 }

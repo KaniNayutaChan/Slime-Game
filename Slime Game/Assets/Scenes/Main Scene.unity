@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpell: 0
-  hasMinimise: 0
+  hasMinimise: 1
   hasStickToWalls: 0
   hasResistance: 0
   hasDoubleAttack: 0
