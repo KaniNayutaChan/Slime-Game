@@ -87,7 +87,7 @@ public class RoomManager : MonoBehaviour
             if(rooms[room].aliveEnemies[i] != 0)
             {
                 GameObject enemy = Instantiate(enemyList[rooms[room].aliveEnemies[i]], rooms[room].positions[i], transform.rotation);
-                enemy.GetComponent<Enemy>().number = i;
+                enemy.GetComponent<BaseEnemyHealth>().number = i;
                 currentActiveEnemies[i] = enemy;
             }
         }

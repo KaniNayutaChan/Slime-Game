@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseEnemyIdle : MonoBehaviour
+public class BaseEnemyIdle : BaseEnemy
 {
-    // Start is called before the first frame update
-    void Start()
+    public IdleType idleType;
+    
+    public enum IdleType
     {
-        
+        StayStill,
+        MoveInStraightLine,
+        Wander
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        base.OnStateEnter(animator, stateInfo, layerIndex);
+    }
+
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        base.OnStateUpdate(animator, stateInfo, layerIndex);
     }
 }

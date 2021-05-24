@@ -2,19 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class BaseEnemyHealth : MonoBehaviour
 {
-    public bool notRespawnable;
     public float maxHealth;
     public float currentHealth;
     public float experience;
-    [HideInInspector] public int number;
-    Animator animator;
+    protected Animator animator;
     bool hasDied;
-    public int bossNumber;
+    [HideInInspector] public int number;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         animator = GetComponent<Animator>();
         currentHealth = maxHealth;
@@ -22,7 +20,7 @@ public class Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if(currentHealth <= 0 && !hasDied)
         {
@@ -31,7 +29,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void Die()
+    protected virtual void Die()
     {
         //animator.Play("death");
 
@@ -47,15 +45,6 @@ public class Enemy : MonoBehaviour
         Player.instance.experience += experience;
         RoomManager.instance.rooms[RoomManager.instance.currentRoomNumber].aliveEnemies[number] = 0;
 
-        if (notRespawnable)
-        {
-            RoomManager.instance.rooms[RoomManager.instance.currentRoomNumber].enemies[number] = 0;
-        }
-
-        if(bossNumber > 0)
-        {
-            PowerUpManager.instance.GrantPowerUp(bossNumber);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
