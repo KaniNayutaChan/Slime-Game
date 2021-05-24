@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public int number;
     Animator animator;
     bool hasDied;
+    public int bossNumber;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +50,31 @@ public class Enemy : MonoBehaviour
         if (notRespawnable)
         {
             RoomManager.instance.rooms[RoomManager.instance.currentRoomNumber].enemies[number] = 0;
+        }
+
+        if(bossNumber > 0)
+        {
+            PowerUpManager.instance.GrantPowerUp(bossNumber);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Attack"))
+        {
+            PlayerAttack attack = collision.GetComponent<PlayerAttack>();
+
+            if (currentHealth - attack.damage <= 0)
+            {
+                if (attack.type != PlayerAttack.Type.Attack)
+                {
+                    currentHealth = 1;
+                }
+                else
+                {
+                    currentHealth -= attack.damage;
+                }
+            }
         }
     }
 }

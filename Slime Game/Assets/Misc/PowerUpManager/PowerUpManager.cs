@@ -11,6 +11,7 @@ public class PowerUpManager : MonoBehaviour
     public bool hasWallJump = false;
     public bool hasResistance = false;
     public bool hasDoubleAttack = false;
+    public bool hasBarrier = false;
 
     [System.Serializable]
     public class Charms
@@ -37,5 +38,30 @@ public class PowerUpManager : MonoBehaviour
     void Update()
     {
         noOfCharmSlots = 1 + Mathf.FloorToInt(Player.instance.level / 3);
+    }
+
+    public void GrantPowerUp(int bossNumber)
+    {
+        switch(bossNumber)
+        {
+            case 1:
+                hasSpell = true;
+                break;
+            case 2:
+                hasMinimise = true;
+                break;
+            case 3:
+                hasWallJump = true;
+                break;
+            case 4:
+                hasResistance = true;
+                break;
+            case 5:
+                hasDoubleAttack = true;
+                break;
+            case 6:
+                hasBarrier = true;
+                break;
+        }
     }
 }
