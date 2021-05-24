@@ -349,12 +349,15 @@ public class Player : MonoBehaviour
         }
     }
 
-    void LevelUp(float experienceOverflow)
+    public void LevelUp(float experienceOverflow)
     {
-        level += 1;
-        experience = experienceOverflow;
-        currentDamage = startingDamage + (level * 3);
-        HealToFull();
+        if (level < maxLevel)
+        {
+            level += 1;
+            experience = experienceOverflow;
+            currentDamage = startingDamage + (level * 3);
+            HealToFull();
+        }
     }
 
     void CheckForHeal()
@@ -593,7 +596,7 @@ public class Player : MonoBehaviour
 
     void SetSizeToHealth()
     {
-        if (isShrinking || isExpanding)
+        if (!isShrinking || !isExpanding)
         {
             sizeVector.Set(0.3f + (0.02f * currentHealth), 0.3f + (0.02f * currentHealth), 0.3f + (0.02f * currentHealth));
             transform.localScale = sizeVector;

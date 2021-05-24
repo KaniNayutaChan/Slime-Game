@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public GameObject pause;
     bool isPaused = false;
+    public bool isNewGame;
     float currentTimeScale = 1;
 
     // Start is called before the first frame update
@@ -15,6 +16,12 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+        }
+
+        if(isNewGame)
+        {
+            Player.instance.level = Player.instance.maxLevel - 1;
+            Player.instance.LevelUp(0);
         }
     }
 

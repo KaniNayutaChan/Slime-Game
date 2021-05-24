@@ -882,6 +882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pause: {fileID: 1564488600}
+  isNewGame: 1
 --- !u!1 &1564488600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,18 +1393,19 @@ MonoBehaviour:
   - {fileID: 4703407586692753627, guid: 7c586e4e6d6423345a3db6d06b8f1da8, type: 3}
   - {fileID: 4703407586692753627, guid: 9d401fa6bde4c3b47a9d2d75fc0ce1c9, type: 3}
   - {fileID: 4703407586692753627, guid: 0eb9a676fa2cc924d99d2393546fe7c6, type: 3}
+  - {fileID: 4703407586692753627, guid: d2db7abd42a31974a83c7812fe59f4b7, type: 3}
   rooms:
   - room: {fileID: 8306673048785316087, guid: 30f3db6072c019e4cbf97afcc9504690, type: 3}
     enemies: 
     positions: []
     aliveEnemies: 
   - room: {fileID: 8306673048785316087, guid: ed1bce9eea248d4418f297d7b783de25, type: 3}
-    enemies: 01000000010000000100000001000000
-    positions:
-    - {x: 52, y: 12}
-    - {x: 67, y: 12}
-    - {x: 99, y: 21}
-    - {x: 103, y: 21}
+    enemies: 
+    positions: []
+    aliveEnemies: 
+  - room: {fileID: 8306673048785316087, guid: 7a228a891e362904d8048658386139b0, type: 3}
+    enemies: 
+    positions: []
     aliveEnemies: 
 --- !u!1 &2004123833
 GameObject:
