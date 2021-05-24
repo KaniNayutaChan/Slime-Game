@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8019546856412759712}
   - component: {fileID: 4170903071057131196}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 'Collision '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3537662715522462788}
   - component: {fileID: 3357806433671445133}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FeetPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,9 +127,9 @@ GameObject:
   - component: {fileID: 1721146684308831191}
   - component: {fileID: 1359332418734183451}
   - component: {fileID: 6456666481762101230}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -194,9 +194,11 @@ MonoBehaviour:
   spellDamage: 0
   startSpellCooldown: 5
   spellPrefab: {fileID: 8204146499462120451, guid: dae9fce2aa748bf40a3432bebc322d11, type: 3}
-  spellForce: 700
+  spellForce: 1000
   startHealTime: 1
   startIFrameTime: 1
+  knockback: {x: 300, y: 500}
+  startLockMovementTime: 0.5
   shrinkSpeed: 5
   minSize: 0.1
   startShrinkTime: 2

@@ -69,6 +69,10 @@ public class Player : MonoBehaviour
     bool hasIFrames;
     public float startIFrameTime;
     float IFrameTime;
+    public Vector2 knockback;
+    Vector2 knockbackVector = new Vector2();
+    public float startLockMovementTime;
+    float lockMovementTime;
 
     [Space]
     Vector3 shrinkVector = new Vector3();
@@ -97,20 +101,29 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckForMove();
-        CheckForJump();
-        CheckForAttack();
+        if (canMove && !isHealing && lockMovementTime < 0)
+        {
+            CheckForMove();
+            CheckForJump();
+            CheckForAttack();
+            CheckForMinimise();
+            CheckForHeal();
+            CheckForSpell();
+        }
+
         CheckForIFrames();
         CheckForDie();
         CheckForLevelUp();
-        CheckForHeal();
-        CheckForMinimise();
-        CheckForSpell();
+
+        if (lockMovementTime >= 0)
+        {
+            lockMovementTime -= Time.deltaTime;
+        }
     }
 
     private void FixedUpdate()
     {
-        if (canMove && !isHealing)
+        if (canMove && !isHealing && lockMovementTime < 0)
         {
             transform.position += new Vector3(moveInput, 0, 0) * movementSpeed * Time.deltaTime;
         }
@@ -422,7 +435,7 @@ public class Player : MonoBehaviour
 
     void CheckForSpell()
     {
-        if(Input.GetKeyDown(KeyCode.C) && PowerUpManager.instance.hasSpell && spellCooldown < 0)
+        if(Input.GetKeyDown(KeyCode.C) && PowerUpManager.instance.hasSpell && spellCooldown < 0 && !isGrounded)
         {
             Time.timeScale = 0.5f;
             isHoldingSpell = true;
@@ -541,10 +554,32 @@ public class Player : MonoBehaviour
         {
             if (!hasIFrames)
             {
-                currentHealth -= 1;
+                BaseSkill baseSkill = collision.GetComponent<BaseSkill>();
+
+                if(currentHealth - baseSkill.damage <= 0 && currentHealth != 1)
+                {
+                    currentHealth = 1;
+                }
+                else
+                {
+                    currentHealth -= baseSkill.damage;
+                }
+
                 SetSizeToHealth();
                 hasIFrames = true;
                 IFrameTime = startIFrameTime;
+
+                if(transform.position.x > baseSkill.transform.position.x)
+                {
+                    knockbackVector.Set(knockback.x, knockback.y);
+                }
+                else
+                {
+                    knockbackVector.Set(-knockback.x, knockback.y);
+                }
+
+                playerRB.AddForce(knockbackVector);
+                lockMovementTime = startLockMovementTime;
             }
         }
     }

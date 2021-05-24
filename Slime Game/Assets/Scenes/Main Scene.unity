@@ -366,6 +366,7 @@ MonoBehaviour:
   hasWallJump: 1
   hasResistance: 1
   hasDoubleAttack: 0
+  hasBarrier: 0
   charmList:
   - name: 
     description: Deal bonus damage on full health

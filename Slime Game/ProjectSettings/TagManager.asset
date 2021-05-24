@@ -8,6 +8,7 @@ TagManager:
   - Skill
   - Enemy
   - Door
+  - Attack
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - UI
   - Arena
   - WallJump
-  - 
-  - 
+  - Player
+  - Enemy
   - 
   - 
   - 

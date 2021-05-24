@@ -58,22 +58,19 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Attack"))
         {
             PlayerAttack attack = collision.GetComponent<PlayerAttack>();
 
-            if (currentHealth - attack.damage <= 0)
+            if (currentHealth - attack.damage <= 0 && attack.type != PlayerAttack.Type.Attack)
             {
-                if (attack.type != PlayerAttack.Type.Attack)
-                {
-                    currentHealth = 1;
-                }
-                else
-                {
-                    currentHealth -= attack.damage;
-                }
+                currentHealth = 1;
+            }
+            else
+            {
+                currentHealth -= attack.damage;
             }
         }
     }
