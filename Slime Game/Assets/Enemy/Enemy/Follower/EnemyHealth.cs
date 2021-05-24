@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowerHealth : BaseEnemyHealth
+public class EnemyHealth : BaseEnemyHealth
 {
     public float range;
     public float startAttackCooldown;
@@ -20,15 +20,27 @@ public class FollowerHealth : BaseEnemyHealth
     {
         base.Update();
 
-        if(Vector2.Distance(transform.position, Player.instance.transform.position) < range && attackCooldown < 0)
+        if(IsInRange() && attackCooldown < 0)
         {
-            //animator.Play("attack");
+            //animator.Play("Attack");
             attackCooldown = startAttackCooldown;
         }
 
         if(attackCooldown >= 0)
         {
             attackCooldown -= Time.deltaTime;
+        }
+    }
+
+    public bool IsInRange()
+    {
+        if(Vector2.Distance(transform.position, Player.instance.transform.position) < range)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

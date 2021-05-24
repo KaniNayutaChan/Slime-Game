@@ -31,7 +31,7 @@ public class BaseEnemyHealth : MonoBehaviour
 
     protected virtual void Die()
     {
-        //animator.Play("death");
+        //animator.Play("Die");
 
         if(Player.instance.currentSpell + maxHealth > Player.instance.startingSpell + (Player.instance.level * 3))
         {
