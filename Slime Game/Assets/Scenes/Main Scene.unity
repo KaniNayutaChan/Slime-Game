@@ -366,6 +366,88 @@ MonoBehaviour:
   hasWallJump: 1
   hasResistance: 1
   hasDoubleAttack: 0
+  charmList:
+  - name: 
+    description: Deal bonus damage on full health
+    acquired: 0
+    equipped: 0
+  - name: 
+    description: Deal bonus damage on one health
+    acquired: 0
+    equipped: 0
+  - name: 
+    description: Reduce the time between attacks
+    acquired: 0
+    equipped: 0
+  - name: 
+    description: Gain more invincibility frames when damaged
+    acquired: 0
+    equipped: 0
+  - name: 
+    description: Summon a melee slime familiar
+    acquired: 0
+    equipped: 0
+  - name: 
+    description: Summon a ranged slime familiar
+    acquired: 0
+    equipped: 0
+  - name: 
+    description: Gain experience quicker
+    acquired: 0
+    equipped: 0
+  - name: 
+    description: Deal bonus damage
+    acquired: 0
+    equipped: 0
+  - name: 
+    description: Leave a poison trail behind
+    acquired: 0
+    equipped: 0
+  - name: 
+    description: Explode into poison after taking damage
+    acquired: 0
+    equipped: 0
+  - name: 
+    description: Deal more damage with spells
+    acquired: 0
+    equipped: 0
+  - name: 
+    description: Reduce the time between spells
+    acquired: 0
+    equipped: 0
+  - name: 
+    description: Increase the size of spells
+    acquired: 0
+    equipped: 0
+  - name: 
+    description: Gain slime points after taking damage
+    acquired: 0
+    equipped: 0
+  - name: 
+    description: Deal bonus damage when attacking from behind
+    acquired: 0
+    equipped: 0
+  - name: 
+    description: Ready a critical hit every 5 seconds
+    acquired: 0
+    equipped: 0
+  - name: 
+    description: Negate all damage occasionally
+    acquired: 0
+    equipped: 0
+  - name: 
+    description: Gain more slime points
+    acquired: 0
+    equipped: 0
+  - name: 
+    description: Deal damage over time
+    acquired: 0
+    equipped: 0
+  - name: 
+    description: Increase health
+    acquired: 0
+    equipped: 0
+  noOfCharmSlots: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

@@ -183,16 +183,18 @@ MonoBehaviour:
   startHoldAttackTime: 0.5
   startAttackCooldown: 1
   maxLevel: 20
-  level: 0
+  level: 1
   experience: 0
-  startingDamage: 10
+  startingDamage: 7
   currentDamage: 0
-  startingHealth: 10
+  startingHealth: 7
   currentHealth: 0
-  startingSpell: 10
+  startingSpell: 7
   currentSpell: 0
   spellDamage: 0
-  spellCost: 0
+  startSpellCooldown: 5
+  spellPrefab: {fileID: 8204146499462120451, guid: dae9fce2aa748bf40a3432bebc322d11, type: 3}
+  spellForce: 700
   startHealTime: 1
   startIFrameTime: 1
   shrinkSpeed: 5

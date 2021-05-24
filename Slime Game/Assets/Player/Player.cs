@@ -44,16 +44,21 @@ public class Player : MonoBehaviour
     public int level = 0;
     public float experience;
     public float startingDamage;
-    public float currentDamage;
+    [HideInInspector] public float currentDamage;
     public float startingHealth;
     public float currentHealth;
     public float startingSpell;
-    public float currentSpell;
+    [HideInInspector] public float currentSpell;
     Vector3 sizeVector = new Vector3();
 
     [Space]
     public float spellDamage;
-    public float spellCost;
+    public float startSpellCooldown;
+    float spellCooldown;
+    public GameObject spellPrefab;
+    Vector2 spellVector = new Vector2();
+    bool isHoldingSpell;
+    public float spellForce;
 
     [Space]
     public float startHealTime;
@@ -100,6 +105,7 @@ public class Player : MonoBehaviour
         CheckForLevelUp();
         CheckForHeal();
         CheckForMinimise();
+        CheckForSpell();
     }
 
     private void FixedUpdate()
@@ -324,9 +330,9 @@ public class Player : MonoBehaviour
 
     void CheckForLevelUp()
     {
-        if(experience >= Mathf.Pow(2, level))
+        if(experience >= level * 10)
         {
-            LevelUp(Mathf.Pow(2, level) - experience);
+            LevelUp((level * 10) - experience);
         }
     }
 
@@ -411,6 +417,104 @@ public class Player : MonoBehaviour
         if(shrinkCooldown > 0)
         {
             shrinkCooldown -= Time.deltaTime;
+        }
+    }
+
+    void CheckForSpell()
+    {
+        if(Input.GetKeyDown(KeyCode.C) && PowerUpManager.instance.hasSpell && spellCooldown < 0)
+        {
+            Time.timeScale = 0.5f;
+            isHoldingSpell = true;
+            holdAttackTime = startHoldAttackTime;
+
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                spellVector.y = 1;
+            }
+            else if (Input.GetKey(KeyCode.DownArrow))
+            {
+                spellVector.y = -1;
+            }
+            else
+            {
+                spellVector.y = 0;
+            }
+
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                spellVector.x = -1;
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                spellVector.x = 1;
+            }
+            else
+            {
+                spellVector.x = 0;
+            }
+
+            if (!Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
+            {
+                if (IsFacingLeft())
+                {
+                    spellVector.x = -1;
+                }
+                else
+                {
+                    spellVector.x = 1;
+                }
+            }
+        }
+
+        if (Input.GetKey(KeyCode.C) && isHoldingSpell)
+        {
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                spellVector.y = 1;
+            }
+            else if (Input.GetKey(KeyCode.DownArrow))
+            {
+                spellVector.y = -1;
+            }
+
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                spellVector.x = -1;
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                spellVector.x = 1;
+            }
+
+            if (holdAttackTime > 0)
+            {
+                holdAttackTime -= Time.deltaTime;
+            }
+            else
+            {
+                isHoldingSpell = false;
+                Time.timeScale = 1;
+                attackVector.y += 0.3f;
+                GameObject spell = Instantiate(spellPrefab, transform.position, transform.rotation);
+                spell.GetComponent<Rigidbody2D>().AddForce(spellVector.normalized * spellForce);
+                spellCooldown = startSpellCooldown;
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.C) && isHoldingSpell)
+        {
+            isHoldingSpell = false;
+            Time.timeScale = 1;
+            attackVector.y += 0.3f;
+            GameObject spell = Instantiate(spellPrefab, transform.position, transform.rotation);
+            spell.GetComponent<Rigidbody2D>().AddForce(spellVector.normalized * spellForce);
+            spellCooldown = startSpellCooldown;
+        }
+
+        if (spellCooldown >= 0)
+        {
+            spellCooldown -= Time.deltaTime;
         }
     }
 

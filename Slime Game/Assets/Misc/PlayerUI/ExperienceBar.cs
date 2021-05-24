@@ -22,7 +22,7 @@ public class ExperienceBar : MonoBehaviour
         }
         else
         {
-            image.fillAmount = Player.instance.experience / Mathf.Pow(2, Player.instance.level);
+            image.fillAmount = Player.instance.experience / (Player.instance.level * 10);
         }
     }
 }
