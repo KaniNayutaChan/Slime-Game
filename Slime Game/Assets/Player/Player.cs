@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public Rigidbody2D playerRB;
 
+    public bool hasDiedOnce = false;
+
     [Space]
     public float movementSpeed;
     float moveInput;
@@ -189,20 +191,24 @@ public class Player : MonoBehaviour
 
     void CheckForAttack()
     {
-        if(Input.GetKeyDown(KeyCode.X) && attackCounter < maxAttacks && attackCooldown < 0 && !isGrounded)
+        if(Input.GetKeyDown(KeyCode.X) && attackCounter < maxAttacks && attackCooldown < 0 && !isGrounded && PowerUpManager.instance.hasAttack)
         {
             Time.timeScale = 0.5f;
             attackCounter++;
             isJumping = false;
             isHoldingAttack = true;
             holdAttackTime = startHoldAttackTime;
+            attackVector.x = 0;
+            attackVector.y = 0;
+        }
 
-
-            if(Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.X) && isHoldingAttack)
+        {
+            if (Input.GetKey(KeyCode.UpArrow))
             {
                 attackVector.y = 1;
             }
-            else if(Input.GetKey(KeyCode.DownArrow))
+            else if (Input.GetKey(KeyCode.DownArrow))
             {
                 attackVector.y = -1;
             }
@@ -222,39 +228,6 @@ public class Player : MonoBehaviour
             else
             {
                 attackVector.x = 0;
-            }
-
-            if (!Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
-            {
-                if (IsFacingLeft())
-                {
-                    attackVector.x = -1;
-                }
-                else
-                {
-                    attackVector.x = 1;
-                }
-            }
-        }
-
-        if (Input.GetKey(KeyCode.X) && isHoldingAttack)
-        {
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                attackVector.y = 1;
-            }
-            else if (Input.GetKey(KeyCode.DownArrow))
-            {
-                attackVector.y = -1;
-            }
-
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                attackVector.x = -1;
-            }
-            else if (Input.GetKey(KeyCode.RightArrow))
-            {
-                attackVector.x = 1;
             }
 
             if (holdAttackTime > 0)
@@ -281,12 +254,17 @@ public class Player : MonoBehaviour
             isHoldingAttack = false;
             playerRB.velocity = Vector2.zero;
             Time.timeScale = 1;
-            attackVector.y += 0.3f;
-            playerRB.AddForce(attackVector.normalized * attackForce);
             isAttacking = true;
+
+            if(attackVector.x != 0)
+            {
+                attackVector.y += 0.3f;
+            }
+            playerRB.AddForce(attackVector.normalized * attackForce);
+
         }
 
-        if(isAttacking && isGrounded)
+        if (isAttacking && isGrounded)
         {
             attackCooldown = startAttackCooldown;
             isAttacking = false;
@@ -331,13 +309,23 @@ public class Player : MonoBehaviour
     {
         if(currentHealth <= 0)
         {
-            RoomManager.instance.SpawnRoom(RoomManager.instance.lastSavedRoomNumber, RoomManager.instance.respawnPos);
-            Instantiate(RoomManager.instance.transition);
-            isJumping = false;
-            playerRB.velocity = Vector2.zero;
-            canMove = false;
-            experience /= 2;
-            HealToFull();
+            if (!hasDiedOnce)
+            {
+                hasDiedOnce = true;
+                PowerUpManager.instance.hasAttack = true;
+                RoomManager.instance.SpawnRoom(4, RoomManager.instance.respawnPos);
+                Instantiate(RoomManager.instance.transition);
+            }
+            else
+            {
+                RoomManager.instance.SpawnRoom(RoomManager.instance.lastSavedRoomNumber, RoomManager.instance.respawnPos);
+                Instantiate(RoomManager.instance.transition);
+                isJumping = false;
+                playerRB.velocity = Vector2.zero;
+                canMove = false;
+                experience /= 2;
+                HealToFull();
+            }
         }
     }
 

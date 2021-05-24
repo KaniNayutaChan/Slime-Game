@@ -361,6 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c027dc11a76b104c87851b69e0a0c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasAttack: 0
   hasSpell: 1
   hasMinimise: 1
   hasWallJump: 1
@@ -1404,6 +1405,10 @@ MonoBehaviour:
     positions: []
     aliveEnemies: 
   - room: {fileID: 8306673048785316087, guid: 7a228a891e362904d8048658386139b0, type: 3}
+    enemies: 
+    positions: []
+    aliveEnemies: 
+  - room: {fileID: 8306673048785316087, guid: 5764307779b50ef4bbd8c2f5b73ec013, type: 3}
     enemies: 
     positions: []
     aliveEnemies: 
