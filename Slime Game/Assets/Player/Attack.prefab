@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1628956820474122658}
   - component: {fileID: -24403993149003274}
   m_Layer: 0
-  m_Name: Spell
+  m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,4 +135,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  type: 1
+  type: 0
