@@ -45,7 +45,7 @@ public class RoomManager : MonoBehaviour
 
         if (currentRoom == null)
         {
-            currentRoom = Instantiate(rooms[0].room);
+            currentRoom = Instantiate(rooms[lastSavedRoomNumber].room);
         }
 
         RespawnEnemies();

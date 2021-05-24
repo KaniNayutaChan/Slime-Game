@@ -6,9 +6,10 @@ public class BaseSkill : MonoBehaviour
 {
     public float damage;
     public float timeTillDestroy;
+    public GameObject owner;
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         if (timeTillDestroy > 0)
         {
@@ -17,7 +18,7 @@ public class BaseSkill : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         
     }

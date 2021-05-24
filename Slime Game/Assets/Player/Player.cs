@@ -520,7 +520,7 @@ public class Player : MonoBehaviour
             isHoldingSpell = false;
             Time.timeScale = 1;
             attackVector.y += 0.3f;
-            GameObject spell = Instantiate(spellPrefab, transform.position, transform.rotation);
+            GameObject spell = Instantiate(spellPrefab, transform.position, transform.rotation, RoomManager.instance.currentRoom.transform);
             spell.GetComponent<Rigidbody2D>().AddForce(spellVector.normalized * spellForce);
             spellCooldown = startSpellCooldown;
         }
