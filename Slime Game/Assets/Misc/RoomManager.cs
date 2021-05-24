@@ -6,6 +6,8 @@ public class RoomManager : MonoBehaviour
 {
     public static RoomManager instance;
 
+    public int debugSpawnRoomNumber;
+
     public GameObject transition;
 
     [HideInInspector] public int lastSavedRoomNumber;
@@ -45,7 +47,11 @@ public class RoomManager : MonoBehaviour
 
         if (currentRoom == null)
         {
+#if DEBUG
+            currentRoom = Instantiate(rooms[debugSpawnRoomNumber].room);
+#else
             currentRoom = Instantiate(rooms[lastSavedRoomNumber].room);
+#endif
         }
 
         RespawnEnemies();

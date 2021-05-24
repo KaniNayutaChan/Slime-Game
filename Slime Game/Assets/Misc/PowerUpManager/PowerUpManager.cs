@@ -45,10 +45,10 @@ public class PowerUpManager : MonoBehaviour
         switch(bossNumber)
         {
             case 1:
-                hasSpell = true;
+                hasMinimise = true;
                 break;
             case 2:
-                hasMinimise = true;
+                hasSpell = true;
                 break;
             case 3:
                 hasWallJump = true;

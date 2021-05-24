@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRB: {fileID: 0}
-  movementSpeed: 8
+  movementSpeed: 6
   canMove: 0
   jumpForce: 6
   startJumpTime: 0.5
