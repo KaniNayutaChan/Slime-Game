@@ -102,13 +102,17 @@ public class BaseEnemy : StateMachineBehaviour
         }
     }
 
-    protected void MoveToPlayerX()
+    protected void SetDestinationPlayerX()
     {
         destination.Set(playerPos.position.x, enemyPos.position.y, enemyPos.position.z);
     }
 
-    protected void MoveToPlayer()
+    protected void SetDestinationPlayer()
     {
         destination.Set(playerPos.position.x, playerPos.position.y, enemyPos.position.z);
+    }
+    protected void SetDestination(float x, float y)
+    {
+        destination.Set(x, y, enemyPos.position.z);
     }
 }
