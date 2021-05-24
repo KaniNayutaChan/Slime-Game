@@ -517,7 +517,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1365,7 +1365,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db96a998b9fdf904790e194007cd1181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugSpawnRoomNumber: 1
+  debugSpawnRoomNumber: 0
+  debugSpawnPosition: {x: 0, y: 0}
   transition: {fileID: 320107546014614382, guid: f461eed50b1c9314a8a91484e794ae6a, type: 3}
   lastSavedRoomNumber: 0
   respawnPos: {x: 0, y: 0}
@@ -1397,8 +1398,12 @@ MonoBehaviour:
     positions: []
     aliveEnemies: 
   - room: {fileID: 8306673048785316087, guid: ed1bce9eea248d4418f297d7b783de25, type: 3}
-    enemies: 
-    positions: []
+    enemies: 01000000010000000100000001000000
+    positions:
+    - {x: 52, y: 12}
+    - {x: 67, y: 12}
+    - {x: 99, y: 21}
+    - {x: 103, y: 21}
     aliveEnemies: 
 --- !u!1 &2004123833
 GameObject:

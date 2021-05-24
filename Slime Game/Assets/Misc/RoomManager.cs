@@ -7,6 +7,7 @@ public class RoomManager : MonoBehaviour
     public static RoomManager instance;
 
     public int debugSpawnRoomNumber;
+    public Vector2 debugSpawnPosition;
 
     public GameObject transition;
 
@@ -17,8 +18,6 @@ public class RoomManager : MonoBehaviour
     [HideInInspector] public int currentRoomNumber;
 
     public GameObject[] enemyList;
-
-    GameObject[] currentActiveEnemies = new GameObject[10];
 
     [System.Serializable]
     public class RoomList
@@ -48,9 +47,10 @@ public class RoomManager : MonoBehaviour
         if (currentRoom == null)
         {
 #if DEBUG
-            currentRoom = Instantiate(rooms[debugSpawnRoomNumber].room);
+            SpawnRoom(debugSpawnRoomNumber, debugSpawnPosition);
+
 #else
-            currentRoom = Instantiate(rooms[lastSavedRoomNumber].room);
+            SpawnRoom(lastSavedRoomNumber, Vector3.zero);
 #endif
         }
 
@@ -79,22 +79,12 @@ public class RoomManager : MonoBehaviour
         Player.instance.transform.position = spawnPos;
         Player.instance.canMove = true;
 
-
-        foreach (var item in currentActiveEnemies)
-        {
-            if (item != null)
-            {
-                Destroy(item);
-            }
-        }
-
         for (int i = 0; i < rooms[room].aliveEnemies.Length; i++)
         {
             if(rooms[room].aliveEnemies[i] != 0)
             {
-                GameObject enemy = Instantiate(enemyList[rooms[room].aliveEnemies[i]], rooms[room].positions[i], transform.rotation);
+                GameObject enemy = Instantiate(enemyList[rooms[room].aliveEnemies[i]], rooms[room].positions[i], transform.rotation, currentRoom.transform);
                 enemy.GetComponent<BaseEnemyHealth>().number = i;
-                currentActiveEnemies[i] = enemy;
             }
         }
     }
