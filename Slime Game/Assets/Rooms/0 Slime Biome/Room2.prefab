@@ -557,11 +557,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5696466045572794777, guid: d52e28a95a2bccb41a21460e57377ff3, type: 3}
       propertyPath: spawnPos.x
-      value: 48
+      value: 108
       objectReference: {fileID: 0}
     - target: {fileID: 5696466045572794777, guid: d52e28a95a2bccb41a21460e57377ff3, type: 3}
       propertyPath: spawnPos.y
-      value: 16
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 5696466045572794777, guid: d52e28a95a2bccb41a21460e57377ff3, type: 3}
       propertyPath: connectedRoom
