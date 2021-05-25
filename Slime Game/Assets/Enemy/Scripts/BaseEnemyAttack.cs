@@ -16,6 +16,16 @@ public class BaseEnemyAttack : BaseEnemy
     public Vector3 spawnRotation;
     public Vector3 movementVector;
     public Vector3 spawnVector;
+    public string nextAnimationName;
+    public float startTimeTillNextAnimation;
+    float timeTillNextAnimation;
+
+    public TransitionType transitionType;
+    public enum TransitionType
+    {
+        AfterTime,
+        ReachDestination
+    }
 
     public MoveType moveType;
     public enum MoveType
@@ -29,6 +39,7 @@ public class BaseEnemyAttack : BaseEnemy
     public SpawnType spawnType;
     public enum SpawnType
     {
+        NoSpawn,
         SpawnRelativeToEnemy,
         SpawnRelativeToPlayer,
         SpawnAtRandomPosition,
@@ -40,6 +51,7 @@ public class BaseEnemyAttack : BaseEnemy
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
 
+        timeTillNextAnimation = startTimeTillNextAnimation;
         timeTillAttack = startTimeTillAttack;
         timeTillMove = startTimeTillMove;
         counter = 0;
@@ -85,6 +97,27 @@ public class BaseEnemyAttack : BaseEnemy
         {
             MoveToDestination();
         }
+
+        switch(transitionType)
+        {
+            case TransitionType.AfterTime:
+                if (timeTillNextAnimation > 0)
+                {
+                    timeTillNextAnimation -= Time.deltaTime;
+                }
+                else
+                {
+                    animator.Play(nextAnimationName);
+                }
+                break;
+
+            case TransitionType.ReachDestination:
+                if(IsAtDestination())
+                {
+                    animator.Play(nextAnimationName);
+                }
+                break;
+        }
     }
 
     protected virtual void UseAttack()
@@ -108,8 +141,11 @@ public class BaseEnemyAttack : BaseEnemy
                 break;
         }
 
-        GameObject skill = Instantiate(skillPrefab, spawnPos, Quaternion.Euler(spawnRotation), RoomManager.instance.currentRoom.transform);
-        skill.GetComponent<BaseSkill>().owner = enemyPos.gameObject;
+        if (spawnType != SpawnType.NoSpawn)
+        {
+            GameObject skill = Instantiate(skillPrefab, spawnPos, Quaternion.Euler(spawnRotation), RoomManager.instance.currentRoom.transform);
+            skill.GetComponent<BaseSkill>().owner = enemyPos.gameObject;
+        }
     }
 
     protected void SetSpawnPosEnemy(float x, float y)
