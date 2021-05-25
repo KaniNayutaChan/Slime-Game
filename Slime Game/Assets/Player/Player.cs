@@ -85,6 +85,11 @@ public class Player : MonoBehaviour
     bool isShrinking;
     bool isExpanding;
 
+    [Space]
+    public float startBarrierCooldown;
+    float barrierCooldown;
+    public GameObject barrier;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -109,6 +114,7 @@ public class Player : MonoBehaviour
             CheckForMinimise();
             CheckForHeal();
             CheckForSpell();
+            CheckForBarrier();
         }
 
         CheckForIFrames();
@@ -123,6 +129,16 @@ public class Player : MonoBehaviour
         if (healTime >= 0)
         {
             healTime -= Time.deltaTime;
+        }
+
+        if(barrierCooldown >= 0)
+        {
+            barrierCooldown -= Time.deltaTime;
+        }
+
+        if (spellCooldown >= 0)
+        {
+            spellCooldown -= Time.deltaTime;
         }
     }
 
@@ -464,13 +480,16 @@ public class Player : MonoBehaviour
             spellVector.y += 0.3f;
             GameObject spell = Instantiate(spellPrefab, transform.position, transform.rotation);
             spell.GetComponent<Rigidbody2D>().AddForce(spellVector.normalized * spellForce);
-            spell.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.x, transform.localScale.x);
             spellCooldown = startSpellCooldown;
         }
+    }
 
-        if (spellCooldown >= 0)
+    void CheckForBarrier()
+    {
+        if(Input.GetKeyDown(KeyCode.LeftShift) && PowerUpManager.instance.hasBarrier && barrierCooldown < 0)
         {
-            spellCooldown -= Time.deltaTime;
+            Instantiate(barrier, transform.position, transform.rotation, transform);
+            barrierCooldown = startBarrierCooldown;
         }
     }
 

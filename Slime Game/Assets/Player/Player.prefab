@@ -204,6 +204,8 @@ MonoBehaviour:
   minSize: 0.1
   startShrinkTime: 2
   startShrinkCooldown: 5
+  startBarrierCooldown: 5
+  barrier: {fileID: 8204146499462120451, guid: e9eccd8814b64ce40abd7c200dc8296c, type: 3}
 --- !u!212 &1721146684308831191
 SpriteRenderer:
   m_ObjectHideFlags: 0

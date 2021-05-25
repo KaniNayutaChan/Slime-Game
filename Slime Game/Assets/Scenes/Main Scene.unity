@@ -1380,38 +1380,52 @@ MonoBehaviour:
     - {fileID: 4703407586692753627, guid: c6e35ed7d7cc9ab4da45cf790195a272, type: 3}
     - {fileID: 4703407586692753627, guid: 8e3b46ab82e759a47b4d837529eb0abf, type: 3}
     - {fileID: 4703407586692753627, guid: adc004f1811949b438aa22474cac7fee, type: 3}
-  - skinList: []
-  - skinList: []
-  - skinList: []
-  - skinList: []
-  - skinList: []
-  - skinList: []
-  - skinList: []
-  - skinList: []
-  - skinList: []
-  - skinList: []
-  - skinList: []
-  - skinList: []
-  - skinList: []
-  - skinList: []
-  - skinList: []
-  - skinList: []
-  - skinList: []
+  - skinList:
+    - {fileID: 4703407586692753627, guid: 7a9154eadf15c9a41afe336825ecfb6b, type: 3}
+  - skinList:
+    - {fileID: 4703407586692753627, guid: 362d9430118babb47b4d5dadbecfa37c, type: 3}
+  - skinList:
+    - {fileID: 4703407586692753627, guid: f0d4adaee1106684d9786d6a14e4372c, type: 3}
+  - skinList:
+    - {fileID: 4703407586692753627, guid: b63905d0cc5231f4e903dd833e86c95f, type: 3}
+  - skinList:
+    - {fileID: 4703407586692753627, guid: 368962f7972463e49a43099106418103, type: 3}
+  - skinList:
+    - {fileID: 4703407586692753627, guid: 8bbce75343890c441b8ecfa6a78c61ef, type: 3}
+  - skinList:
+    - {fileID: 4703407586692753627, guid: d39c402d2e8fafe4cb7cfaa485e8af54, type: 3}
+  - skinList:
+    - {fileID: 4703407586692753627, guid: f2cc9f960ae6a154e9600d94789021aa, type: 3}
+  - skinList:
+    - {fileID: 4703407586692753627, guid: 4384ff039b918f74a8d03581689011ee, type: 3}
+  - skinList:
+    - {fileID: 4703407586692753627, guid: 3c944ea6f841bd2479548937825a2411, type: 3}
+  - skinList:
+    - {fileID: 4703407586692753627, guid: 6d47f854edcd4d246ba4e5da5b437d32, type: 3}
+  - skinList:
+    - {fileID: 4703407586692753627, guid: 7c586e4e6d6423345a3db6d06b8f1da8, type: 3}
+  - skinList:
+    - {fileID: 4703407586692753627, guid: 4dd1aa6b57c87d344883a3c869bd62ae, type: 3}
+  - skinList:
+    - {fileID: 4703407586692753627, guid: 0fd62c22047701946933f713e06169ba, type: 3}
+  - skinList:
+    - {fileID: 4703407586692753627, guid: 9d401fa6bde4c3b47a9d2d75fc0ce1c9, type: 3}
+  - skinList:
+    - {fileID: 4703407586692753627, guid: 4fd339d00b9527047ad27c06161f5572, type: 3}
+  - skinList:
+    - {fileID: 4703407586692753627, guid: 0eb9a676fa2cc924d99d2393546fe7c6, type: 3}
   rooms:
   - room: {fileID: 8306673048785316087, guid: 30f3db6072c019e4cbf97afcc9504690, type: 3}
     enemies: []
     aliveEnemies: []
   - room: {fileID: 8306673048785316087, guid: ed1bce9eea248d4418f297d7b783de25, type: 3}
-    enemies:
-    - enemyNumber: 1
-      position: {x: 3, y: 2, z: 0}
-      skinNumber: 0
-    aliveEnemies:
-    - enemyNumber: 0
-      position: {x: 0, y: 0, z: 0}
-      skinNumber: 0
-  - room: {fileID: 8306673048785316087, guid: 7a228a891e362904d8048658386139b0, type: 3}
     enemies: []
+    aliveEnemies: []
+  - room: {fileID: 8306673048785316087, guid: 7a228a891e362904d8048658386139b0, type: 3}
+    enemies:
+    - enemyNumber: 18
+      position: {x: 25, y: 5, z: 0}
+      skinNumber: 0
     aliveEnemies: []
   - room: {fileID: 8306673048785316087, guid: 5764307779b50ef4bbd8c2f5b73ec013, type: 3}
     enemies: []

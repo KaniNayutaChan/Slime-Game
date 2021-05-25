@@ -135,5 +135,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  timeTillDestroy: 0
+  timeTillDestroy: 1
   type: 0

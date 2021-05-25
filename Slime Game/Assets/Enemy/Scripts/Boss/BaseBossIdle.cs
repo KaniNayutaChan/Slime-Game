@@ -18,6 +18,7 @@ public class BaseBossIdle : BaseEnemy
     public IdleType idleType;
     public enum IdleType
     {
+        StayStill,
         MoveToPlayer,
         FlyToPlayer,
         MoveToRandomDestination
@@ -29,11 +30,18 @@ public class BaseBossIdle : BaseEnemy
         attackToUse = Random.Range(0, attackList.Length);
         timeTillAttack = Random.Range(minStartTimeTillAttack, maxStartTimeTillAttack);
 
-        if(idleType == IdleType.MoveToRandomDestination)
+
+        switch (idleType)
         {
-            float x = Random.Range(-maxXDestination, maxXDestination);
-            float y = Random.Range(minYDestination, maxYDestination);
-            SetDestination(x, y);
+            case IdleType.StayStill:
+                SetDestinationEnemy(0, 0);
+                break;
+
+            case IdleType.MoveToRandomDestination:
+                float x = Random.Range(-maxXDestination, maxXDestination);
+                float y = Random.Range(minYDestination, maxYDestination);
+                SetDestination(x, y);
+                break;
         }
     }
 
