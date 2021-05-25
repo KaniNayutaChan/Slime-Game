@@ -35,12 +35,14 @@ public class BaseBossIdle : BaseEnemy
         {
             case IdleType.StayStill:
                 SetDestinationEnemy(0, 0);
+                FaceDestination();
                 break;
 
             case IdleType.MoveToRandomDestination:
                 float x = Random.Range(-maxXDestination, maxXDestination);
                 float y = Random.Range(minYDestination, maxYDestination);
                 SetDestination(x, y);
+                FaceDestination();
                 break;
         }
     }
@@ -53,9 +55,11 @@ public class BaseBossIdle : BaseEnemy
         {
             case IdleType.MoveToPlayer:
                 SetDestinationPlayerX();
+                FacePlayer();
                 break;
             case IdleType.FlyToPlayer:
                 SetDestinationPlayer();
+                FacePlayer();
                 break;
         }
 

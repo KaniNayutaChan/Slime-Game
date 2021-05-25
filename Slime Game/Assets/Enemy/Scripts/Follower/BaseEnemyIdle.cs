@@ -30,6 +30,7 @@ public class BaseEnemyIdle : BaseEnemy
 
             case IdleType.StayStill:
                 SetDestinationEnemy(0,0);
+                FacePlayer();
                 break;
 
             case IdleType.MoveInStraightLine:
@@ -41,6 +42,7 @@ public class BaseEnemyIdle : BaseEnemy
                 {
                     SetDestinationEnemy(100, 0);
                 }
+                FaceDestination();
                 break;
         }
     }
