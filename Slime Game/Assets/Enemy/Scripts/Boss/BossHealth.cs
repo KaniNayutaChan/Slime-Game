@@ -22,7 +22,7 @@ public class BossHealth : BaseEnemyHealth
     {
         base.Die();
 
-        RoomManager.instance.rooms[RoomManager.instance.currentRoomNumber].enemies[number] = 0;
+        RoomManager.instance.rooms[RoomManager.instance.currentRoomNumber].enemies[number].enemyNumber = 0;
         RoomManager.instance.defeatedBosses[bossNumber] = true;
         PowerUpManager.instance.GrantPowerUp(bossNumber);
     }

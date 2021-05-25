@@ -194,7 +194,7 @@ public class Player : MonoBehaviour
 
     void CheckForAttack()
     {
-        if(Input.GetKeyDown(KeyCode.X) && attackCounter < maxAttacks && attackCooldown < 0 && !isGrounded && PowerUpManager.instance.hasAttack)
+        if(Input.GetKeyDown(KeyCode.X) && attackCounter < maxAttacks && attackCooldown < 0 && !isGrounded)
         {
             Time.timeScale = 0.5f;
             attackCounter++;
@@ -314,8 +314,8 @@ public class Player : MonoBehaviour
         {
             if (!hasDiedOnce)
             {
+                //play cutscene
                 hasDiedOnce = true;
-                PowerUpManager.instance.hasAttack = true;
                 RoomManager.instance.SpawnRoom(4, RoomManager.instance.respawnPos);
                 RoomManager.instance.lastSavedRoomNumber = 4;
                 RoomManager.instance.respawnPos = Vector2.zero;
@@ -478,6 +478,7 @@ public class Player : MonoBehaviour
     {
         HealToFull();
         RoomManager.instance.RespawnEnemies();
+        Debug.Log("Game saved");
     }
 
     private void OnTriggerStay2D(Collider2D collision)

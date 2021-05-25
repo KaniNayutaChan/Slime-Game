@@ -17,10 +17,24 @@ public class RoomManager : MonoBehaviour
     [HideInInspector] public GameObject currentRoom;
     [HideInInspector] public int currentRoomNumber;
 
-    public GameObject[] enemyList;
-
     public bool[] defeatedBosses = new bool[8];
 
+    public EnemyList[] enemyList;
+    [System.Serializable]
+    public class EnemyList
+    {
+        public GameObject[] skinList;
+    }
+
+    [System.Serializable]
+    public class Enemy
+    {
+        public int enemyNumber;
+        public Vector3 position;
+        [HideInInspector] public int skinNumber;
+    }
+
+    public RoomList[] rooms;
     [System.Serializable]
     public class RoomList
     {
@@ -28,13 +42,9 @@ public class RoomManager : MonoBehaviour
         public GameObject room;
 
         [Space]
-        public int[] enemies;
-        public Vector2[] positions;
-        
-        [HideInInspector] public int[] aliveEnemies;
+        public Enemy[] enemies;
+        [HideInInspector] public Enemy[] aliveEnemies;
     }
-
-    public RoomList[] rooms;
 
     // Start is called before the first frame update
     void Start()
@@ -68,7 +78,15 @@ public class RoomManager : MonoBehaviour
     {
         for (int i = 0; i < rooms.Length; i++)
         {
-            rooms[i].aliveEnemies = (int[])rooms[i].enemies.Clone();
+            for (int j = 0; j < rooms[i].enemies.Length; j++)
+            {
+                rooms[i].enemies[j].skinNumber = Random.Range(0, enemyList[rooms[i].enemies[j].enemyNumber].skinList.Length);
+            }
+        }
+
+        for (int i = 0; i < rooms.Length; i++)
+        {
+            rooms[i].aliveEnemies = (Enemy[])rooms[i].enemies.Clone();
         }
     }
 
@@ -88,9 +106,9 @@ public class RoomManager : MonoBehaviour
 
         for (int i = 0; i < rooms[room].aliveEnemies.Length; i++)
         {
-            if(rooms[room].aliveEnemies[i] != 0)
+            if(rooms[room].aliveEnemies[i].enemyNumber != 0)
             {
-                GameObject enemy = Instantiate(enemyList[rooms[room].aliveEnemies[i]], rooms[room].positions[i], transform.rotation, currentRoom.transform);
+                GameObject enemy = Instantiate(enemyList[rooms[room].aliveEnemies[i].enemyNumber].skinList[rooms[room].aliveEnemies[i].skinNumber], rooms[room].aliveEnemies[i].position, transform.rotation, currentRoom.transform);
                 enemy.GetComponent<BaseEnemyHealth>().number = i;
             }
         }

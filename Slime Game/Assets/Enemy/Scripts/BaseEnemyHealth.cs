@@ -43,8 +43,8 @@ public class BaseEnemyHealth : MonoBehaviour
         }
 
         Player.instance.experience += experience;
-        RoomManager.instance.rooms[RoomManager.instance.currentRoomNumber].aliveEnemies[number] = 0;
 
+        RoomManager.instance.rooms[RoomManager.instance.currentRoomNumber].aliveEnemies[number].enemyNumber = 0;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

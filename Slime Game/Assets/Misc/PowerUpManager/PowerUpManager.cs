@@ -6,7 +6,6 @@ public class PowerUpManager : MonoBehaviour
 {
     public static PowerUpManager instance;
 
-    public bool hasAttack = false;
     public bool hasSpell = false;
     public bool hasMinimise = false;
     public bool hasWallJump = false;
@@ -46,24 +45,21 @@ public class PowerUpManager : MonoBehaviour
         switch(bossNumber)
         {
             case 0:
-                hasAttack = true;
-                break;
-            case 1:
                 hasMinimise = true;
                 break;
-            case 2:
+            case 1:
                 hasSpell = true;
                 break;
-            case 3:
+            case 2:
                 hasWallJump = true;
                 break;
-            case 4:
+            case 3:
                 hasResistance = true;
                 break;
-            case 5:
+            case 4:
                 hasDoubleAttack = true;
                 break;
-            case 7:
+            case 6:
                 hasBarrier = true;
                 break;
         }
