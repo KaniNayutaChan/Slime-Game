@@ -82,10 +82,7 @@ public class RoomManager : MonoBehaviour
             {
                 rooms[i].enemies[j].skinNumber = Random.Range(0, enemyList[rooms[i].enemies[j].enemyNumber].skinList.Length);
             }
-        }
 
-        for (int i = 0; i < rooms.Length; i++)
-        {
             rooms[i].aliveEnemies = (Enemy[])rooms[i].enemies.Clone();
         }
     }

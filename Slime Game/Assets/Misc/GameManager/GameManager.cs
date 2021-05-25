@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
-
-        if(isNewGame)
+      
+        if (isNewGame)
         {
             Player.instance.level = Player.instance.maxLevel - 1;
             Player.instance.LevelUp(0);
