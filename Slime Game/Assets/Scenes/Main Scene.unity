@@ -1419,7 +1419,10 @@ MonoBehaviour:
     enemies: []
     aliveEnemies: []
   - room: {fileID: 8306673048785316087, guid: ed1bce9eea248d4418f297d7b783de25, type: 3}
-    enemies: []
+    enemies:
+    - enemyNumber: 1
+      position: {x: 3, y: 2, z: 0}
+      skinNumber: 0
     aliveEnemies: []
   - room: {fileID: 8306673048785316087, guid: 7a228a891e362904d8048658386139b0, type: 3}
     enemies:
