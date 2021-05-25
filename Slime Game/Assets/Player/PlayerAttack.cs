@@ -10,7 +10,8 @@ public class PlayerAttack : MonoBehaviour
     public enum Type
     {
         Attack,
-        Spell
+        Spell,
+        Barrier
     }
 
     public Type type;
@@ -38,6 +39,14 @@ public class PlayerAttack : MonoBehaviour
         if(collision.CompareTag("Arena"))
         { 
             Destroy(gameObject);
+        }
+
+        if (collision.CompareTag("Enemy"))
+        {
+            if (type == Type.Attack)
+            {
+                Player.instance.currentSpell += damage / 3;
+            }
         }
     }
 }

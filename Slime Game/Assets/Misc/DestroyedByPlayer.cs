@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyedBySpell : MonoBehaviour
+public class DestroyedByPlayer : MonoBehaviour
 {
+    public PlayerAttack.Type type;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,7 @@ public class DestroyedBySpell : MonoBehaviour
         {
             PlayerAttack attack = collision.GetComponent<PlayerAttack>();
 
-            if(attack.type == PlayerAttack.Type.Spell)
+            if(attack.type == type)
             {
                 Destroy(gameObject);
             }

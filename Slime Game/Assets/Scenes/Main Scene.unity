@@ -883,7 +883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pause: {fileID: 1564488600}
-  isNewGame: 1
+  isNewGame: 0
 --- !u!1 &1564488600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,8 +1367,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db96a998b9fdf904790e194007cd1181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugSpawnRoomNumber: 0
-  debugSpawnPosition: {x: 0, y: 0}
+  debugSpawnRoomNumber: 2
+  debugSpawnPosition: {x: 2, y: 0}
   transition: {fileID: 320107546014614382, guid: f461eed50b1c9314a8a91484e794ae6a, type: 3}
   lastSavedRoomNumber: 0
   respawnPos: {x: 0, y: 0}
@@ -1393,8 +1393,9 @@ MonoBehaviour:
   - {fileID: 4703407586692753627, guid: 4dd1aa6b57c87d344883a3c869bd62ae, type: 3}
   - {fileID: 4703407586692753627, guid: 7c586e4e6d6423345a3db6d06b8f1da8, type: 3}
   - {fileID: 4703407586692753627, guid: 9d401fa6bde4c3b47a9d2d75fc0ce1c9, type: 3}
+  - {fileID: 4703407586692753627, guid: 4fd339d00b9527047ad27c06161f5572, type: 3}
   - {fileID: 4703407586692753627, guid: 0eb9a676fa2cc924d99d2393546fe7c6, type: 3}
-  - {fileID: 4703407586692753627, guid: d2db7abd42a31974a83c7812fe59f4b7, type: 3}
+  defeatedBosses: 0000000000000000
   rooms:
   - room: {fileID: 8306673048785316087, guid: 30f3db6072c019e4cbf97afcc9504690, type: 3}
     enemies: 
@@ -1405,8 +1406,9 @@ MonoBehaviour:
     positions: []
     aliveEnemies: 
   - room: {fileID: 8306673048785316087, guid: 7a228a891e362904d8048658386139b0, type: 3}
-    enemies: 
-    positions: []
+    enemies: 13000000
+    positions:
+    - {x: 25, y: 0}
     aliveEnemies: 
   - room: {fileID: 8306673048785316087, guid: 5764307779b50ef4bbd8c2f5b73ec013, type: 3}
     enemies: 

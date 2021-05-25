@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRB: {fileID: 0}
+  hasDiedOnce: 0
   movementSpeed: 6
   canMove: 0
   jumpForce: 6
@@ -194,7 +195,7 @@ MonoBehaviour:
   spellDamage: 0
   startSpellCooldown: 5
   spellPrefab: {fileID: 8204146499462120451, guid: dae9fce2aa748bf40a3432bebc322d11, type: 3}
-  spellForce: 1000
+  spellForce: 1400
   startHealTime: 1
   startIFrameTime: 1
   knockback: {x: 300, y: 500}

@@ -19,6 +19,8 @@ public class RoomManager : MonoBehaviour
 
     public GameObject[] enemyList;
 
+    public bool[] defeatedBosses = new bool[8];
+
     [System.Serializable]
     public class RoomList
     {
@@ -52,6 +54,11 @@ public class RoomManager : MonoBehaviour
 #else
             SpawnRoom(lastSavedRoomNumber, Vector3.zero);
 #endif
+        }
+
+        for (int i = 0; i < defeatedBosses.Length; i++)
+        {
+            defeatedBosses[i] = false;
         }
 
         RespawnEnemies();

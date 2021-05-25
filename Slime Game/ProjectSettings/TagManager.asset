@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Door
   - Attack
+  - BossDoor
   layers:
   - Default
   - TransparentFX

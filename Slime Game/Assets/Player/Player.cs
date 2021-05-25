@@ -59,13 +59,11 @@ public class Player : MonoBehaviour
     float spellCooldown;
     public GameObject spellPrefab;
     Vector2 spellVector = new Vector2();
-    bool isHoldingSpell;
     public float spellForce;
 
     [Space]
     public float startHealTime;
     float healTime;
-    bool isHealing = false;
 
     [Space]
     bool hasIFrames;
@@ -103,7 +101,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canMove && !isHealing && lockMovementTime < 0)
+        if (canMove && healTime < 0 && lockMovementTime < 0)
         {
             CheckForMove();
             CheckForJump();
@@ -121,11 +119,16 @@ public class Player : MonoBehaviour
         {
             lockMovementTime -= Time.deltaTime;
         }
+
+        if (healTime >= 0)
+        {
+            healTime -= Time.deltaTime;
+        }
     }
 
     private void FixedUpdate()
     {
-        if (canMove && !isHealing && lockMovementTime < 0)
+        if (canMove && healTime < 0 && lockMovementTime < 0)
         {
             transform.position += new Vector3(moveInput, 0, 0) * movementSpeed * Time.deltaTime;
         }
@@ -314,6 +317,8 @@ public class Player : MonoBehaviour
                 hasDiedOnce = true;
                 PowerUpManager.instance.hasAttack = true;
                 RoomManager.instance.SpawnRoom(4, RoomManager.instance.respawnPos);
+                RoomManager.instance.lastSavedRoomNumber = 4;
+                RoomManager.instance.respawnPos = Vector2.zero;
                 Instantiate(RoomManager.instance.transition);
             }
             else
@@ -353,27 +358,17 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Z) && isGrounded)
         {
             healTime = startHealTime;
-            isHealing = true;
 
-            if(currentHealth + (currentSpell / 2) > startingHealth + (level * 3))
+            if(currentHealth + (currentSpell / 3) > startingHealth + (level * 3))
             {
-                currentSpell -= 2 * (startingHealth + (level * 3) - currentHealth);
+                currentSpell -= 3 * (startingHealth + (level * 3) - currentHealth);
                 currentHealth = startingHealth + (level * 3);
             }
             else
             {
-                currentHealth += currentSpell / 2;
+                currentHealth += currentSpell / 3;
                 currentSpell = 0;
             }
-        }
-
-        if(healTime > 0)
-        {
-            healTime -= Time.deltaTime;
-        }
-        else
-        {
-            isHealing = false;
         }
     }
 
@@ -426,12 +421,8 @@ public class Player : MonoBehaviour
 
     void CheckForSpell()
     {
-        if(Input.GetKeyDown(KeyCode.C) && PowerUpManager.instance.hasSpell && spellCooldown < 0 && !isGrounded)
+        if (Input.GetKeyDown(KeyCode.C) && PowerUpManager.instance.hasSpell && spellCooldown < 0)
         {
-            Time.timeScale = 0.5f;
-            isHoldingSpell = true;
-            holdAttackTime = startHoldAttackTime;
-
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 spellVector.y = 1;
@@ -469,50 +460,11 @@ public class Player : MonoBehaviour
                     spellVector.x = 1;
                 }
             }
-        }
 
-        if (Input.GetKey(KeyCode.C) && isHoldingSpell)
-        {
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                spellVector.y = 1;
-            }
-            else if (Input.GetKey(KeyCode.DownArrow))
-            {
-                spellVector.y = -1;
-            }
-
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                spellVector.x = -1;
-            }
-            else if (Input.GetKey(KeyCode.RightArrow))
-            {
-                spellVector.x = 1;
-            }
-
-            if (holdAttackTime > 0)
-            {
-                holdAttackTime -= Time.deltaTime;
-            }
-            else
-            {
-                isHoldingSpell = false;
-                Time.timeScale = 1;
-                attackVector.y += 0.3f;
-                GameObject spell = Instantiate(spellPrefab, transform.position, transform.rotation);
-                spell.GetComponent<Rigidbody2D>().AddForce(spellVector.normalized * spellForce);
-                spellCooldown = startSpellCooldown;
-            }
-        }
-
-        if (Input.GetKeyUp(KeyCode.C) && isHoldingSpell)
-        {
-            isHoldingSpell = false;
-            Time.timeScale = 1;
-            attackVector.y += 0.3f;
-            GameObject spell = Instantiate(spellPrefab, transform.position, transform.rotation, RoomManager.instance.currentRoom.transform);
+            spellVector.y += 0.3f;
+            GameObject spell = Instantiate(spellPrefab, transform.position, transform.rotation);
             spell.GetComponent<Rigidbody2D>().AddForce(spellVector.normalized * spellForce);
+            spell.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.x, transform.localScale.x);
             spellCooldown = startSpellCooldown;
         }
 

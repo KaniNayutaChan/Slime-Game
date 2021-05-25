@@ -149,7 +149,7 @@ MonoBehaviour:
   currentHealth: 1
   experience: 1
   number: 0
-  bossNumber: 2
+  bossNumber: 3
 --- !u!58 &5936497254149767311
 CircleCollider2D:
   m_ObjectHideFlags: 0

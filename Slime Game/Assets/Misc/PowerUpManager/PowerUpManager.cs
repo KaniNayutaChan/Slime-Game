@@ -63,7 +63,7 @@ public class PowerUpManager : MonoBehaviour
             case 5:
                 hasDoubleAttack = true;
                 break;
-            case 6:
+            case 7:
                 hasBarrier = true;
                 break;
         }
