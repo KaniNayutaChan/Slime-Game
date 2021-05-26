@@ -57,12 +57,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4703407586692753625}
   - component: {fileID: 4703407586692753624}
-  - component: {fileID: 4207305956571308035}
+  - component: {fileID: 4722945462585219588}
   - component: {fileID: 5936497254149767311}
   - component: {fileID: 5589767863493854075}
-  - component: {fileID: 940509985757073390}
+  - component: {fileID: -4920498292904573662}
   m_Layer: 9
-  m_Name: Demon Lord
+  m_Name: Baby Slime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,7 +134,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4207305956571308035
+--- !u!114 &4722945462585219588
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,14 +143,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4703407586692753627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c233a204ab2127429a7848e77d29c41, type: 3}
+  m_Script: {fileID: 11500000, guid: f81e305d170fd224f85933cfb6572377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
   currentHealth: 1
   experience: 1
   number: 0
-  bossNumber: 7
+  range: 1
+  startAttackCooldown: 1
 --- !u!58 &5936497254149767311
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -188,7 +189,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!95 &940509985757073390
+--- !u!95 &-4920498292904573662
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -198,7 +199,7 @@ Animator:
   m_GameObject: {fileID: 4703407586692753627}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 61e076f14e862ee4296763379846bc89, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2fa37fac57f80434ba695cc161a15522, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
