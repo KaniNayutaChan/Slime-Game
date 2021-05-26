@@ -36,7 +36,8 @@ public class BaseEnemyAttack : BaseEnemy
         MoveToPlayer,
         FlyToPlayer,
         MoveRelativeToEnemy,
-        MoveToDestination
+        MoveToDestinationX,
+        MoveToDestinationY
     }
 
     public SpawnType spawnType;
@@ -75,14 +76,20 @@ public class BaseEnemyAttack : BaseEnemy
                 break;
             case MoveType.MoveToPlayer:
                 SetDestinationPlayerX();
+                FaceDestination();
                 break;
+
             case MoveType.FlyToPlayer:
                 SetDestinationPlayer();
+                FaceDestination();
                 break;
+
             case MoveType.MoveRelativeToEnemy:
                 SetDestinationEnemy(movementVector.x, movementVector.y);
+                FaceDestination();
                 break;
-            case MoveType.MoveToDestination:
+
+            case MoveType.MoveToDestinationX:
                 if(IsFacingLeft())
                 {
                     SetDestinationX(movementVector.x);
@@ -91,6 +98,11 @@ public class BaseEnemyAttack : BaseEnemy
                 {
                     SetDestinationX(movementVector.y);
                 }
+                FaceDestination();
+                break;
+
+            case MoveType.MoveToDestinationY:
+                SetDestinationY(movementVector.y);
                 break;
         }
 
