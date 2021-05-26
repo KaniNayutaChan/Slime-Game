@@ -22,7 +22,7 @@ MonoBehaviour:
   movementVector: {x: 0, y: 0, z: 0}
   spawnVector: {x: 0, y: 0, z: 0}
   nextAnimationName: Wait
-  startTimeTillNextAnimation: 2
+  startTimeTillNextAnimation: 3
   startOnEnemy: 0
   stopMovingVector: {x: 16, y: -2}
   transitionType: 0
@@ -178,7 +178,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 7402996480834396738}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -424,6 +425,35 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &7402996480834396738
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12c7b5807aa0ae0419e47c11a4baed35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  startTimeTillMove: 0
+  startTimeTillAttack: 0.5
+  timeBetweenAttacks: 0
+  noOfAttacks: 1
+  skillPrefab: {fileID: 4703407586692753627, guid: f2cc9f960ae6a154e9600d94789021aa, type: 3}
+  spawnRotation: {x: 0, y: 0, z: 0}
+  movementVector: {x: 0, y: 0, z: 0}
+  spawnVector: {x: 15, y: 3, z: 5}
+  nextAnimationName: Wait
+  startTimeTillNextAnimation: 2
+  startOnEnemy: 0
+  stopMovingVector: {x: 0, y: 0}
+  transitionType: 0
+  moveType: 0
+  spawnType: 3
+  spawnTimingType: 0
 --- !u!1102 &8168768485346525399
 AnimatorState:
   serializedVersion: 6
