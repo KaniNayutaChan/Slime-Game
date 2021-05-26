@@ -21,6 +21,9 @@ public class BaseSkill : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-        transform.position = owner.transform.position;
+        if (stayOnOwner)
+        {
+            transform.position = owner.transform.position;
+        }
     }
 }

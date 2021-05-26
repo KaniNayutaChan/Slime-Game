@@ -46,7 +46,7 @@ MonoBehaviour:
   - Vanish
   - Summon
   - Stream
-  - Explosion
+  - Circle
   - Giant
   minStartTimeTillAttack: 0.5
   maxStartTimeTillAttack: 1
@@ -69,20 +69,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   startTimeTillMove: 0
-  startTimeTillAttack: 0
-  timeBetweenAttacks: 0
-  noOfAttacks: 0
-  skillPrefab: {fileID: 0}
+  startTimeTillAttack: 0.5
+  timeBetweenAttacks: 0.3
+  noOfAttacks: 7
+  skillPrefab: {fileID: 7614546665581012858, guid: a62dc4046bdc9ea43bae9ca66c63a8ef, type: 3}
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
-  spawnVector: {x: 0, y: 0, z: 0}
-  nextAnimationName: 
-  startTimeTillNextAnimation: 0
+  spawnVector: {x: 1, y: 0, z: 0}
+  nextAnimationName: Wait
+  startTimeTillNextAnimation: 3
   startOnEnemy: 0
-  stopMovingVector: {x: 0, y: 0}
+  stopMovingVector: {x: 16, y: -2}
   transitionType: 0
   moveType: 0
-  spawnType: 0
+  spawnType: 5
   spawnTimingType: 0
 --- !u!1102 &-6651285007792886773
 AnimatorState:
@@ -267,7 +267,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Explosion
+  m_Name: Circle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

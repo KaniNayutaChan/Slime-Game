@@ -30,6 +30,8 @@ public class BaseProjectile : BaseSkill
     // Start is called before the first frame update
     public override void Start()
     {
+        base.Start();
+
         if(direction == Direction.FacePlayer)
         {
             transform.right = Player.instance.transform.position - transform.position;
@@ -38,18 +40,17 @@ public class BaseProjectile : BaseSkill
         {
             transform.right = transform.position - owner.transform.position;
         }
-        else
-        {
-            transform.rotation = Quaternion.Euler(startRotation);
-        }
-
-        if(projectileType == ProjectileType.Parabolic)
+        else if (projectileType == ProjectileType.Parabolic)
         {
             rb = GetComponent<Rigidbody2D>();
             float x = Random.Range(-forceVector.x, forceVector.x);
             float y = Random.Range(forceVector.y, forceVector.z);
             Vector2 force = new Vector2(x, y);
             rb.AddForce(force);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(startRotation);
         }
     }
 
@@ -58,11 +59,12 @@ public class BaseProjectile : BaseSkill
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
 
-        if(projectileType == ProjectileType.Homing)
+        if (projectileType == ProjectileType.Homing)
         {
             Vector3 targetDirection = Player.instance.transform.position - transform.position;
-            Vector3 newDirection = Vector3.RotateTowards(transform.right, targetDirection, rotationSpeed * Time.deltaTime, 0.0f);
-            transform.rotation = Quaternion.LookRotation(newDirection);
+            float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+            Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * rotationSpeed);
         }
     }
 
