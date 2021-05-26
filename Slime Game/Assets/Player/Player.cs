@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
     public float startingHealth;
     [HideInInspector] public float currentHealth;
     public float startingSoul;
-    public float currentSoul;
+    [HideInInspector] public float currentSoul;
     Vector3 sizeVector = new Vector3();
     public float healMultiplier;
 
@@ -338,25 +338,32 @@ public class Player : MonoBehaviour
     {
         if(currentHealth <= 0)
         {
-            if (!hasDiedOnce)
-            {
-                //play cutscene
-                hasDiedOnce = true;
-                RoomManager.instance.SpawnRoom(4, RoomManager.instance.respawnPos);
-                RoomManager.instance.lastSavedRoomNumber = 5;
-                RoomManager.instance.respawnPos = Vector2.zero;
-                Instantiate(RoomManager.instance.transition);
-            }
-            else
-            {
-                RoomManager.instance.SpawnRoom(RoomManager.instance.lastSavedRoomNumber, RoomManager.instance.respawnPos);
-                Instantiate(RoomManager.instance.transition);
-                isJumping = false;
-                playerRB.velocity = Vector2.zero;
-                canMove = false;
-                experience /= 2;
-                HealToFull();
-            }
+            StartCoroutine(Die());
+        }
+    }
+
+    IEnumerator Die()
+    {
+        yield return new WaitForSeconds(3);
+
+        if (!hasDiedOnce)
+        {
+            //play cutscene
+            hasDiedOnce = true;
+            RoomManager.instance.SpawnRoom(4, RoomManager.instance.respawnPos);
+            RoomManager.instance.lastSavedRoomNumber = 5;
+            RoomManager.instance.respawnPos = Vector2.zero;
+            Instantiate(RoomManager.instance.transition);
+        }
+        else
+        {
+            RoomManager.instance.SpawnRoom(RoomManager.instance.lastSavedRoomNumber, RoomManager.instance.respawnPos);
+            Instantiate(RoomManager.instance.transition);
+            isJumping = false;
+            playerRB.velocity = Vector2.zero;
+            canMove = false;
+            experience /= 2;
+            HealToFull();
         }
     }
 
@@ -396,6 +403,8 @@ public class Player : MonoBehaviour
                 currentHealth += currentSoul * healMultiplier;
                 currentSoul = 0;
             }
+
+            SetSizeToHealth();
         }
     }
 
