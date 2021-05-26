@@ -59,7 +59,7 @@ public class BaseBossIdle : BaseEnemy
         }
 
 #if UNITY_EDITOR
-        //attackToUse = 0;
+        //attackToUse = 3;
 #endif
     }
 

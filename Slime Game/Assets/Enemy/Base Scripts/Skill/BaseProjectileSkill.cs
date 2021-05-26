@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseProjectile : BaseSkill
+public class BaseProjectileSkill : BaseSkill
 {
     public bool destroyOnArena;
     public float speed;

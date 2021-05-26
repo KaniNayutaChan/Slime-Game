@@ -557,26 +557,29 @@ public class Player : MonoBehaviour
             {
                 BaseSkill baseSkill = collision.GetComponent<BaseSkill>();
 
-                currentHealth -= baseSkill.damage;
-
-                SetSizeToHealth();
-                hasIFrames = true;
-                IFrameTime = startIFrameTime;
-                Time.timeScale = 1;
-                isAttacking = false;
-                isJumping = false;
-
-                if(transform.position.x > baseSkill.transform.position.x)
+                if (baseSkill.damage > 0)
                 {
-                    knockbackVector.Set(knockback.x, knockback.y);
-                }
-                else
-                {
-                    knockbackVector.Set(-knockback.x, knockback.y);
-                }
+                    currentHealth -= baseSkill.damage;
 
-                playerRB.AddForce(knockbackVector);
-                lockMovementTime = startLockMovementTime;
+                    SetSizeToHealth();
+                    hasIFrames = true;
+                    IFrameTime = startIFrameTime;
+                    Time.timeScale = 1;
+                    isAttacking = false;
+                    isJumping = false;
+
+                    if (transform.position.x > baseSkill.transform.position.x)
+                    {
+                        knockbackVector.Set(knockback.x, knockback.y);
+                    }
+                    else
+                    {
+                        knockbackVector.Set(-knockback.x, knockback.y);
+                    }
+
+                    playerRB.AddForce(knockbackVector);
+                    lockMovementTime = startLockMovementTime;
+                }
             }
         }
     }

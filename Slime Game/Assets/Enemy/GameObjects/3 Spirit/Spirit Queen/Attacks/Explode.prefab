@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7784137255523146278}
-  - component: {fileID: 2254432947856332559}
   - component: {fileID: 8439203299018545118}
   - component: {fileID: 6781331489619819592}
   - component: {fileID: 1762887114353516027}
+  - component: {fileID: 633226191838861041}
   m_Layer: 10
-  m_Name: Circle
+  m_Name: Explode
   m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,29 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2254432947856332559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7614546665581012858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8c26603e4e97574d83c6011ff9d662b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stayOnOwner: 0
-  damage: 3
-  timeTillDestroy: 5
-  owner: {fileID: 0}
-  destroyOnArena: 1
-  speed: 7
-  rotationSpeed: 5
-  startRotation: {x: 0, y: 0, z: 0}
-  forceVector: {x: 0, y: 0, z: 0}
-  direction: 1
-  projectileType: 0
 --- !u!212 &8439203299018545118
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -145,3 +122,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &633226191838861041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7614546665581012858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a186ea9798298934f8f84b2190af3128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stayOnOwner: 0
+  damage: 0
+  timeTillDestroy: 0
+  owner: {fileID: 0}
+  skillPrefab: {fileID: 7614546665581012858, guid: 4c302d75e0fa3f34d81e5c0b90ce8aba, type: 3}
+  timeTillSpawn: 1
