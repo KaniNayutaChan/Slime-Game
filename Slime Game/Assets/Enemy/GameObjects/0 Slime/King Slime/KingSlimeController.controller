@@ -121,8 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  minXTrigger: 15
-  maxXTrigger: 35
+  minXTrigger: -22
+  maxXTrigger: 22
   startTimeTillIdle: 1
 --- !u!1102 &-2934327318564176180
 AnimatorState:
@@ -412,8 +412,8 @@ MonoBehaviour:
   noOfAttacks: 10
   skillPrefab: {fileID: 4703407586692753627, guid: aab1e662fd07d8542a0109a7d161770b, type: 3}
   spawnRotation: {x: 0, y: 0, z: 0}
-  movementVector: {x: 9, y: 41, z: 0}
-  spawnVector: {x: 0, y: 10, z: 5}
+  movementVector: {x: 16, y: -16, z: 0}
+  spawnVector: {x: 17, y: 10, z: 5}
   nextAnimationName: Wait
   startTimeTillNextAnimation: 1
   startOnEnemy: 0
