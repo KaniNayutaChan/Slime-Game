@@ -101,7 +101,7 @@ MonoBehaviour:
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 2, z: 0}
   spawnVector: {x: 0, y: 0, z: 0}
-  nextAnimationName: Attack2Part2
+  nextAnimationName: JumpPart2
   startTimeTillNextAnimation: 0
   transitionType: 1
   moveType: 3
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f67da50e6e10b4b85b8393bc89ba22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 3
   attackList:
   - Spit
   - Jump
@@ -286,7 +286,7 @@ MonoBehaviour:
   startTimeTillAttack: 1
   timeBetweenAttacks: 0
   noOfAttacks: 1
-  skillPrefab: {fileID: 0}
+  skillPrefab: {fileID: 4703407586692753627, guid: a002598cf24621242bc813f0f45bc40f, type: 3}
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
   spawnVector: {x: 0, y: 0, z: 0}
@@ -408,10 +408,10 @@ MonoBehaviour:
   startTimeTillAttack: 0
   timeBetweenAttacks: 0
   noOfAttacks: 10
-  skillPrefab: {fileID: 0}
+  skillPrefab: {fileID: 4703407586692753627, guid: aab1e662fd07d8542a0109a7d161770b, type: 3}
   spawnRotation: {x: 0, y: 0, z: 0}
-  movementVector: {x: 0, y: 0, z: 0}
-  spawnVector: {x: 0, y: 0, z: 0}
+  movementVector: {x: 15, y: 35, z: 0}
+  spawnVector: {x: 15, y: 10, z: 0}
   nextAnimationName: Wait
   startTimeTillNextAnimation: 1
   transitionType: 1
@@ -435,13 +435,13 @@ MonoBehaviour:
   startTimeTillAttack: 0
   timeBetweenAttacks: 0
   noOfAttacks: 2
-  skillPrefab: {fileID: 0}
+  skillPrefab: {fileID: 4703407586692753627, guid: 7e7e79f38f1bd244f8b138d0877d787a, type: 3}
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: -2, z: 0}
   spawnVector: {x: 0, y: 0, z: 0}
   nextAnimationName: Wait
   startTimeTillNextAnimation: 1
-  transitionType: 0
+  transitionType: 1
   moveType: 3
   spawnType: 1
   spawnTimingType: 1
@@ -462,7 +462,7 @@ MonoBehaviour:
   startTimeTillAttack: 0.5
   timeBetweenAttacks: 0
   noOfAttacks: 5
-  skillPrefab: {fileID: 0}
+  skillPrefab: {fileID: 4703407586692753627, guid: e04f658944f05074980d47e0df6ca5b4, type: 3}
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
   spawnVector: {x: 0, y: 0, z: 0}

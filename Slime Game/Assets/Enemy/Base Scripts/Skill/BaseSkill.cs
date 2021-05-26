@@ -6,7 +6,7 @@ public class BaseSkill : MonoBehaviour
 {
     public float damage;
     public float timeTillDestroy;
-    public GameObject owner;
+    [HideInInspector] public GameObject owner;
 
     // Start is called before the first frame update
     public virtual void Start()

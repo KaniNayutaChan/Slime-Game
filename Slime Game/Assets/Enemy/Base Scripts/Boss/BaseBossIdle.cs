@@ -30,16 +30,16 @@ public class BaseBossIdle : BaseEnemy
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
-        attackToUse = Random.Range(0, attackList.Length);
         timeTillAttack = Random.Range(minStartTimeTillAttack, maxStartTimeTillAttack);
 
-        while(attackToUse == lastAttack && attackToUse == secondLastAttack)
+        attackToUse = Random.Range(0, attackList.Length);
+        while (attackToUse == lastAttack && attackToUse == secondLastAttack)
         {
             attackToUse = Random.Range(0, attackList.Length);
         }
 
-        secondLastAttack = lastAttack;
-        attackToUse = lastAttack;
+        lastAttack = secondLastAttack;
+        lastAttack = attackToUse;
 
         switch (idleType)
         {
@@ -55,6 +55,8 @@ public class BaseBossIdle : BaseEnemy
                 FaceDestination();
                 break;
         }
+
+        attackToUse = 3;
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
