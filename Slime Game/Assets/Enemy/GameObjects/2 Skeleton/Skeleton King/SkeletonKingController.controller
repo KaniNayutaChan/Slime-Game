@@ -356,19 +356,19 @@ MonoBehaviour:
   speed: 0
   startTimeTillMove: 0
   startTimeTillAttack: 0
-  timeBetweenAttacks: 0
-  noOfAttacks: 0
-  skillPrefab: {fileID: 516953563039789761, guid: c5873e5fdbdd9b343aa239aedd25e978, type: 3}
-  spawnRotation: {x: 0, y: 0, z: 0}
+  timeBetweenAttacks: 0.1
+  noOfAttacks: 15
+  skillPrefab: {fileID: 516953563039789761, guid: 6b7c1c84e19e66344bca9da306de128b, type: 3}
+  spawnRotation: {x: 0, y: 0, z: 270}
   movementVector: {x: 0, y: 0, z: 0}
-  spawnVector: {x: 0, y: 0, z: 0}
+  spawnVector: {x: 15, y: 10, z: 3}
   nextAnimationName: Wait
   startTimeTillNextAnimation: 3
   startOnEnemy: 0
   stopMovingVector: {x: 0, y: 0}
   transitionType: 0
   moveType: 0
-  spawnType: 0
+  spawnType: 4
   spawnTimingType: 0
 --- !u!1102 &1888074609722055276
 AnimatorState:
