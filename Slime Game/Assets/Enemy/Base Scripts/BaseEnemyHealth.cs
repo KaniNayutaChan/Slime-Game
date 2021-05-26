@@ -31,15 +31,15 @@ public class BaseEnemyHealth : MonoBehaviour
 
     protected virtual void Die()
     {
-        //animator.Play("Die");
+        animator.Play("Death");
 
-        if(Player.instance.currentSpell + maxHealth > Player.instance.startingSpell + (Player.instance.level * 3))
+        if(Player.instance.currentSoul + maxHealth > Player.instance.startingSoul + (Player.instance.level * 3))
         {
-            Player.instance.currentSpell = Player.instance.startingSpell + (Player.instance.level * 3);
+            Player.instance.currentSoul = Player.instance.startingSoul + (Player.instance.level * 3);
         }
         else
         {
-            Player.instance.currentSpell += maxHealth;
+            Player.instance.currentSoul += maxHealth;
         }
 
         Player.instance.experience += experience;
@@ -47,20 +47,23 @@ public class BaseEnemyHealth : MonoBehaviour
         RoomManager.instance.rooms[RoomManager.instance.currentRoomNumber].aliveEnemies[number].enemyNumber = 0;
     }
 
+    public void TakeDamage(float damage, PlayerAttack.Type type)
+    {
+        if (currentHealth - damage <= 0 && type != PlayerAttack.Type.Attack)
+        {
+            currentHealth = 1;
+        }
+        else
+        {
+            currentHealth -= damage;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Attack"))
         {
-            PlayerAttack attack = collision.GetComponent<PlayerAttack>();
-
-            if (currentHealth - attack.damage <= 0 && attack.type != PlayerAttack.Type.Attack)
-            {
-                currentHealth = 1;
-            }
-            else
-            {
-                currentHealth -= attack.damage;
-            }
+           
         }
     }
 }

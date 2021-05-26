@@ -183,16 +183,16 @@ MonoBehaviour:
   attackForce: 700
   startHoldAttackTime: 0.5
   startAttackCooldown: 0.5
+  attackPrefab: {fileID: 8204146499462120451, guid: 586131ff640750e41b034255721e58e4, type: 3}
   maxLevel: 20
   level: 1
   experience: 0
-  startingDamage: 7
-  currentDamage: 0
+  startingAttackDamage: 7
   startingHealth: 7
   currentHealth: 0
-  startingSpell: 7
-  currentSpell: 0
-  spellDamage: 0
+  startingSoul: 7
+  currentSoul: 0
+  startingSpellDamage: 7
   startSpellCooldown: 5
   spellPrefab: {fileID: 8204146499462120451, guid: dae9fce2aa748bf40a3432bebc322d11, type: 3}
   spellForce: 1400

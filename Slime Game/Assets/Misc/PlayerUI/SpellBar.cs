@@ -16,6 +16,6 @@ public class SpellBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        image.fillAmount = Player.instance.currentSpell / (Player.instance.startingSpell + (Player.instance.level * 3));
+        image.fillAmount = Player.instance.currentSoul / (Player.instance.startingSoul + (Player.instance.level * 3));
     }
 }

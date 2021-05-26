@@ -40,21 +40,25 @@ public class Player : MonoBehaviour
     public float startAttackCooldown;
     float attackCooldown;
     bool isAttacking;
+    public GameObject attackPrefab;
 
     [Space]
     public int maxLevel;
     public int level = 0;
     public float experience;
-    public float startingDamage;
-    [HideInInspector] public float currentDamage;
+    public float startingAttackDamage;
+    float attackDamage;
+    float currentAttackDamage;
     public float startingHealth;
-    public float currentHealth;
-    public float startingSpell;
-    [HideInInspector] public float currentSpell;
+    [HideInInspector] public float currentHealth;
+    public float startingSoul;
+    [HideInInspector] public float currentSoul;
     Vector3 sizeVector = new Vector3();
 
     [Space]
-    public float spellDamage;
+    public float startingSpellDamage;
+    float spellDamage;
+    float currentSpellDamage;
     public float startSpellCooldown;
     float spellCooldown;
     public GameObject spellPrefab;
@@ -96,7 +100,8 @@ public class Player : MonoBehaviour
         instance = this;
 
         playerRB = GetComponent<Rigidbody2D>();
-        currentDamage = startingDamage + (level * 3);
+        currentAttackDamage = startingAttackDamage + (level * 3);
+        currentSpellDamage = startingSpellDamage + (level * 3);
 
         HealToFull();
 
@@ -281,6 +286,10 @@ public class Player : MonoBehaviour
             }
             playerRB.AddForce(attackVector.normalized * attackForce);
 
+            GameObject attack = Instantiate(attackPrefab, transform.position, transform.rotation, transform);
+            attackDamage = currentAttackDamage;
+            //apply damage buffs
+            attack.GetComponent<PlayerAttack>().damage = attackDamage;
         }
 
         if (isAttacking && isGrounded)
@@ -364,7 +373,8 @@ public class Player : MonoBehaviour
         {
             level += 1;
             experience = experienceOverflow;
-            currentDamage = startingDamage + (level * 3);
+            currentAttackDamage = startingAttackDamage + (level * 3);
+            currentSpellDamage = startingSpellDamage + (level * 3);
             HealToFull();
         }
     }
@@ -375,15 +385,15 @@ public class Player : MonoBehaviour
         {
             healTime = startHealTime;
 
-            if(currentHealth + (currentSpell / 3) > startingHealth + (level * 3))
+            if(currentHealth + (currentSoul / 3) > startingHealth + (level * 3))
             {
-                currentSpell -= 3 * (startingHealth + (level * 3) - currentHealth);
+                currentSoul -= 3 * (startingHealth + (level * 3) - currentHealth);
                 currentHealth = startingHealth + (level * 3);
             }
             else
             {
-                currentHealth += currentSpell / 3;
-                currentSpell = 0;
+                currentHealth += currentSoul / 3;
+                currentSoul = 0;
             }
         }
     }
@@ -481,6 +491,10 @@ public class Player : MonoBehaviour
             GameObject spell = Instantiate(spellPrefab, transform.position, transform.rotation);
             spell.GetComponent<Rigidbody2D>().AddForce(spellVector.normalized * spellForce);
             spellCooldown = startSpellCooldown;
+
+            spellDamage = currentSpellDamage;
+            //apply damage buffs
+            spell.GetComponent<PlayerAttack>().damage = spellDamage;
         }
     }
 
@@ -519,14 +533,7 @@ public class Player : MonoBehaviour
             {
                 BaseSkill baseSkill = collision.GetComponent<BaseSkill>();
 
-                if(currentHealth - baseSkill.damage <= 0 && currentHealth != 1)
-                {
-                    currentHealth = 1;
-                }
-                else
-                {
-                    currentHealth -= baseSkill.damage;
-                }
+                currentHealth -= baseSkill.damage;
 
                 SetSizeToHealth();
                 hasIFrames = true;
@@ -552,7 +559,7 @@ public class Player : MonoBehaviour
 
     void HealToFull()
     {
-        currentSpell = startingSpell + (level * 3);
+        currentSoul = startingSoul + (level * 3);
         currentHealth = startingHealth + (level * 3);
         SetSizeToHealth();
     }

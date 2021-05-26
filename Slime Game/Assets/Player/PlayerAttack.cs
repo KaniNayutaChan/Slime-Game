@@ -6,15 +6,15 @@ public class PlayerAttack : MonoBehaviour
 {
     public float damage;
     public float timeTillDestroy;
-
+    List<GameObject> damagedEnemies = new List<GameObject>();
+    
+    public Type type;
     public enum Type
     {
         Attack,
         Spell,
         Barrier
     }
-
-    public Type type;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +47,23 @@ public class PlayerAttack : MonoBehaviour
         {
             if (type == Type.Attack)
             {
-                Player.instance.currentSpell += damage / 3;
+                Player.instance.currentSoul += damage / 3;
+            }
+
+            bool hasDamaged = false;
+            for (int i = 0; i < damagedEnemies.Count; i++)
+            {
+                if(damagedEnemies[i] == collision.gameObject)
+                {
+                    hasDamaged = true;
+                }
+            }
+
+            if(!hasDamaged)
+            {
+                damagedEnemies.Add(collision.gameObject);
+                collision.GetComponent<BaseEnemyHealth>().TakeDamage(damage, type);
+
             }
         }
     }
