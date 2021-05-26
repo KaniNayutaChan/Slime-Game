@@ -15,6 +15,8 @@ public class BaseBossIdle : BaseEnemy
     public float minYDestination;
     public float maxYDestination;
 
+    public Vector2 stopMovingVector;
+
     int lastAttack = 0;
     int secondLastAttack = 1;
 
@@ -77,6 +79,7 @@ public class BaseBossIdle : BaseEnemy
                 break;
         }
 
+        StopMoving(stopMovingVector.x, stopMovingVector.y);
         MoveToDestination();
 
         if (timeTillAttack > 0)

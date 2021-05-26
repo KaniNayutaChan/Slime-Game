@@ -120,4 +120,22 @@ public class BaseEnemy : StateMachineBehaviour
     {
         destination.Set(x, enemyPos.position.y, enemyPos.position.z);
     }
+
+    protected void StopMoving(float x, float y)
+    {
+        if(destination.x > x)
+        {
+            destination.x = x;
+        }
+
+        if(destination.x < -x)
+        {
+            destination.x = -x;
+        }
+
+        if(destination.y > y)
+        {
+            destination.y = y;
+        }
+    }
 }

@@ -20,6 +20,7 @@ public class BaseEnemyAttack : BaseEnemy
     public float startTimeTillNextAnimation;
     float timeTillNextAnimation;
     public bool startOnEnemy;
+    public Vector2 stopMovingVector;
 
     public TransitionType transitionType;
     public enum TransitionType
@@ -92,6 +93,8 @@ public class BaseEnemyAttack : BaseEnemy
                 }
                 break;
         }
+
+        StopMoving(stopMovingVector.x, stopMovingVector.y);
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

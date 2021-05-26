@@ -164,7 +164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRB: {fileID: 0}
-  hasDiedOnce: 0
+  hasDiedOnce: 1
+  isDead: 0
   movementSpeed: 6
   canMove: 0
   jumpForce: 6
