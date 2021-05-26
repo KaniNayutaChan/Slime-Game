@@ -58,7 +58,7 @@ public class BaseEnemy : StateMachineBehaviour
 
     protected void FacePlayer()
     {
-        if(PlayerIsOnLeft())
+        if (PlayerIsOnLeft())
         {
             FaceLeft();
         }
@@ -70,7 +70,7 @@ public class BaseEnemy : StateMachineBehaviour
 
     protected void FaceDestination()
     {
-        if(enemyPos.position.x > destination.x)
+        if (enemyPos.position.x > destination.x)
         {
             FaceLeft();
         }
@@ -92,9 +92,9 @@ public class BaseEnemy : StateMachineBehaviour
 
     protected bool IsAtDestination()
     {
-        if(Vector3.Distance(enemyPos.position, destination) < 0.1f)
+        if (Vector3.Distance(enemyPos.position, destination) < 0.1f)
         {
-            return true;    
+            return true;
         }
         else
         {
@@ -114,5 +114,10 @@ public class BaseEnemy : StateMachineBehaviour
     protected void SetDestination(float x, float y)
     {
         destination.Set(x, y, enemyPos.position.z);
+    }
+
+    protected void SetDestinationX(float x)
+    {
+        destination.Set(x, enemyPos.position.y, enemyPos.position.z);
     }
 }

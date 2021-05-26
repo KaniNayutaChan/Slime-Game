@@ -107,6 +107,22 @@ MonoBehaviour:
   moveType: 3
   spawnType: 0
   spawnTimingType: 0
+--- !u!114 &-3626723773209938977
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd690664bb169ae43be6b3e64a5c7c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  minXTrigger: 15
+  maxXTrigger: 35
+  startTimeTillIdle: 1
 --- !u!1102 &-2934327318564176180
 AnimatorState:
   serializedVersion: 6
@@ -120,6 +136,33 @@ AnimatorState:
   m_Transitions: []
   m_StateMachineBehaviours:
   - {fileID: 8077512727630332797}
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &-2695208720399639706
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Intro
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours:
+  - {fileID: -3626723773209938977}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -313,28 +356,31 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -6228188618512058281}
-    m_Position: {x: 210, y: 110, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1888074609722055276}
     m_Position: {x: 210, y: 150, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -2934327318564176180}
+    m_State: {fileID: 1888074609722055276}
     m_Position: {x: 210, y: 190, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -6651285007792886773}
-    m_Position: {x: 210, y: 350, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -5147235669180988050}
+    m_State: {fileID: -2934327318564176180}
     m_Position: {x: 210, y: 230, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 8168768485346525399}
+    m_State: {fileID: -6651285007792886773}
+    m_Position: {x: 210, y: 390, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -5147235669180988050}
     m_Position: {x: 210, y: 270, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -1313497047935655039}
+    m_State: {fileID: 8168768485346525399}
     m_Position: {x: 210, y: 310, z: 0}
   - serializedVersion: 1
+    m_State: {fileID: -1313497047935655039}
+    m_Position: {x: 210, y: 350, z: 0}
+  - serializedVersion: 1
     m_State: {fileID: -1608687834826901958}
-    m_Position: {x: 410, y: 230, z: 0}
+    m_Position: {x: 410, y: 270, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -2695208720399639706}
+    m_Position: {x: 210, y: 110, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -344,7 +390,7 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -6228188618512058281}
+  m_DefaultState: {fileID: -2695208720399639706}
 --- !u!114 &6505448034288181867
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -357,20 +403,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ccaf65338613340aa694bc3ba50fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  startTimeTillMove: 0
+  speed: 10
+  startTimeTillMove: 1
   startTimeTillAttack: 0
   timeBetweenAttacks: 0
-  noOfAttacks: 0
+  noOfAttacks: 10
   skillPrefab: {fileID: 0}
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
   spawnVector: {x: 0, y: 0, z: 0}
   nextAnimationName: Wait
-  startTimeTillNextAnimation: 0
-  transitionType: 0
+  startTimeTillNextAnimation: 1
+  transitionType: 1
   moveType: 0
-  spawnType: 0
+  spawnType: 4
   spawnTimingType: 1
 --- !u!114 &7340527274584371827
 MonoBehaviour:
@@ -388,7 +434,7 @@ MonoBehaviour:
   startTimeTillMove: 0
   startTimeTillAttack: 0
   timeBetweenAttacks: 0
-  noOfAttacks: 10
+  noOfAttacks: 2
   skillPrefab: {fileID: 0}
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: -2, z: 0}
@@ -397,7 +443,7 @@ MonoBehaviour:
   startTimeTillNextAnimation: 1
   transitionType: 0
   moveType: 3
-  spawnType: 4
+  spawnType: 1
   spawnTimingType: 1
 --- !u!114 &8077512727630332797
 MonoBehaviour:
