@@ -183,7 +183,7 @@ MonoBehaviour:
   maxAttacks: 1
   attackForce: 700
   startHoldAttackTime: 0.5
-  startAttackCooldown: 0.5
+  startAttackCooldown: 1
   attackPrefab: {fileID: 8204146499462120451, guid: 586131ff640750e41b034255721e58e4, type: 3}
   maxLevel: 20
   level: 1

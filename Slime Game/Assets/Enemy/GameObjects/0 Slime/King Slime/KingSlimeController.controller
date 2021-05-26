@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  minXTrigger: -22
-  maxXTrigger: 22
+  minXTrigger: -15
+  maxXTrigger: 15
   startTimeTillIdle: 1
 --- !u!1102 &-2934327318564176180
 AnimatorState:
