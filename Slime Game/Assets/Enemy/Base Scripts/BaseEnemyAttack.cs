@@ -19,7 +19,7 @@ public class BaseEnemyAttack : BaseEnemy
     public string nextAnimationName;
     public float startTimeTillNextAnimation;
     float timeTillNextAnimation;
-
+    
     public TransitionType transitionType;
     public enum TransitionType
     {
@@ -46,6 +46,14 @@ public class BaseEnemyAttack : BaseEnemy
         SpawnInIncrements,
         SpawnInCircle
     }
+
+    public SpawnTimingType spawnTimingType;
+    public enum SpawnTimingType
+    {
+        SpawnAfterTime,
+        SpawnAtDestination
+    }
+
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -78,15 +86,35 @@ public class BaseEnemyAttack : BaseEnemy
     {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
 
-        if(timeTillAttack > 0)
+        if (spawnTimingType == SpawnTimingType.SpawnAfterTime)
         {
-            timeTillAttack -= Time.deltaTime;
+            if (timeTillAttack > 0)
+            {
+                timeTillAttack -= Time.deltaTime;
+            }
+            else if (counter < noOfAttacks)
+            {
+                counter++;
+                timeTillAttack = timeBetweenAttacks;
+                UseAttack();
+            }
         }
-        else if(counter < noOfAttacks)
+
+        if(spawnTimingType == SpawnTimingType.SpawnAfterTime)
         {
-            counter++;
-            timeTillAttack = timeBetweenAttacks;
-            UseAttack();
+            if(IsAtDestination())
+            {
+                if (timeTillAttack > 0)
+                {
+                    timeTillAttack -= Time.deltaTime;
+                }
+                else if (counter < noOfAttacks)
+                {
+                    counter++;
+                    timeTillAttack = timeBetweenAttacks;
+                    UseAttack();
+                }
+            }
         }
 
         if(timeTillMove > 0)
@@ -114,7 +142,14 @@ public class BaseEnemyAttack : BaseEnemy
             case TransitionType.ReachDestination:
                 if(IsAtDestination())
                 {
-                    animator.Play(nextAnimationName);
+                    if (timeTillNextAnimation > 0)
+                    {
+                        timeTillNextAnimation -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        animator.Play(nextAnimationName);
+                    }
                 }
                 break;
         }

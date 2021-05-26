@@ -60,7 +60,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack2
+  m_Name: Jump
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -92,19 +92,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ccaf65338613340aa694bc3ba50fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTimeTillMove: 0
+  speed: 10
+  startTimeTillMove: 0.5
   startTimeTillAttack: 0
   timeBetweenAttacks: 0
   noOfAttacks: 0
   skillPrefab: {fileID: 0}
   spawnRotation: {x: 0, y: 0, z: 0}
-  movementVector: {x: 0, y: 0, z: 0}
+  movementVector: {x: 0, y: 2, z: 0}
   spawnVector: {x: 0, y: 0, z: 0}
-  nextAnimationName: 
+  nextAnimationName: Attack2Part2
   startTimeTillNextAnimation: 0
-  transitionType: 0
-  moveType: 0
+  transitionType: 1
+  moveType: 3
   spawnType: 0
+  spawnTimingType: 0
 --- !u!1102 &-2934327318564176180
 AnimatorState:
   serializedVersion: 6
@@ -112,7 +114,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack1
+  m_Name: Spit
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -144,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b0fb072142bbff42b2aaef00f217f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
   startWaitTime: 1
 --- !u!114 &-1618305069757820795
 MonoBehaviour:
@@ -157,17 +160,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f67da50e6e10b4b85b8393bc89ba22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 10
   attackList:
-  - Attack1
-  - Attack2
-  - Attack3
-  - Attack4
-  minStartTimeTillAttack: 0
-  maxStartTimeTillAttack: 0
+  - Spit
+  - Jump
+  - Slam
+  - Explode
+  minStartTimeTillAttack: 0.5
+  maxStartTimeTillAttack: 1
   maxXDestination: 0
   minYDestination: 0
   maxYDestination: 0
-  idleType: 0
+  idleType: 1
+--- !u!1102 &-1608687834826901958
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: JumpPart2
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours:
+  - {fileID: 7340527274584371827}
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &-1313497047935655039
 AnimatorState:
   serializedVersion: 6
@@ -175,7 +206,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack4
+  m_Name: Explode
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -207,19 +238,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ccaf65338613340aa694bc3ba50fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
   startTimeTillMove: 0
-  startTimeTillAttack: 0
+  startTimeTillAttack: 1
   timeBetweenAttacks: 0
-  noOfAttacks: 0
+  noOfAttacks: 1
   skillPrefab: {fileID: 0}
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
   spawnVector: {x: 0, y: 0, z: 0}
-  nextAnimationName: 
-  startTimeTillNextAnimation: 0
+  nextAnimationName: Wait
+  startTimeTillNextAnimation: 2
   transitionType: 0
   moveType: 0
-  spawnType: 0
+  spawnType: 1
+  spawnTimingType: 0
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -299,6 +332,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -1313497047935655039}
     m_Position: {x: 210, y: 310, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -1608687834826901958}
+    m_Position: {x: 410, y: 230, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -321,6 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ccaf65338613340aa694bc3ba50fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
   startTimeTillMove: 0
   startTimeTillAttack: 0
   timeBetweenAttacks: 0
@@ -329,11 +366,39 @@ MonoBehaviour:
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
   spawnVector: {x: 0, y: 0, z: 0}
-  nextAnimationName: 
+  nextAnimationName: Wait
   startTimeTillNextAnimation: 0
   transitionType: 0
   moveType: 0
   spawnType: 0
+  spawnTimingType: 1
+--- !u!114 &7340527274584371827
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ccaf65338613340aa694bc3ba50fc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  startTimeTillMove: 0
+  startTimeTillAttack: 0
+  timeBetweenAttacks: 0
+  noOfAttacks: 10
+  skillPrefab: {fileID: 0}
+  spawnRotation: {x: 0, y: 0, z: 0}
+  movementVector: {x: 0, y: -2, z: 0}
+  spawnVector: {x: 0, y: 0, z: 0}
+  nextAnimationName: Wait
+  startTimeTillNextAnimation: 1
+  transitionType: 0
+  moveType: 3
+  spawnType: 4
+  spawnTimingType: 1
 --- !u!114 &8077512727630332797
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -346,6 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ccaf65338613340aa694bc3ba50fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
   startTimeTillMove: 0
   startTimeTillAttack: 0.5
   timeBetweenAttacks: 0
@@ -359,6 +425,7 @@ MonoBehaviour:
   transitionType: 0
   moveType: 0
   spawnType: 1
+  spawnTimingType: 0
 --- !u!1102 &8168768485346525399
 AnimatorState:
   serializedVersion: 6
@@ -366,7 +433,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack3
+  m_Name: Slam
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
