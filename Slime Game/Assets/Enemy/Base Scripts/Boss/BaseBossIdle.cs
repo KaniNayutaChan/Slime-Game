@@ -56,7 +56,7 @@ public class BaseBossIdle : BaseEnemy
                 break;
         }
 
-        attackToUse = 3;
+        //attackToUse = 1;
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -83,7 +83,7 @@ public class BaseBossIdle : BaseEnemy
         }
         else
         {
-            animator.Play(attackList[attackToUse]);
+             animator.Play(attackList[attackToUse]);
         }
     }
 }

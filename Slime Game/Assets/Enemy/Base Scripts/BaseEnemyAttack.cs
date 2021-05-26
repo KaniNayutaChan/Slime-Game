@@ -19,7 +19,8 @@ public class BaseEnemyAttack : BaseEnemy
     public string nextAnimationName;
     public float startTimeTillNextAnimation;
     float timeTillNextAnimation;
-    
+    public bool startOnEnemy;
+
     public TransitionType transitionType;
     public enum TransitionType
     {
@@ -105,13 +106,13 @@ public class BaseEnemyAttack : BaseEnemy
             }
             else if (counter < noOfAttacks)
             {
-                counter++;
                 timeTillAttack = timeBetweenAttacks;
                 UseAttack();
+                counter++;
             }
         }
 
-        if(spawnTimingType == SpawnTimingType.SpawnAfterTime)
+        if(spawnTimingType == SpawnTimingType.SpawnAtDestination)
         {
             if(IsAtDestination())
             {
@@ -121,9 +122,9 @@ public class BaseEnemyAttack : BaseEnemy
                 }
                 else if (counter < noOfAttacks)
                 {
-                    counter++;
                     timeTillAttack = timeBetweenAttacks;
                     UseAttack();
+                    counter++;
                 }
             }
         }
@@ -180,7 +181,7 @@ public class BaseEnemyAttack : BaseEnemy
                 SetRandomSpawnPos(spawnVector.x, spawnVector.y, spawnVector.z);
                 break;
             case SpawnType.SpawnInIncrements:
-                SetSpawnPosIncrements(spawnVector.x, spawnVector.y, spawnVector.z);
+                SetSpawnPosIncrements(spawnVector.x, spawnVector.y, spawnVector.z, startOnEnemy);
                 break;
             case SpawnType.SpawnInCircle:
                 SetSpawnPosCircle(spawnVector.x);
@@ -218,15 +219,29 @@ public class BaseEnemyAttack : BaseEnemy
         spawnPos.Set(randX, randY, enemyPos.position.z);
     }
 
-    protected void SetSpawnPosIncrements(float x, float y, float gapDistance)
+    protected void SetSpawnPosIncrements(float x, float y, float gapDistance, bool startOnEnemy)
     {
-        if(IsFacingLeft())
+        if (startOnEnemy)
         {
-            spawnPos.Set(x - (counter * gapDistance), y, enemyPos.position.z);
+            if (IsFacingLeft())
+            {
+                spawnPos.Set(enemyPos.position.x + x - (counter * gapDistance), enemyPos.position.y, enemyPos.position.z);
+            }
+            else
+            {
+                spawnPos.Set(enemyPos.position.x - x + (counter * gapDistance), enemyPos.position.y, enemyPos.position.z);
+            }
         }
         else
         {
-            spawnPos.Set(-x + (counter * gapDistance), y, enemyPos.position.z);
+            if (IsFacingLeft())
+            {
+                spawnPos.Set(x - (counter * gapDistance), y, enemyPos.position.z);
+            }
+            else
+            {
+                spawnPos.Set(-x + (counter * gapDistance), y, enemyPos.position.z);
+            }
         }
     }
 

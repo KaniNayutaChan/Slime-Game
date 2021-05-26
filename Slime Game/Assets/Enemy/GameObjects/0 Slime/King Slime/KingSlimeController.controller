@@ -103,6 +103,7 @@ MonoBehaviour:
   spawnVector: {x: 0, y: 0, z: 0}
   nextAnimationName: JumpPart2
   startTimeTillNextAnimation: 0
+  startOnEnemy: 0
   transitionType: 1
   moveType: 3
   spawnType: 0
@@ -292,6 +293,7 @@ MonoBehaviour:
   spawnVector: {x: 0, y: 0, z: 0}
   nextAnimationName: Wait
   startTimeTillNextAnimation: 2
+  startOnEnemy: 0
   transitionType: 0
   moveType: 0
   spawnType: 1
@@ -410,12 +412,13 @@ MonoBehaviour:
   noOfAttacks: 10
   skillPrefab: {fileID: 4703407586692753627, guid: aab1e662fd07d8542a0109a7d161770b, type: 3}
   spawnRotation: {x: 0, y: 0, z: 0}
-  movementVector: {x: 15, y: 35, z: 0}
-  spawnVector: {x: 15, y: 10, z: 0}
+  movementVector: {x: 9, y: 41, z: 0}
+  spawnVector: {x: 0, y: 10, z: 5}
   nextAnimationName: Wait
   startTimeTillNextAnimation: 1
+  startOnEnemy: 0
   transitionType: 1
-  moveType: 0
+  moveType: 4
   spawnType: 4
   spawnTimingType: 1
 --- !u!114 &7340527274584371827
@@ -432,18 +435,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   startTimeTillMove: 0
-  startTimeTillAttack: 0
+  startTimeTillAttack: 0.1
   timeBetweenAttacks: 0
   noOfAttacks: 2
   skillPrefab: {fileID: 4703407586692753627, guid: 7e7e79f38f1bd244f8b138d0877d787a, type: 3}
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: -2, z: 0}
-  spawnVector: {x: 0, y: 0, z: 0}
+  spawnVector: {x: 1, y: 0, z: 2}
   nextAnimationName: Wait
   startTimeTillNextAnimation: 1
+  startOnEnemy: 1
   transitionType: 1
   moveType: 3
-  spawnType: 1
+  spawnType: 4
   spawnTimingType: 1
 --- !u!114 &8077512727630332797
 MonoBehaviour:
@@ -468,6 +472,7 @@ MonoBehaviour:
   spawnVector: {x: 0, y: 0, z: 0}
   nextAnimationName: Wait
   startTimeTillNextAnimation: 2
+  startOnEnemy: 0
   transitionType: 0
   moveType: 0
   spawnType: 1

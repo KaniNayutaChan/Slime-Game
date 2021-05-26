@@ -34,7 +34,7 @@ public class BaseEnemy : StateMachineBehaviour
 
     protected bool IsFacingLeft()
     {
-        if (enemyPos.rotation == Quaternion.Euler(0, 180, 0))
+        if (enemyPos.rotation == Quaternion.Euler(0, 0, 0))
         {
             return true;
         }

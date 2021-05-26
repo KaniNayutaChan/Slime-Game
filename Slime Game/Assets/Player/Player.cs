@@ -333,7 +333,7 @@ public class Player : MonoBehaviour
                 //play cutscene
                 hasDiedOnce = true;
                 RoomManager.instance.SpawnRoom(4, RoomManager.instance.respawnPos);
-                RoomManager.instance.lastSavedRoomNumber = 4;
+                RoomManager.instance.lastSavedRoomNumber = 5;
                 RoomManager.instance.respawnPos = Vector2.zero;
                 Instantiate(RoomManager.instance.transition);
             }
@@ -531,6 +531,9 @@ public class Player : MonoBehaviour
                 SetSizeToHealth();
                 hasIFrames = true;
                 IFrameTime = startIFrameTime;
+                Time.timeScale = 1;
+                isAttacking = false;
+                isJumping = false;
 
                 if(transform.position.x > baseSkill.transform.position.x)
                 {
