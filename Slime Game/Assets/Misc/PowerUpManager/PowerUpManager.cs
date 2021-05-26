@@ -9,7 +9,7 @@ public class PowerUpManager : MonoBehaviour
     public bool hasSpell = false;
     public bool hasMinimise = false;
     public bool hasWallJump = false;
-    public bool hasResistance = false;
+    public bool hasNightVision = false;
     public bool hasDoubleAttack = false;
     public bool hasBarrier = false;
 
@@ -54,7 +54,7 @@ public class PowerUpManager : MonoBehaviour
                 hasWallJump = true;
                 break;
             case 3:
-                hasResistance = true;
+                hasNightVision = true;
                 break;
             case 4:
                 hasDoubleAttack = true;

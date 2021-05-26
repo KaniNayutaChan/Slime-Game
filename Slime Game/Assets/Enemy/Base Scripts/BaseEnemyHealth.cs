@@ -8,7 +8,7 @@ public class BaseEnemyHealth : MonoBehaviour
     public float currentHealth;
     public float experience;
     protected Animator animator;
-    bool hasDied;
+    protected bool hasDied;
     [HideInInspector] public int number;
 
     // Start is called before the first frame update

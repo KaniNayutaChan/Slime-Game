@@ -7,6 +7,8 @@ public class EnemyHealth : BaseEnemyHealth
     public float range;
     public float startAttackCooldown;
     float attackCooldown;
+    public string[] attackList;
+    int attackToUse;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -22,8 +24,13 @@ public class EnemyHealth : BaseEnemyHealth
 
         if(IsInRange() && attackCooldown < 0)
         {
-            //animator.Play("Attack");
+            attackToUse = Random.Range(0, attackList.Length);
             attackCooldown = startAttackCooldown;
+
+            if (!hasDied)
+            {
+                animator.Play(attackToUse);
+            }
         }
 
         if(attackCooldown >= 0)

@@ -32,18 +32,6 @@ public class BaseEnemyIdle : BaseEnemy
                 SetDestinationEnemy(0,0);
                 FacePlayer();
                 break;
-
-            case IdleType.MoveInStraightLine:
-                if(IsFacingLeft())
-                {
-                    SetDestinationEnemy(-100, 0);
-                }
-                else
-                {
-                    SetDestinationEnemy(100, 0);
-                }
-                FaceDestination();
-                break;
         }
     }
 
@@ -53,7 +41,20 @@ public class BaseEnemyIdle : BaseEnemy
 
         MoveToDestination();
 
-        if(IsAtDestination())
+        if (idleType == IdleType.MoveInStraightLine)
+        {
+            if (IsFacingLeft())
+            {
+                SetDestinationEnemy(-100, 0);
+            }
+            else
+            {
+                SetDestinationEnemy(100, 0);
+            }
+            FaceDestination();
+        }
+
+        if (IsAtDestination())
         {
             if (idleType != IdleType.StayStill)
             {
@@ -61,7 +62,7 @@ public class BaseEnemyIdle : BaseEnemy
             }
         }
 
-        if(enemyHealth.IsInRange())
+        if (enemyHealth.IsInRange())
         {
             animator.Play("Alert");
         }

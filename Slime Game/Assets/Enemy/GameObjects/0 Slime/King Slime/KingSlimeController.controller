@@ -37,7 +37,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -1618305069757820795}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -63,7 +64,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -4364979671132074112}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -78,6 +80,31 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-4364979671132074112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ccaf65338613340aa694bc3ba50fc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startTimeTillMove: 0
+  startTimeTillAttack: 0
+  timeBetweenAttacks: 0
+  noOfAttacks: 0
+  skillPrefab: {fileID: 0}
+  spawnRotation: {x: 0, y: 0, z: 0}
+  movementVector: {x: 0, y: 0, z: 0}
+  spawnVector: {x: 0, y: 0, z: 0}
+  nextAnimationName: 
+  startTimeTillNextAnimation: 0
+  transitionType: 0
+  moveType: 0
+  spawnType: 0
 --- !u!1102 &-2934327318564176180
 AnimatorState:
   serializedVersion: 6
@@ -89,7 +116,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 8077512727630332797}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -104,6 +132,42 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-2609901311070404643
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0fb072142bbff42b2aaef00f217f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startWaitTime: 1
+--- !u!114 &-1618305069757820795
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87f67da50e6e10b4b85b8393bc89ba22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackList:
+  - Attack1
+  - Attack2
+  - Attack3
+  - Attack4
+  minStartTimeTillAttack: 0
+  maxStartTimeTillAttack: 0
+  maxXDestination: 0
+  minYDestination: 0
+  maxYDestination: 0
+  idleType: 0
 --- !u!1102 &-1313497047935655039
 AnimatorState:
   serializedVersion: 6
@@ -115,7 +179,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -327278243965551009}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -130,6 +195,31 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-327278243965551009
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ccaf65338613340aa694bc3ba50fc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startTimeTillMove: 0
+  startTimeTillAttack: 0
+  timeBetweenAttacks: 0
+  noOfAttacks: 0
+  skillPrefab: {fileID: 0}
+  spawnRotation: {x: 0, y: 0, z: 0}
+  movementVector: {x: 0, y: 0, z: 0}
+  spawnVector: {x: 0, y: 0, z: 0}
+  nextAnimationName: 
+  startTimeTillNextAnimation: 0
+  transitionType: 0
+  moveType: 0
+  spawnType: 0
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -163,7 +253,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -2609901311070404643}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -218,6 +309,56 @@ AnimatorStateMachine:
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -6228188618512058281}
+--- !u!114 &6505448034288181867
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ccaf65338613340aa694bc3ba50fc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startTimeTillMove: 0
+  startTimeTillAttack: 0
+  timeBetweenAttacks: 0
+  noOfAttacks: 0
+  skillPrefab: {fileID: 0}
+  spawnRotation: {x: 0, y: 0, z: 0}
+  movementVector: {x: 0, y: 0, z: 0}
+  spawnVector: {x: 0, y: 0, z: 0}
+  nextAnimationName: 
+  startTimeTillNextAnimation: 0
+  transitionType: 0
+  moveType: 0
+  spawnType: 0
+--- !u!114 &8077512727630332797
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ccaf65338613340aa694bc3ba50fc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startTimeTillMove: 0
+  startTimeTillAttack: 0.5
+  timeBetweenAttacks: 0
+  noOfAttacks: 5
+  skillPrefab: {fileID: 0}
+  spawnRotation: {x: 0, y: 0, z: 0}
+  movementVector: {x: 0, y: 0, z: 0}
+  spawnVector: {x: 0, y: 0, z: 0}
+  nextAnimationName: Wait
+  startTimeTillNextAnimation: 2
+  transitionType: 0
+  moveType: 0
+  spawnType: 1
 --- !u!1102 &8168768485346525399
 AnimatorState:
   serializedVersion: 6
@@ -229,7 +370,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 6505448034288181867}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

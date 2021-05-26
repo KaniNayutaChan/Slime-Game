@@ -364,7 +364,7 @@ MonoBehaviour:
   hasSpell: 0
   hasMinimise: 0
   hasWallJump: 0
-  hasResistance: 0
+  hasNightVision: 0
   hasDoubleAttack: 0
   hasBarrier: 0
   charmList:
@@ -1397,7 +1397,9 @@ MonoBehaviour:
   - skinList:
     - {fileID: 4703407586692753627, guid: f2cc9f960ae6a154e9600d94789021aa, type: 3}
   - skinList:
-    - {fileID: 4703407586692753627, guid: 4384ff039b918f74a8d03581689011ee, type: 3}
+    - {fileID: 4703407586692753627, guid: c5963fa1257e23b42b91dca0792804dd, type: 3}
+  - skinList:
+    - {fileID: 4703407586692753627, guid: 312a450a459b78b4a805d4f3075bf372, type: 3}
   - skinList:
     - {fileID: 4703407586692753627, guid: 3c944ea6f841bd2479548937825a2411, type: 3}
   - skinList:
@@ -1426,7 +1428,7 @@ MonoBehaviour:
     aliveEnemies: []
   - room: {fileID: 8306673048785316087, guid: 7a228a891e362904d8048658386139b0, type: 3}
     enemies:
-    - enemyNumber: 18
+    - enemyNumber: 19
       position: {x: 25, y: 5, z: 0}
       skinNumber: 0
     aliveEnemies: []

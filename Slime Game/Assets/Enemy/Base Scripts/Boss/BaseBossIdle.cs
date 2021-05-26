@@ -15,6 +15,9 @@ public class BaseBossIdle : BaseEnemy
     public float minYDestination;
     public float maxYDestination;
 
+    int lastAttack = 0;
+    int secondLastAttack = 1;
+
     public IdleType idleType;
     public enum IdleType
     {
@@ -30,6 +33,13 @@ public class BaseBossIdle : BaseEnemy
         attackToUse = Random.Range(0, attackList.Length);
         timeTillAttack = Random.Range(minStartTimeTillAttack, maxStartTimeTillAttack);
 
+        while(attackToUse == lastAttack && attackToUse == secondLastAttack)
+        {
+            attackToUse = Random.Range(0, attackList.Length);
+        }
+
+        secondLastAttack = lastAttack;
+        attackToUse = lastAttack;
 
         switch (idleType)
         {

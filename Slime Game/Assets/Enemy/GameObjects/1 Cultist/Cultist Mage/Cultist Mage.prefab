@@ -152,6 +152,9 @@ MonoBehaviour:
   number: 0
   range: 1
   startAttackCooldown: 1
+  attackList:
+  - Attack1
+  - Attack2
 --- !u!58 &5936497254149767311
 CircleCollider2D:
   m_ObjectHideFlags: 0

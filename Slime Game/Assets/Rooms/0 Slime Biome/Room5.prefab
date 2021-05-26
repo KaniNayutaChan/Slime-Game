@@ -259,7 +259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5696466045572794777, guid: d52e28a95a2bccb41a21460e57377ff3, type: 3}
       propertyPath: spawnPos.y
-      value: -24
+      value: -36
       objectReference: {fileID: 0}
     - target: {fileID: 5696466045572794777, guid: d52e28a95a2bccb41a21460e57377ff3, type: 3}
       propertyPath: connectedRoom
@@ -283,7 +283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6710114587430302206, guid: d52e28a95a2bccb41a21460e57377ff3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.2
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 6710114587430302206, guid: d52e28a95a2bccb41a21460e57377ff3, type: 3}
       propertyPath: m_LocalPosition.y

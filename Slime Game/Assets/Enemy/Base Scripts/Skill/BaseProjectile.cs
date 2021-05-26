@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class BaseProjectile : BaseSkill
 {
+    public bool destroyOnArena;
     public float speed;
     public float rotationSpeed;
     public Vector3 startRotation;
+    public Vector3 forceVector;
+    Rigidbody2D rb;
 
     public Direction direction;
     public enum Direction
@@ -19,7 +22,8 @@ public class BaseProjectile : BaseSkill
     public enum ProjectileType 
     {
         Linear,
-        Homing
+        Homing,
+        Parabolic
     }
     public ProjectileType projectileType;
 
@@ -38,6 +42,15 @@ public class BaseProjectile : BaseSkill
         {
             transform.rotation = Quaternion.Euler(startRotation);
         }
+
+        if(projectileType == ProjectileType.Parabolic)
+        {
+            rb = GetComponent<Rigidbody2D>();
+            float x = Random.Range(-forceVector.x, forceVector.x);
+            float y = Random.Range(forceVector.y, forceVector.z);
+            Vector2 force = new Vector2(x, y);
+            rb.AddForce(force);
+        }
     }
 
     // Update is called once per frame
@@ -50,6 +63,17 @@ public class BaseProjectile : BaseSkill
             Vector3 targetDirection = Player.instance.transform.position - transform.position;
             Vector3 newDirection = Vector3.RotateTowards(transform.right, targetDirection, rotationSpeed * Time.deltaTime, 0.0f);
             transform.rotation = Quaternion.LookRotation(newDirection);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (destroyOnArena)
+        {
+            if (collision.CompareTag("Arena"))
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
