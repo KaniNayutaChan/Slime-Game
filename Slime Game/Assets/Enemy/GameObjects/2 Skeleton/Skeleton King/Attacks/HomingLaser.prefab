@@ -152,7 +152,7 @@ MonoBehaviour:
   direction: 0
   destroyOnArena: 0
   speed: 0
-  rotationSpeed: 4
+  rotationSpeed: 3
   forceVector: {x: 0, y: 0, z: 0}
   projectileType: 1
 --- !u!1 &1145574036058634056
