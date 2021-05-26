@@ -80,6 +80,33 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1102 &-4728007404488051893
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Dash
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours:
+  - {fileID: -1380993662813834449}
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!114 &-4364979671132074112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -210,6 +237,7 @@ MonoBehaviour:
   - Jump
   - Slam
   - Explode
+  - Dash
   minStartTimeTillAttack: 0.5
   maxStartTimeTillAttack: 1
   maxXDestination: 0
@@ -243,6 +271,34 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-1380993662813834449
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ccaf65338613340aa694bc3ba50fc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  startTimeTillMove: 0.5
+  startTimeTillAttack: 0.5
+  timeBetweenAttacks: 0
+  noOfAttacks: 1
+  skillPrefab: {fileID: 4703407586692753627, guid: 7f11967f0ad64f240ba27162bf8bd4f7, type: 3}
+  spawnRotation: {x: 0, y: 0, z: 0}
+  movementVector: {x: 0, y: 0, z: 0}
+  spawnVector: {x: 0, y: 0, z: 0}
+  nextAnimationName: Wait
+  startTimeTillNextAnimation: 1
+  startOnEnemy: 0
+  transitionType: 1
+  moveType: 1
+  spawnType: 1
+  spawnTimingType: 0
 --- !u!1102 &-1313497047935655039
 AnimatorState:
   serializedVersion: 6
@@ -367,7 +423,7 @@ AnimatorStateMachine:
     m_Position: {x: 210, y: 230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6651285007792886773}
-    m_Position: {x: 210, y: 390, z: 0}
+    m_Position: {x: 210, y: 430, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5147235669180988050}
     m_Position: {x: 210, y: 270, z: 0}
@@ -383,6 +439,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -2695208720399639706}
     m_Position: {x: 210, y: 110, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -4728007404488051893}
+    m_Position: {x: 210, y: 390, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

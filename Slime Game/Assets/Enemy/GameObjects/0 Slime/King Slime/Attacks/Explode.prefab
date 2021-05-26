@@ -46,8 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bff12ddca0a346b7cf530a2f55e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stayOnOwner: 0
   damage: 3
-  timeTillDestroy: 3
+  timeTillDestroy: 1
   owner: {fileID: 0}
 --- !u!212 &4703407586692753624
 SpriteRenderer:

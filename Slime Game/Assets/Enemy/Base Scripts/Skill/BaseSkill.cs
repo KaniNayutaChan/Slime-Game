@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BaseSkill : MonoBehaviour
 {
+    public bool stayOnOwner;
     public float damage;
     public float timeTillDestroy;
     [HideInInspector] public GameObject owner;
@@ -20,6 +21,6 @@ public class BaseSkill : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-        
+        transform.position = owner.transform.position;
     }
 }

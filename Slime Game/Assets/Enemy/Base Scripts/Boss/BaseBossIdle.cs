@@ -56,7 +56,7 @@ public class BaseBossIdle : BaseEnemy
                 break;
         }
 
-        //attackToUse = 1;
+        attackToUse = 4;
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
