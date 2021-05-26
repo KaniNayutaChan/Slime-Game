@@ -192,6 +192,7 @@ MonoBehaviour:
   currentHealth: 0
   startingSoul: 7
   currentSoul: 0
+  healMultiplier: 0.2
   startingSpellDamage: 7
   startSpellCooldown: 5
   spellPrefab: {fileID: 8204146499462120451, guid: dae9fce2aa748bf40a3432bebc322d11, type: 3}

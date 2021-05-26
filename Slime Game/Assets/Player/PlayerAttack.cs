@@ -6,6 +6,7 @@ public class PlayerAttack : MonoBehaviour
 {
     public float damage;
     public float timeTillDestroy;
+    public float soulGainMultiplier;
     List<GameObject> damagedEnemies = new List<GameObject>();
     
     public Type type;
@@ -45,11 +46,6 @@ public class PlayerAttack : MonoBehaviour
 
         if (collision.CompareTag("Enemy"))
         {
-            if (type == Type.Attack)
-            {
-                Player.instance.currentSoul += damage / 3;
-            }
-
             bool hasDamaged = false;
             for (int i = 0; i < damagedEnemies.Count; i++)
             {
@@ -64,6 +60,15 @@ public class PlayerAttack : MonoBehaviour
                 damagedEnemies.Add(collision.gameObject);
                 collision.GetComponent<BaseEnemyHealth>().TakeDamage(damage, type);
 
+                if (type == Type.Attack)
+                {
+                    Player.instance.currentSoul += damage * soulGainMultiplier;
+
+                    if (Player.instance.currentSoul > Player.instance.startingSoul + (Player.instance.level * 3))
+                    {
+                        Player.instance.currentSoul = Player.instance.startingSoul + (Player.instance.level * 3);
+                    }
+                }
             }
         }
     }

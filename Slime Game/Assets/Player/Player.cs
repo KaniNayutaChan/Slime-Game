@@ -52,8 +52,9 @@ public class Player : MonoBehaviour
     public float startingHealth;
     [HideInInspector] public float currentHealth;
     public float startingSoul;
-    [HideInInspector] public float currentSoul;
+    public float currentSoul;
     Vector3 sizeVector = new Vector3();
+    public float healMultiplier;
 
     [Space]
     public float startingSpellDamage;
@@ -385,14 +386,14 @@ public class Player : MonoBehaviour
         {
             healTime = startHealTime;
 
-            if(currentHealth + (currentSoul / 3) > startingHealth + (level * 3))
+            if(currentHealth + (currentSoul * healMultiplier) > startingHealth + (level * 3))
             {
-                currentSoul -= 3 * (startingHealth + (level * 3) - currentHealth);
+                currentSoul -= healMultiplier * (startingHealth + (level * 3) - currentHealth);
                 currentHealth = startingHealth + (level * 3);
             }
             else
             {
-                currentHealth += currentSoul / 3;
+                currentHealth += currentSoul * healMultiplier;
                 currentSoul = 0;
             }
         }

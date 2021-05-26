@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6881212823454452075}
+  - component: {fileID: -24403993149003274}
   - component: {fileID: 7782044085267761917}
   - component: {fileID: 7932186113534857949}
   - component: {fileID: 1628956820474122658}
-  - component: {fileID: -24403993149003274}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Attack
@@ -34,6 +34,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-24403993149003274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8204146499462120451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc99820a6000146499661737e003d13d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  timeTillDestroy: 1
+  soulGainMultiplier: 0.2
+  type: 0
 --- !u!212 &7782044085267761917
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -122,18 +138,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &-24403993149003274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8204146499462120451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc99820a6000146499661737e003d13d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  timeTillDestroy: 1
-  type: 0
