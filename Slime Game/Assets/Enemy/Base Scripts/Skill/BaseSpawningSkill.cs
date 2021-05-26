@@ -6,6 +6,7 @@ public class BaseSpawningSkill : BaseSkill
 {
     public GameObject skillPrefab;
     public float timeTillSpawn;
+    bool hasSpawnedSkill = false;
 
     public override void Start()
     {
@@ -20,10 +21,10 @@ public class BaseSpawningSkill : BaseSkill
         {
             timeTillSpawn -= Time.deltaTime;
         }
-        else
+        else if(!hasSpawnedSkill)
         {
-            GameObject skill = Instantiate(skillPrefab, transform.position, transform.rotation);
-            skill.GetComponent<BaseSkill>().owner = this.gameObject;
+            hasSpawnedSkill = true;
+            Instantiate(skillPrefab, transform.position, transform.rotation, RoomManager.instance.currentRoom.transform);
             Destroy(gameObject);
         }
     }

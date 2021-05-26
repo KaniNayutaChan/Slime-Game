@@ -7,17 +7,8 @@ public class BaseProjectileSkill : BaseSkill
     public bool destroyOnArena;
     public float speed;
     public float rotationSpeed;
-    public Vector3 startRotation;
     public Vector3 forceVector;
     Rigidbody2D rb;
-
-    public Direction direction;
-    public enum Direction
-    {
-        Default,
-        FacePlayer,
-        FaceAwayFromOwner
-    }
 
     public enum ProjectileType 
     {
@@ -32,25 +23,13 @@ public class BaseProjectileSkill : BaseSkill
     {
         base.Start();
 
-        if(direction == Direction.FacePlayer)
-        {
-            transform.right = Player.instance.transform.position - transform.position;
-        }
-        else if(direction == Direction.FaceAwayFromOwner)
-        {
-            transform.right = transform.position - owner.transform.position;
-        }
-        else if (projectileType == ProjectileType.Parabolic)
+        if (projectileType == ProjectileType.Parabolic)
         {
             rb = GetComponent<Rigidbody2D>();
             float x = Random.Range(-forceVector.x, forceVector.x);
             float y = Random.Range(forceVector.y, forceVector.z);
             Vector2 force = new Vector2(x, y);
             rb.AddForce(force);
-        }
-        else
-        {
-            transform.rotation = Quaternion.Euler(startRotation);
         }
     }
 

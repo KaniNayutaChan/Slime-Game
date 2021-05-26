@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7241840861477344589}
   - component: {fileID: 7439713375929434169}
   - component: {fileID: 8467731811040982249}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LaserWarning
-  m_TagString: Untagged
+  m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,6 +100,7 @@ MonoBehaviour:
   damage: 0
   timeTillDestroy: 0
   owner: {fileID: 0}
+  direction: 1
   skillPrefab: {fileID: 516953563039789761, guid: 56fcde6b5d8a070499cda409fbb07a79, type: 3}
   timeTillSpawn: 1
 --- !u!1 &1145574036058634056
@@ -112,9 +113,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3841871521366483344}
   - component: {fileID: 528092300963842995}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Square (1)
-  m_TagString: Untagged
+  m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,8 +128,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1145574036058634056}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -12, z: 0}
-  m_LocalScale: {x: 1, y: 25, z: 1}
+  m_LocalPosition: {x: 12, y: 0, z: 0}
+  m_LocalScale: {x: 25, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 7241840861477344589}
   m_RootOrder: 0

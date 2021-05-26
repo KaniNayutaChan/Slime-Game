@@ -214,7 +214,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 'Directed '
+  m_Name: Directed
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -250,18 +250,18 @@ MonoBehaviour:
   startTimeTillMove: 0
   startTimeTillAttack: 0
   timeBetweenAttacks: 0
-  noOfAttacks: 0
+  noOfAttacks: 1
   skillPrefab: {fileID: 516953563039789761, guid: c5873e5fdbdd9b343aa239aedd25e978, type: 3}
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
-  spawnVector: {x: 0, y: 0, z: 0}
+  spawnVector: {x: 1, y: 0, z: 0}
   nextAnimationName: Wait
   startTimeTillNextAnimation: 3
   startOnEnemy: 0
   stopMovingVector: {x: 0, y: 0}
   transitionType: 0
   moveType: 0
-  spawnType: 0
+  spawnType: 1
   spawnTimingType: 0
 --- !u!1102 &-1313497047935655039
 AnimatorState:

@@ -9,12 +9,30 @@ public class BaseSkill : MonoBehaviour
     public float timeTillDestroy;
     [HideInInspector] public GameObject owner;
 
+    public Direction direction;
+    public enum Direction
+    {
+        Default,
+        FacePlayer,
+        FaceAwayFromOwner
+    }
+
     // Start is called before the first frame update
     public virtual void Start()
     {
         if (timeTillDestroy > 0)
         {
             Destroy(gameObject, timeTillDestroy);
+        }
+
+
+        if (direction == Direction.FacePlayer)
+        {
+            transform.right = Player.instance.transform.position - transform.position;
+        }
+        else if (direction == Direction.FaceAwayFromOwner)
+        {
+            transform.right = transform.position - owner.transform.position;
         }
     }
 
