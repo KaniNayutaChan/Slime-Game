@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  debugAttack: 2
+  debugAttack: 9
   attackList:
   - Directed
   - Increment
@@ -166,18 +166,18 @@ MonoBehaviour:
   startTimeTillMove: 0
   startTimeTillAttack: 0
   timeBetweenAttacks: 0
-  noOfAttacks: 0
-  skillPrefab: {fileID: 516953563039789761, guid: cc8b7acc59a076a4f98b15aa309e9b24, type: 3}
+  noOfAttacks: 1
+  skillPrefab: {fileID: 516953563039789761, guid: 0d4d5d0b24207d44f8061545b6a74c46, type: 3}
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
-  spawnVector: {x: 0, y: 0, z: 0}
+  spawnVector: {x: 0, y: 10, z: 0}
   nextAnimationName: Wait
   startTimeTillNextAnimation: 3
   startOnEnemy: 0
   stopMovingVector: {x: 0, y: 0}
   transitionType: 0
   moveType: 0
-  spawnType: 0
+  spawnType: 4
   spawnTimingType: 0
 --- !u!114 &-3633639660685021937
 MonoBehaviour:

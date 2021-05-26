@@ -61,7 +61,7 @@ public class BaseBossIdle : BaseEnemy
         }
 
 #if UNITY_EDITOR
-        if (debugAttack < 10)
+        if (debugAttack < 9)
         {
             attackToUse = debugAttack;
         }
