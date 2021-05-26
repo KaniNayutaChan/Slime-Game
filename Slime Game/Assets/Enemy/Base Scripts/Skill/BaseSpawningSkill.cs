@@ -25,7 +25,7 @@ public class BaseSpawningSkill : BaseSkill
         {
             hasSpawnedSkill = true;
             Instantiate(skillPrefab, transform.position, transform.rotation, RoomManager.instance.currentRoom.transform);
-            Destroy(gameObject);
+            Destroy(gameObject, 0.1f);
         }
     }
 }

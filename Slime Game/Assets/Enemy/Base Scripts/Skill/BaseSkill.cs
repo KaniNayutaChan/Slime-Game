@@ -25,15 +25,17 @@ public class BaseSkill : MonoBehaviour
             Destroy(gameObject, timeTillDestroy);
         }
 
+        switch (direction)
+        {
+            case Direction.FacePlayer:
+                transform.right = Player.instance.transform.position - transform.position;
+                break;
 
-        if (direction == Direction.FacePlayer)
-        {
-            transform.right = Player.instance.transform.position - transform.position;
+            case Direction.FaceAwayFromOwner:
+                transform.right = transform.position - owner.transform.position;
+                break;
         }
-        else if (direction == Direction.FaceAwayFromOwner)
-        {
-            transform.right = transform.position - owner.transform.position;
-        }
+
     }
 
     // Update is called once per frame

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BaseBossIdle : BaseEnemy
 {
+    public int debugAttack;
+
     public string[] attackList;
     int attackToUse;
 
@@ -59,7 +61,10 @@ public class BaseBossIdle : BaseEnemy
         }
 
 #if UNITY_EDITOR
-        attackToUse = 1;
+        if (debugAttack < 10)
+        {
+            attackToUse = debugAttack;
+        }
 #endif
     }
 

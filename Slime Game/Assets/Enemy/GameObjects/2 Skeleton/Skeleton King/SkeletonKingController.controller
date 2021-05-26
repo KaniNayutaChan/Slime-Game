@@ -66,10 +66,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  debugAttack: 2
   attackList:
   - Directed
   - Increment
-  - Sweep
+  - Giant
   - Home
   - Barrier
   minStartTimeTillAttack: 0.5
@@ -306,18 +307,18 @@ MonoBehaviour:
   startTimeTillMove: 0
   startTimeTillAttack: 0
   timeBetweenAttacks: 0
-  noOfAttacks: 0
-  skillPrefab: {fileID: 516953563039789761, guid: 81dc50bfb0e4bc94db75787b11c13773, type: 3}
+  noOfAttacks: 1
+  skillPrefab: {fileID: 516953563039789761, guid: 343ac185ba23a0b4eb74e95b9fe64419, type: 3}
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
-  spawnVector: {x: 0, y: 0, z: 0}
+  spawnVector: {x: 1, y: 0, z: 0}
   nextAnimationName: Wait
   startTimeTillNextAnimation: 3
   startOnEnemy: 0
   stopMovingVector: {x: 0, y: 0}
   transitionType: 0
   moveType: 0
-  spawnType: 0
+  spawnType: 1
   spawnTimingType: 0
 --- !u!91 &9100000
 AnimatorController:
@@ -491,7 +492,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sweep
+  m_Name: Giant
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
