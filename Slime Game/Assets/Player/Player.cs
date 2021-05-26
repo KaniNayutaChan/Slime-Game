@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public Rigidbody2D playerRB;
 
     public bool hasDiedOnce = false;
+    [HideInInspector] public bool isDead = false;
 
     [Space]
     public float movementSpeed;
@@ -338,7 +339,14 @@ public class Player : MonoBehaviour
     {
         if(currentHealth <= 0)
         {
-            StartCoroutine(Die());
+            if(!isDead)
+            { 
+                isDead = true;
+                canMove = false;
+                isJumping = false;
+                playerRB.velocity = Vector2.zero;
+                StartCoroutine(Die());
+            }
         }
     }
 
@@ -350,6 +358,8 @@ public class Player : MonoBehaviour
         {
             //play cutscene
             hasDiedOnce = true;
+
+            //call this after the cutscene
             RoomManager.instance.SpawnRoom(4, RoomManager.instance.respawnPos);
             RoomManager.instance.lastSavedRoomNumber = 5;
             RoomManager.instance.respawnPos = Vector2.zero;
@@ -357,14 +367,18 @@ public class Player : MonoBehaviour
         }
         else
         {
-            RoomManager.instance.SpawnRoom(RoomManager.instance.lastSavedRoomNumber, RoomManager.instance.respawnPos);
             Instantiate(RoomManager.instance.transition);
-            isJumping = false;
-            playerRB.velocity = Vector2.zero;
-            canMove = false;
-            experience /= 2;
-            HealToFull();
+            RoomManager.instance.SpawnRoom(RoomManager.instance.lastSavedRoomNumber, RoomManager.instance.respawnPos);
+            StartCoroutine(Respawn());
         }
+    }
+
+    IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(1.3f);
+        isDead = false;
+        experience /= 2;
+        HealToFull();
     }
 
     void CheckForLevelUp()
