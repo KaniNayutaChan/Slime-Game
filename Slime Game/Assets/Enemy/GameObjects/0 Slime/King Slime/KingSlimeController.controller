@@ -244,7 +244,7 @@ MonoBehaviour:
   maxXDestination: 0
   minYDestination: 0
   maxYDestination: 0
-  stopMovingVector: {x: 0, y: 0}
+  stopMovingVector: {x: 16, y: -2}
   idleType: 1
 --- !u!1102 &-1608687834826901958
 AnimatorState:

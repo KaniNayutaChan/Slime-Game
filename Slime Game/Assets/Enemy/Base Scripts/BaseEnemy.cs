@@ -133,7 +133,7 @@ public class BaseEnemy : StateMachineBehaviour
             destination.x = -x;
         }
 
-        if(destination.y > y)
+        if(destination.y < y)
         {
             destination.y = y;
         }
