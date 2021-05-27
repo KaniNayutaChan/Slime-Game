@@ -32,6 +32,15 @@ public class RoomManager : MonoBehaviour
         public int enemyNumber;
         public Vector3 position;
         [HideInInspector] public int skinNumber;
+
+        public Enemy Clone()
+        {
+            Enemy clone = new Enemy();
+            clone.enemyNumber = enemyNumber;
+            clone.position = position;
+            clone.skinNumber = skinNumber;
+            return clone;
+        }
     }
 
     public RoomList[] rooms;
@@ -83,7 +92,17 @@ public class RoomManager : MonoBehaviour
                 rooms[i].enemies[j].skinNumber = Random.Range(0, enemyList[rooms[i].enemies[j].enemyNumber].skinList.Length);
             }
 
-            rooms[i].aliveEnemies = (Enemy[])rooms[i].enemies.Clone();
+            //rooms[i].aliveEnemies = (Enemy[])rooms[i].enemies.Clone();
+        }
+
+        for (int i = 0; i < rooms.Length; i++)
+        {
+            rooms[i].aliveEnemies = new Enemy[rooms[i].enemies.Length];
+
+            for (int j = 0; j < rooms[i].enemies.Length; j++)
+            {
+                rooms[i].aliveEnemies[j] = rooms[i].enemies[j].Clone();
+            }
         }
     }
 
