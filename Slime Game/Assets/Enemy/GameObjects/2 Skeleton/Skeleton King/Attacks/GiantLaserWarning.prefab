@@ -102,7 +102,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   direction: 2
   skillPrefab: {fileID: 516953563039789761, guid: 41f547879afa0a44482e58246b90550b, type: 3}
-  timeTillSpawn: 1.5
+  timeTillSpawn: 0.8
 --- !u!1 &1145574036058634056
 GameObject:
   m_ObjectHideFlags: 0

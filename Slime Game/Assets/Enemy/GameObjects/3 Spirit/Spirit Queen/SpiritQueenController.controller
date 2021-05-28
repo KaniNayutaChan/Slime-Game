@@ -42,6 +42,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  debugAttack: 0
   attackList:
   - Vanish
   - Summon
