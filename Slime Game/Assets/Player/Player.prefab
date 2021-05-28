@@ -199,7 +199,7 @@ MonoBehaviour:
   spellPrefab: {fileID: 8204146499462120451, guid: dae9fce2aa748bf40a3432bebc322d11, type: 3}
   spellForce: 1400
   startHealTime: 1
-  startIFrameTime: 1
+  startIFrameTime: 2
   knockback: {x: 300, y: 500}
   startLockMovementTime: 0.5
   shrinkSpeed: 5

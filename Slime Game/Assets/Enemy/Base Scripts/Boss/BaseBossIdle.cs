@@ -56,12 +56,13 @@ public class BaseBossIdle : BaseEnemy
                 float x = Random.Range(-maxXDestination, maxXDestination);
                 float y = Random.Range(minYDestination, maxYDestination);
                 SetDestination(x, y);
+                StopMoving(stopMovingVector.x, stopMovingVector.y);
                 FaceDestination();
                 break;
         }
 
 #if UNITY_EDITOR
-        if (debugAttack < 9)
+        if (debugAttack < 7)
         {
             attackToUse = debugAttack;
         }
@@ -76,15 +77,16 @@ public class BaseBossIdle : BaseEnemy
         {
             case IdleType.MoveToPlayer:
                 SetDestinationPlayerX();
+                StopMoving(stopMovingVector.x, stopMovingVector.y);
                 FacePlayer();
                 break;
             case IdleType.FlyToPlayer:
                 SetDestinationPlayer();
+                StopMoving(stopMovingVector.x, stopMovingVector.y);
                 FacePlayer();
                 break;
         }
 
-        StopMoving(stopMovingVector.x, stopMovingVector.y);
         MoveToDestination();
 
         if (timeTillAttack > 0)

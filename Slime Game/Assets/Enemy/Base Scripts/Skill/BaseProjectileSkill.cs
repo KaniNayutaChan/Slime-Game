@@ -53,8 +53,14 @@ public class BaseProjectileSkill : BaseSkill
         {
             if (collision.CompareTag("Arena"))
             {
-                Destroy(gameObject);
+                StartCoroutine(DestroyAfterTime());
             }
         }
+    }
+
+    IEnumerator DestroyAfterTime()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Destroy(gameObject);
     }
 }

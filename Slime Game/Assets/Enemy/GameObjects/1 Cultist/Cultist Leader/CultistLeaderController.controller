@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8801423672668813533
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0fb072142bbff42b2aaef00f217f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  startWaitTime: 1
 --- !u!1102 &-6651285007792886773
 AnimatorState:
   serializedVersion: 6
@@ -37,7 +51,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -5207668136116903936}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -52,6 +67,62 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-5998888100386414478
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ccaf65338613340aa694bc3ba50fc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  startTimeTillMove: 0
+  startTimeTillAttack: 0.5
+  timeBetweenAttacks: 1
+  noOfAttacks: 1
+  skillPrefab: {fileID: 7614546665581012858, guid: 14e37ca7331d41440bc89cb6aceb816b, type: 3}
+  spawnRotation: {x: 0, y: 0, z: 0}
+  movementVector: {x: 0, y: 0, z: 0}
+  spawnVector: {x: 1, y: 0, z: 0}
+  nextAnimationName: Wait
+  startTimeTillNextAnimation: 2
+  startOnEnemy: 0
+  stopMovingVector: {x: 0, y: 0}
+  transitionType: 0
+  moveType: 0
+  spawnType: 1
+  spawnTimingType: 0
+--- !u!114 &-5207668136116903936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87f67da50e6e10b4b85b8393bc89ba22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  debugAttack: 8
+  attackList:
+  - Teleport
+  - Homing
+  - Time
+  - Charge
+  - Movement
+  minStartTimeTillAttack: 0.5
+  maxStartTimeTillAttack: 1
+  maxXDestination: 0
+  minYDestination: 0
+  maxYDestination: 0
+  stopMovingVector: {x: 0, y: 0}
+  idleType: 0
 --- !u!1102 &-5147235669180988050
 AnimatorState:
   serializedVersion: 6
@@ -59,11 +130,12 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack2
+  m_Name: Homing
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 1439934213065068187}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -78,6 +150,120 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-4980277728166885701
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ccaf65338613340aa694bc3ba50fc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  startTimeTillMove: 0
+  startTimeTillAttack: 0.1
+  timeBetweenAttacks: 0
+  noOfAttacks: 1
+  skillPrefab: {fileID: 7614546665581012858, guid: 91b3257db60edf84aa029aeafe48c650, type: 3}
+  spawnRotation: {x: 0, y: 0, z: 0}
+  movementVector: {x: 0, y: 0, z: 0}
+  spawnVector: {x: 0, y: 10, z: 0}
+  nextAnimationName: Wait
+  startTimeTillNextAnimation: 0.5
+  startOnEnemy: 0
+  stopMovingVector: {x: 0, y: 0}
+  transitionType: 0
+  moveType: 0
+  spawnType: 2
+  spawnTimingType: 0
+--- !u!114 &-4728781277897798369
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58b535037d620df4d85ac1249bf044c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  startTimeTillMove: 0
+  startTimeTillAttack: 0.5
+  timeBetweenAttacks: 0
+  noOfAttacks: 1
+  skillPrefab: {fileID: 0}
+  spawnRotation: {x: 0, y: 0, z: 0}
+  movementVector: {x: 10, y: 0, z: 0}
+  spawnVector: {x: 0, y: 0, z: 0}
+  nextAnimationName: Wait
+  startTimeTillNextAnimation: 0.5
+  startOnEnemy: 0
+  stopMovingVector: {x: 0, y: 0}
+  transitionType: 1
+  moveType: 0
+  spawnType: 0
+  spawnTimingType: 0
+--- !u!1102 &-3377347937582325797
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Intro
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours:
+  - {fileID: 7340581791953828092}
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!114 &-3329524991509560607
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b81c4f49af22dc4a9969af2d750a1d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  startTimeTillMove: 0
+  startTimeTillAttack: 2
+  timeBetweenAttacks: 0
+  noOfAttacks: 1
+  skillPrefab: {fileID: 7614546665581012858, guid: 91b3257db60edf84aa029aeafe48c650, type: 3}
+  spawnRotation: {x: 0, y: 0, z: 0}
+  movementVector: {x: 0, y: 0, z: 0}
+  spawnVector: {x: 0, y: 10, z: 0}
+  nextAnimationName: Wait
+  startTimeTillNextAnimation: 2.5
+  startOnEnemy: 0
+  stopMovingVector: {x: 0, y: 0}
+  transitionType: 0
+  moveType: 0
+  spawnType: 2
+  spawnTimingType: 0
 --- !u!1102 &-2934327318564176180
 AnimatorState:
   serializedVersion: 6
@@ -85,11 +271,12 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack1
+  m_Name: Time
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 877419314907192983}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -111,11 +298,12 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack4
+  m_Name: Movement
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 5536223702746910151}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -130,6 +318,35 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-341678896173690342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ccaf65338613340aa694bc3ba50fc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  startTimeTillMove: 0
+  startTimeTillAttack: 0
+  timeBetweenAttacks: 0
+  noOfAttacks: 0
+  skillPrefab: {fileID: 0}
+  spawnRotation: {x: 0, y: 0, z: 0}
+  movementVector: {x: 0, y: 0, z: 0}
+  spawnVector: {x: 0, y: 0, z: 0}
+  nextAnimationName: 
+  startTimeTillNextAnimation: 0
+  startOnEnemy: 0
+  stopMovingVector: {x: 0, y: 0}
+  transitionType: 0
+  moveType: 0
+  spawnType: 0
+  spawnTimingType: 0
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -152,6 +369,64 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!114 &877419314907192983
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ccaf65338613340aa694bc3ba50fc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  startTimeTillMove: 0
+  startTimeTillAttack: 1.5
+  timeBetweenAttacks: 0
+  noOfAttacks: 1
+  skillPrefab: {fileID: 7614546665581012858, guid: e1a6724258498264a8625ab880a71738, type: 3}
+  spawnRotation: {x: 0, y: 0, z: 0}
+  movementVector: {x: 0, y: 0, z: 0}
+  spawnVector: {x: 0, y: 0, z: 0}
+  nextAnimationName: TimePart2
+  startTimeTillNextAnimation: 2.5
+  startOnEnemy: 0
+  stopMovingVector: {x: 0, y: 0}
+  transitionType: 0
+  moveType: 0
+  spawnType: 1
+  spawnTimingType: 0
+--- !u!114 &1439934213065068187
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ccaf65338613340aa694bc3ba50fc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  startTimeTillMove: 0
+  startTimeTillAttack: 0.5
+  timeBetweenAttacks: 0.5
+  noOfAttacks: 3
+  skillPrefab: {fileID: 7614546665581012858, guid: 3783e283903ebad47a6b53cee8245c14, type: 3}
+  spawnRotation: {x: 0, y: 0, z: 0}
+  movementVector: {x: 0, y: 0, z: 0}
+  spawnVector: {x: 12, y: 10, z: 10}
+  nextAnimationName: Wait
+  startTimeTillNextAnimation: 3
+  startOnEnemy: 0
+  stopMovingVector: {x: 0, y: 0}
+  transitionType: 0
+  moveType: 0
+  spawnType: 3
+  spawnTimingType: 0
 --- !u!1102 &1888074609722055276
 AnimatorState:
   serializedVersion: 6
@@ -163,7 +438,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -8801423672668813533}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -178,6 +454,35 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &5536223702746910151
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ccaf65338613340aa694bc3ba50fc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  startTimeTillMove: 0
+  startTimeTillAttack: 0.5
+  timeBetweenAttacks: 0
+  noOfAttacks: 1
+  skillPrefab: {fileID: 7614546665581012858, guid: 4be54f09fdee777458811741a002cbb6, type: 3}
+  spawnRotation: {x: 0, y: 0, z: 0}
+  movementVector: {x: 0, y: 0, z: 0}
+  spawnVector: {x: 0, y: 0, z: 0}
+  nextAnimationName: Wait
+  startTimeTillNextAnimation: 2
+  startOnEnemy: 0
+  stopMovingVector: {x: 0, y: 0}
+  transitionType: 0
+  moveType: 0
+  spawnType: 2
+  spawnTimingType: 0
 --- !u!1107 &5536457737418180363
 AnimatorStateMachine:
   serializedVersion: 6
@@ -195,29 +500,111 @@ AnimatorStateMachine:
     m_Position: {x: 210, y: 150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2934327318564176180}
-    m_Position: {x: 210, y: 190, z: 0}
+    m_Position: {x: 210, y: 270, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6651285007792886773}
-    m_Position: {x: 210, y: 350, z: 0}
+    m_Position: {x: 210, y: 390, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5147235669180988050}
     m_Position: {x: 210, y: 230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8168768485346525399}
-    m_Position: {x: 210, y: 270, z: 0}
+    m_Position: {x: 210, y: 310, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1313497047935655039}
-    m_Position: {x: 210, y: 310, z: 0}
+    m_Position: {x: 210, y: 350, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 8234536605463507770}
+    m_Position: {x: 210, y: 190, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -3377347937582325797}
+    m_Position: {x: 210, y: 70, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 7845582936655018808}
+    m_Position: {x: 410, y: 350, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 7145276172903510409}
+    m_Position: {x: 410, y: 270, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
-  m_EntryPosition: {x: 50, y: 120, z: 0}
+  m_EntryPosition: {x: 50, y: 80, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -6228188618512058281}
+  m_DefaultState: {fileID: -3377347937582325797}
+--- !u!1102 &7145276172903510409
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TimePart2
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours:
+  - {fileID: -5998888100386414478}
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!114 &7340581791953828092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd690664bb169ae43be6b3e64a5c7c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  minXTrigger: -15
+  maxXTrigger: 15
+  startTimeTillIdle: 1
+--- !u!1102 &7845582936655018808
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MovementPart2
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours:
+  - {fileID: -4980277728166885701}
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &8168768485346525399
 AnimatorState:
   serializedVersion: 6
@@ -225,11 +612,39 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack3
+  m_Name: Charge
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -3329524991509560607}
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &8234536605463507770
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Teleport
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours:
+  - {fileID: -4728781277897798369}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

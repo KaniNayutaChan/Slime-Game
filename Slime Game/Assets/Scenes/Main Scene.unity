@@ -1366,8 +1366,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db96a998b9fdf904790e194007cd1181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugSpawnRoomNumber: 0
-  debugSpawnPosition: {x: 0, y: 0}
+  debugSpawnRoomNumber: 2
+  debugSpawnPosition: {x: -15, y: 0}
   transition: {fileID: 320107546014614382, guid: f461eed50b1c9314a8a91484e794ae6a, type: 3}
   lastSavedRoomNumber: 0
   respawnPos: {x: 0, y: 0}
@@ -1421,14 +1421,11 @@ MonoBehaviour:
     enemies: []
     aliveEnemies: []
   - room: {fileID: 8306673048785316087, guid: ed1bce9eea248d4418f297d7b783de25, type: 3}
-    enemies:
-    - enemyNumber: 1
-      position: {x: 3, y: 2, z: 0}
-      skinNumber: 0
+    enemies: []
     aliveEnemies: []
   - room: {fileID: 8306673048785316087, guid: 7a228a891e362904d8048658386139b0, type: 3}
     enemies:
-    - enemyNumber: 8
+    - enemyNumber: 5
       position: {x: 0, y: -3, z: 0}
       skinNumber: 0
     aliveEnemies: []
