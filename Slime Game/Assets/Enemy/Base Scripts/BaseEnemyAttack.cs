@@ -215,8 +215,16 @@ public class BaseEnemyAttack : BaseEnemy
 
         if (spawnType != SpawnType.NoSpawn)
         {
-            skill = Instantiate(skillPrefab, spawnPos, Quaternion.Euler(spawnRotation), RoomManager.instance.currentRoom.transform);
-            skill.GetComponent<BaseSkill>().owner = enemyPos.gameObject;
+            if (!IsFacingLeft())
+            {
+                skill = Instantiate(skillPrefab, spawnPos, Quaternion.Euler(new Vector3(spawnRotation.x, spawnRotation.y, spawnRotation.z)), RoomManager.instance.currentRoom.transform);
+                skill.GetComponent<BaseSkill>().owner = enemyPos.gameObject;
+            }
+            else
+            {
+                skill = Instantiate(skillPrefab, spawnPos, Quaternion.Euler(new Vector3(spawnRotation.x, spawnRotation.y + 180, spawnRotation.z)), RoomManager.instance.currentRoom.transform);
+                skill.GetComponent<BaseSkill>().owner = enemyPos.gameObject;
+            }
         }
     }
 

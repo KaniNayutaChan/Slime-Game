@@ -194,9 +194,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  debugAttack: 2
+  debugAttack: 0
   attackList:
-  - Swarm
+  - Bats
   - Swoop
   - Smash
   - Blood
@@ -223,21 +223,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   startTimeTillMove: 0
-  startTimeTillAttack: 0
+  startTimeTillAttack: 1
   timeBetweenAttacks: 0
-  noOfAttacks: 0
-  skillPrefab: {fileID: 0}
+  noOfAttacks: 1
+  skillPrefab: {fileID: 4703407586692753627, guid: c3c40e96ccad18d41aa3fb505d599bbf, type: 3}
   destroySkillAfterAnimation: 0
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
-  spawnVector: {x: 0, y: 0, z: 0}
-  nextAnimationName: 
-  startTimeTillNextAnimation: 0
+  spawnVector: {x: 20, y: 0, z: 0}
+  nextAnimationName: Wait
+  startTimeTillNextAnimation: 2
   startOnEnemy: 0
   stopMovingVector: {x: 0, y: 0}
   transitionType: 0
   moveType: 0
-  spawnType: 0
+  spawnType: 4
   spawnTimingType: 0
 --- !u!1102 &-2934327318564176180
 AnimatorState:
@@ -246,7 +246,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Swarm
+  m_Name: Bats
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
