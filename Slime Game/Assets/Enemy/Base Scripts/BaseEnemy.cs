@@ -87,7 +87,14 @@ public class BaseEnemy : StateMachineBehaviour
 
     protected void SetDestinationEnemy(float x, float y)
     {
-        destination.Set(enemyPos.position.x + x, enemyPos.position.y + y, enemyPos.position.z);
+        if (!IsFacingLeft())
+        {
+            destination.Set(enemyPos.position.x + x, enemyPos.position.y + y, enemyPos.position.z);
+        }
+        else
+        {
+            destination.Set(enemyPos.position.x - x, enemyPos.position.y + y, enemyPos.position.z);
+        }
     }
 
     protected bool IsAtDestination()
