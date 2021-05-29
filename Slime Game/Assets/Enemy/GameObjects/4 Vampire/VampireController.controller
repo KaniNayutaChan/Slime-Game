@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  debugAttack: 1
+  debugAttack: 2
   attackList:
   - Swarm
   - Swoop
@@ -266,6 +266,36 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-2602173338744104971
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ccaf65338613340aa694bc3ba50fc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 15
+  startTimeTillMove: 0
+  startTimeTillAttack: 0.1
+  timeBetweenAttacks: 0
+  noOfAttacks: 1
+  skillPrefab: {fileID: 4703407586692753627, guid: 7a82f87de7116c349b55a6179999a69b, type: 3}
+  destroySkillAfterAnimation: 1
+  spawnRotation: {x: 0, y: 0, z: 0}
+  movementVector: {x: 0, y: -2, z: 0}
+  spawnVector: {x: 0, y: 0, z: 0}
+  nextAnimationName: 
+  startTimeTillNextAnimation: 0
+  startOnEnemy: 0
+  stopMovingVector: {x: 16, y: -2}
+  transitionType: 1
+  moveType: 5
+  spawnType: 1
+  spawnTimingType: 0
 --- !u!114 &-2108422194879526384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -335,23 +365,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ccaf65338613340aa694bc3ba50fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  startTimeTillMove: 0
-  startTimeTillAttack: 0
+  speed: 15
+  startTimeTillMove: 0.5
+  startTimeTillAttack: 0.5
   timeBetweenAttacks: 0
-  noOfAttacks: 0
-  skillPrefab: {fileID: 0}
-  destroySkillAfterAnimation: 0
+  noOfAttacks: 1
+  skillPrefab: {fileID: 4703407586692753627, guid: 7a82f87de7116c349b55a6179999a69b, type: 3}
+  destroySkillAfterAnimation: 1
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
   spawnVector: {x: 0, y: 0, z: 0}
-  nextAnimationName: 
+  nextAnimationName: Smash2
   startTimeTillNextAnimation: 0
   startOnEnemy: 0
-  stopMovingVector: {x: 0, y: 0}
-  transitionType: 0
-  moveType: 0
-  spawnType: 0
+  stopMovingVector: {x: 16, y: -2}
+  transitionType: 1
+  moveType: 1
+  spawnType: 1
   spawnTimingType: 0
 --- !u!1102 &-1145199707004952674
 AnimatorState:
@@ -601,6 +631,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -154738451704721713}
     m_Position: {x: 610, y: 230, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 6286907554361674006}
+    m_Position: {x: 410, y: 270, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -611,6 +644,33 @@ AnimatorStateMachine:
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 4150926594226914734}
+--- !u!1102 &6286907554361674006
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Smash2
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours:
+  - {fileID: -2602173338744104971}
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!114 &6931973557165980670
 MonoBehaviour:
   m_ObjectHideFlags: 1
