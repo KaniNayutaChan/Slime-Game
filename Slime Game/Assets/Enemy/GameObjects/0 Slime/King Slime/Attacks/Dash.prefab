@@ -99,8 +99,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stayOnOwner: 1
   damage: 3
-  timeTillDestroy: 1
+  timeTillDestroy: 5
   owner: {fileID: 0}
+  direction: 0
 --- !u!58 &5936497254149767311
 CircleCollider2D:
   m_ObjectHideFlags: 0

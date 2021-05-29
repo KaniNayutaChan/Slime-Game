@@ -125,6 +125,7 @@ MonoBehaviour:
   timeBetweenAttacks: 0
   noOfAttacks: 0
   skillPrefab: {fileID: 0}
+  destroySkillAfterAnimation: 0
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 2, z: 0}
   spawnVector: {x: 0, y: 0, z: 0}
@@ -233,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  debugAttack: 0
   attackList:
   - Spit
   - Jump
@@ -291,12 +293,13 @@ MonoBehaviour:
   timeBetweenAttacks: 0
   noOfAttacks: 1
   skillPrefab: {fileID: 4703407586692753627, guid: 7f11967f0ad64f240ba27162bf8bd4f7, type: 3}
+  destroySkillAfterAnimation: 0
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
   spawnVector: {x: 0, y: 0, z: 0}
   nextAnimationName: Wait
   startTimeTillNextAnimation: 1
-  startOnEnemy: 0
+  startOnEnemy: 1
   stopMovingVector: {x: 16, y: -2}
   transitionType: 1
   moveType: 1
@@ -347,6 +350,7 @@ MonoBehaviour:
   timeBetweenAttacks: 0
   noOfAttacks: 1
   skillPrefab: {fileID: 4703407586692753627, guid: a002598cf24621242bc813f0f45bc40f, type: 3}
+  destroySkillAfterAnimation: 0
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
   spawnVector: {x: 0, y: 0, z: 0}
@@ -474,6 +478,7 @@ MonoBehaviour:
   timeBetweenAttacks: 0
   noOfAttacks: 10
   skillPrefab: {fileID: 4703407586692753627, guid: aab1e662fd07d8542a0109a7d161770b, type: 3}
+  destroySkillAfterAnimation: 0
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 16, y: -16, z: 0}
   spawnVector: {x: 17, y: 10, z: 5}
@@ -503,6 +508,7 @@ MonoBehaviour:
   timeBetweenAttacks: 0
   noOfAttacks: 2
   skillPrefab: {fileID: 4703407586692753627, guid: 7e7e79f38f1bd244f8b138d0877d787a, type: 3}
+  destroySkillAfterAnimation: 0
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: -2, z: 0}
   spawnVector: {x: 1, y: 0, z: 2}
@@ -532,6 +538,7 @@ MonoBehaviour:
   timeBetweenAttacks: 0
   noOfAttacks: 5
   skillPrefab: {fileID: 4703407586692753627, guid: e04f658944f05074980d47e0df6ca5b4, type: 3}
+  destroySkillAfterAnimation: 0
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
   spawnVector: {x: 0, y: 0, z: 0}

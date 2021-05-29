@@ -12,6 +12,8 @@ public class BaseEnemyAttack : BaseEnemy
     protected int counter;
     public int noOfAttacks;
     public GameObject skillPrefab;
+    GameObject skill;
+    public bool destroySkillAfterAnimation;
     protected Vector3 spawnPos;
     public Vector3 spawnRotation;
     public Vector3 movementVector;
@@ -182,6 +184,14 @@ public class BaseEnemyAttack : BaseEnemy
         }
     }
 
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if(destroySkillAfterAnimation)
+        {
+            Destroy(skill.gameObject);
+        }
+    }
+
     protected virtual void UseAttack()
     {
         switch (spawnType)
@@ -205,7 +215,7 @@ public class BaseEnemyAttack : BaseEnemy
 
         if (spawnType != SpawnType.NoSpawn)
         {
-            GameObject skill = Instantiate(skillPrefab, spawnPos, Quaternion.Euler(spawnRotation), RoomManager.instance.currentRoom.transform);
+            skill = Instantiate(skillPrefab, spawnPos, Quaternion.Euler(spawnRotation), RoomManager.instance.currentRoom.transform);
             skill.GetComponent<BaseSkill>().owner = enemyPos.gameObject;
         }
     }

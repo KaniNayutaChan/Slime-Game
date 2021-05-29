@@ -18,6 +18,7 @@ MonoBehaviour:
   timeBetweenAttacks: 0.1
   noOfAttacks: 10
   skillPrefab: {fileID: 7614546665581012858, guid: cb28997b99f249a458717ef36ee40296, type: 3}
+  destroySkillAfterAnimation: 0
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
   spawnVector: {x: 0, y: 0, z: 0}
@@ -74,6 +75,7 @@ MonoBehaviour:
   timeBetweenAttacks: 0.3
   noOfAttacks: 5
   skillPrefab: {fileID: 7614546665581012858, guid: a62dc4046bdc9ea43bae9ca66c63a8ef, type: 3}
+  destroySkillAfterAnimation: 0
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
   spawnVector: {x: 0, y: 0, z: 0}
@@ -130,6 +132,7 @@ MonoBehaviour:
   timeBetweenAttacks: 0
   noOfAttacks: 1
   skillPrefab: {fileID: 7614546665581012858, guid: 526040b2e00f3af42ac71ad5bf29972b, type: 3}
+  destroySkillAfterAnimation: 0
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: -2, z: 0}
   spawnVector: {x: 1, y: 0, z: 0}
@@ -281,6 +284,7 @@ MonoBehaviour:
   timeBetweenAttacks: 0
   noOfAttacks: 1
   skillPrefab: {fileID: 7614546665581012858, guid: 8fb6622e9935cb140acc7fb66ab73ae0, type: 3}
+  destroySkillAfterAnimation: 1
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
   spawnVector: {x: 0, y: 0, z: 0}
@@ -474,6 +478,7 @@ MonoBehaviour:
   timeBetweenAttacks: 0
   noOfAttacks: 1
   skillPrefab: {fileID: 4703407586692753627, guid: f2cc9f960ae6a154e9600d94789021aa, type: 3}
+  destroySkillAfterAnimation: 0
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
   spawnVector: {x: 15, y: 3, z: 5}
