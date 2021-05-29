@@ -540,6 +540,30 @@ public class Player : MonoBehaviour
         Debug.Log("Game saved");
     }
 
+    public void TakeDamage(BaseSkill baseSkill)
+    {
+        currentHealth -= baseSkill.damage;
+
+        SetSizeToHealth();
+        hasIFrames = true;
+        IFrameTime = startIFrameTime;
+        Time.timeScale = 1;
+        isAttacking = false;
+        isJumping = false;
+
+        if (transform.position.x > baseSkill.transform.position.x)
+        {
+            knockbackVector.Set(knockback.x, knockback.y);
+        }
+        else
+        {
+            knockbackVector.Set(-knockback.x, knockback.y);
+        }
+
+        playerRB.AddForce(knockbackVector);
+        lockMovementTime = startLockMovementTime;
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.CompareTag("Door"))
@@ -561,26 +585,7 @@ public class Player : MonoBehaviour
 
                 if (baseSkill.damage > 0)
                 {
-                    currentHealth -= baseSkill.damage;
-
-                    SetSizeToHealth();
-                    hasIFrames = true;
-                    IFrameTime = startIFrameTime;
-                    Time.timeScale = 1;
-                    isAttacking = false;
-                    isJumping = false;
-
-                    if (transform.position.x > baseSkill.transform.position.x)
-                    {
-                        knockbackVector.Set(knockback.x, knockback.y);
-                    }
-                    else
-                    {
-                        knockbackVector.Set(-knockback.x, knockback.y);
-                    }
-
-                    playerRB.AddForce(knockbackVector);
-                    lockMovementTime = startLockMovementTime;
+                    TakeDamage(baseSkill);
                 }
             }
         }
