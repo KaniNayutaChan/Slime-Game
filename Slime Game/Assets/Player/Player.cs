@@ -432,6 +432,7 @@ public class Player : MonoBehaviour
                 isShrinking = true;
                 shrinkTime = startShrinkTime;
                 shrinkVector.Set((transform.localScale.x - minSize), (transform.localScale.x - minSize), (transform.localScale.x - minSize));
+                currentAttackDamage /= 2;
             }
         }
 
@@ -460,6 +461,7 @@ public class Player : MonoBehaviour
             else
             {
                 isExpanding = false;
+                currentAttackDamage *= 2;
             }
         }
 
