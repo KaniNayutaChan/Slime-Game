@@ -98,7 +98,7 @@ public class BaseEnemyAttack : BaseEnemy
                 }
                 else
                 {
-                    SetDestinationX(movementVector.y);
+                    SetDestinationX(-movementVector.x);
                 }
                 FaceDestination();
                 break;
