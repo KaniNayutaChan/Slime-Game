@@ -124,6 +124,7 @@ MonoBehaviour:
   maxYDestination: 0
   stopMovingVector: {x: 0, y: 0}
   idleType: 0
+  forcedAttackCounter: 0
   forcedAttacksList:
   - forcedAttackName: Hell
     forcedAttackThreshHold: 0.6
@@ -483,7 +484,7 @@ MonoBehaviour:
   startTimeTillAttack: 0.5
   timeBetweenAttacks: 0
   noOfAttacks: 1
-  skillPrefab: {fileID: 7614546665581012858, guid: 4be54f09fdee777458811741a002cbb6, type: 3}
+  skillPrefab: {fileID: 7614546665581012858, guid: 3783e283903ebad47a6b53cee8245c14, type: 3}
   destroySkillAfterAnimation: 0
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
