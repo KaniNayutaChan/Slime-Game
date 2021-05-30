@@ -12,22 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ccaf65338613340aa694bc3ba50fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  startTimeTillMove: 0.5
-  startTimeTillAttack: 0.5
-  timeBetweenAttacks: 0
-  noOfAttacks: 1
-  skillPrefab: {fileID: 4703407586692753627, guid: 7f11967f0ad64f240ba27162bf8bd4f7, type: 3}
+  speed: 0
+  startTimeTillMove: 0
+  startTimeTillAttack: 1
+  timeBetweenAttacks: 0.1
+  noOfAttacks: 30
+  skillPrefab: {fileID: 4703407586692753627, guid: e04f658944f05074980d47e0df6ca5b4, type: 3}
   destroySkillAfterAnimation: 0
   spawnRotation: {x: 0, y: 0, z: 0}
   movementVector: {x: 0, y: 0, z: 0}
   spawnVector: {x: 0, y: 0, z: 0}
   nextAnimationName: Wait
-  startTimeTillNextAnimation: 1
-  startOnEnemy: 1
+  startTimeTillNextAnimation: 5
+  startOnEnemy: 0
   stopMovingVector: {x: 16, y: -2}
-  transitionType: 1
-  moveType: 1
+  transitionType: 0
+  moveType: 0
   spawnType: 1
   spawnTimingType: 0
 --- !u!1102 &-6651285007792886773

@@ -32,7 +32,7 @@ public class BaseBossIdle : BaseEnemy
     }
 
     BaseEnemyHealth baseEnemyHealth;
-    int forcedAttackCounter = 0;
+    public int forcedAttackCounter = 0;
     public ForcedAttacks[] forcedAttacksList;
     [System.Serializable]
     public class ForcedAttacks
@@ -63,10 +63,11 @@ public class BaseBossIdle : BaseEnemy
         {
             if (baseEnemyHealth.currentHealth < forcedAttacksList[forcedAttackCounter].forcedAttackThreshHold * baseEnemyHealth.maxHealth)
             {
-                forcedAttackCounter++;
                 animator.Play(forcedAttacksList[forcedAttackCounter].forcedAttackName);
+                forcedAttackCounter++;
             }
         }
+
         switch (idleType)
         {
             case IdleType.StayStill:
