@@ -283,6 +283,14 @@ public class BaseEnemyAttack : BaseEnemy
 
     protected void SetSpawnPosCircle(float gapDistance)
     {
-        spawnPos.Set(enemyPos.position.x + (gapDistance * Mathf.Cos(2 * Mathf.PI * counter / noOfAttacks)), enemyPos.position .y + (gapDistance * Mathf.Sin((2 * Mathf.PI * counter) / noOfAttacks)), 0);
+        if (startOnEnemy)
+        {
+            spawnPos.Set(enemyPos.position.x + (gapDistance * Mathf.Cos(2 * Mathf.PI * counter / noOfAttacks)), enemyPos.position.y + (gapDistance * Mathf.Sin((2 * Mathf.PI * counter) / noOfAttacks)), 0);
+        }
+        else
+        {
+            spawnPos.Set(playerPos.position.x + (gapDistance * Mathf.Cos(2 * Mathf.PI * counter / noOfAttacks)), playerPos.position.y + (gapDistance * Mathf.Sin((2 * Mathf.PI * counter) / noOfAttacks)), 0);
+
+        }
     }
 }

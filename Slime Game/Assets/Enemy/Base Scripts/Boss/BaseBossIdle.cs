@@ -32,7 +32,7 @@ public class BaseBossIdle : BaseEnemy
     }
 
     BaseEnemyHealth baseEnemyHealth;
-    public int forcedAttackCounter = 0;
+    int forcedAttackCounter = 0;
     public ForcedAttacks[] forcedAttacksList;
     [System.Serializable]
     public class ForcedAttacks

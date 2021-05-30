@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class BaseProjectileSkill : BaseSkill
 {
+    public float timeTillMove;
     public bool destroyOnArena;
     public float speed;
+    float currentSpeed;
     public float rotationSpeed;
     public Vector3 forceVector;
     Rigidbody2D rb;
@@ -23,6 +25,8 @@ public class BaseProjectileSkill : BaseSkill
     {
         base.Start();
 
+        currentSpeed = 0;
+
         if (projectileType == ProjectileType.Parabolic)
         {
             rb = GetComponent<Rigidbody2D>();
@@ -36,7 +40,16 @@ public class BaseProjectileSkill : BaseSkill
     // Update is called once per frame
     public override void Update()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        if(timeTillMove > 0)
+        {
+            timeTillMove -= Time.deltaTime;
+        }
+        else
+        {
+            currentSpeed = speed;
+        }
+
+        transform.Translate(Vector3.right * currentSpeed * Time.deltaTime);
 
         if (projectileType == ProjectileType.Homing)
         {

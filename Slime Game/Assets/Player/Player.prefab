@@ -195,7 +195,7 @@ MonoBehaviour:
   currentSoul: 0
   healMultiplier: 0.2
   startingSpellDamage: 7
-  startSpellCooldown: 5
+  startSpellCooldown: 3
   spellPrefab: {fileID: 8204146499462120451, guid: dae9fce2aa748bf40a3432bebc322d11, type: 3}
   spellForce: 1400
   startHealTime: 1
@@ -205,8 +205,8 @@ MonoBehaviour:
   shrinkSpeed: 5
   minSize: 0.1
   startShrinkTime: 2
-  startShrinkCooldown: 5
-  startBarrierCooldown: 5
+  startShrinkCooldown: 3
+  startBarrierCooldown: 3
   barrier: {fileID: 8204146499462120451, guid: e9eccd8814b64ce40abd7c200dc8296c, type: 3}
 --- !u!212 &1721146684308831191
 SpriteRenderer:
