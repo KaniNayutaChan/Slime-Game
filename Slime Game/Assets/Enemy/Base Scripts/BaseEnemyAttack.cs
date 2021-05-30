@@ -186,9 +186,12 @@ public class BaseEnemyAttack : BaseEnemy
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(destroySkillAfterAnimation)
+        if (destroySkillAfterAnimation)
         {
-            Destroy(skill.gameObject);
+            if (skill != null)
+            {
+                Destroy(skill.gameObject);
+            }
         }
     }
 

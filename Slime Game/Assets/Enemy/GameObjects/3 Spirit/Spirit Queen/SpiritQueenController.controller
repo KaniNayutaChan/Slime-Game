@@ -57,6 +57,11 @@ MonoBehaviour:
   maxYDestination: 5
   stopMovingVector: {x: 16, y: -2}
   idleType: 3
+  forcedAttacksList:
+  - forcedAttackName: Hell
+    forcedAttackThreshHold: 0.6
+  - forcedAttackName: Hell
+    forcedAttackThreshHold: 0.3
 --- !u!114 &-6943124901655006889
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -239,6 +244,33 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1102 &-3155744952652156409
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hell
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours:
+  - {fileID: 4815059782163206155}
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &-2934327318564176180
 AnimatorState:
   serializedVersion: 6
@@ -372,6 +404,36 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &4815059782163206155
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ccaf65338613340aa694bc3ba50fc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  startTimeTillMove: 0.5
+  startTimeTillAttack: 0.5
+  timeBetweenAttacks: 0
+  noOfAttacks: 1
+  skillPrefab: {fileID: 7614546665581012858, guid: 526040b2e00f3af42ac71ad5bf29972b, type: 3}
+  destroySkillAfterAnimation: 0
+  spawnRotation: {x: 0, y: 0, z: 0}
+  movementVector: {x: 0, y: -2, z: 0}
+  spawnVector: {x: 1, y: 0, z: 0}
+  nextAnimationName: Wait
+  startTimeTillNextAnimation: 2
+  startOnEnemy: 0
+  stopMovingVector: {x: 16, y: -1}
+  transitionType: 1
+  moveType: 5
+  spawnType: 1
+  spawnTimingType: 1
 --- !u!114 &4889504725220922760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -420,10 +482,13 @@ AnimatorStateMachine:
     m_Position: {x: 210, y: 310, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7337506714417499984}
-    m_Position: {x: 210, y: 390, z: 0}
+    m_Position: {x: 210, y: 430, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3565159142491516591}
     m_Position: {x: 210, y: 70, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -3155744952652156409}
+    m_Position: {x: 210, y: 390, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

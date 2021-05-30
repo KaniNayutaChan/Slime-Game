@@ -31,12 +31,26 @@ public class BaseBossIdle : BaseEnemy
         MoveToRandomDestination
     }
 
+    BaseEnemyHealth baseEnemyHealth;
+    int forcedAttackCounter = 0;
+    public ForcedAttacks[] forcedAttacksList;
+    [System.Serializable]
+    public class ForcedAttacks
+    {
+        public string forcedAttackName;
+        public float forcedAttackThreshHold;
+    }
+
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
+
+        baseEnemyHealth = animator.GetComponent<BaseEnemyHealth>();
+
         timeTillAttack = Random.Range(minStartTimeTillAttack, maxStartTimeTillAttack);
 
         attackToUse = Random.Range(0, attackList.Length);
+
         while (attackToUse == lastAttack && attackToUse == secondLastAttack)
         {
             attackToUse = Random.Range(0, attackList.Length);
@@ -45,6 +59,14 @@ public class BaseBossIdle : BaseEnemy
         lastAttack = secondLastAttack;
         lastAttack = attackToUse;
 
+        if (forcedAttackCounter < forcedAttacksList.Length)
+        {
+            if (baseEnemyHealth.currentHealth < forcedAttacksList[forcedAttackCounter].forcedAttackThreshHold * baseEnemyHealth.maxHealth)
+            {
+                forcedAttackCounter++;
+                animator.Play(forcedAttacksList[forcedAttackCounter].forcedAttackName);
+            }
+        }
         switch (idleType)
         {
             case IdleType.StayStill:
