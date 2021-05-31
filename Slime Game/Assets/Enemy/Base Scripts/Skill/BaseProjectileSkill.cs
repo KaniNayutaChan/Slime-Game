@@ -10,6 +10,7 @@ public class BaseProjectileSkill : BaseSkill
     float currentSpeed;
     public float rotationSpeed;
     public Vector3 forceVector;
+    bool hasCollided = false;
     Rigidbody2D rb;
 
     public enum ProjectileType 
@@ -44,7 +45,7 @@ public class BaseProjectileSkill : BaseSkill
         {
             timeTillMove -= Time.deltaTime;
         }
-        else
+        else if(!hasCollided)
         {
             currentSpeed = speed;
         }
@@ -67,6 +68,8 @@ public class BaseProjectileSkill : BaseSkill
             if (collision.CompareTag("Arena"))
             {
                 StartCoroutine(DestroyAfterTime());
+                hasCollided = true;
+                currentSpeed = 0;
             }
         }
     }
