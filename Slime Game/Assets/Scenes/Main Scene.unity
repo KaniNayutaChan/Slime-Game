@@ -361,12 +361,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c027dc11a76b104c87851b69e0a0c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasSpell: 0
-  hasMinimise: 0
-  hasWallJump: 0
-  hasNightVision: 0
-  hasDoubleAttack: 0
-  hasBarrier: 0
+  hasSpell: 1
+  hasMinimise: 1
+  hasWallJump: 1
+  hasNightVision: 1
+  hasDoubleAttack: 1
+  hasBarrier: 1
   charmList:
   - name: 
     description: Deal bonus damage on full health
