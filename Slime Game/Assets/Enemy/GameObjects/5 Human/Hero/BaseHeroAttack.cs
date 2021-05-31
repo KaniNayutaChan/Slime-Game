@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BaseHeroAttack : BaseEnemyAttack
 {
-    Hero hero;
+    protected Hero hero;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
