@@ -68,6 +68,8 @@ public class PlayerAttack : MonoBehaviour
                     {
                         Player.instance.currentSoul = Player.instance.startingSoul + (Player.instance.level * 3);
                     }
+
+                    Player.instance.Knockback(collision.transform);
                 }
             }
         }

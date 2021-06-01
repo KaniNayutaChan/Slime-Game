@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c233a204ab2127429a7848e77d29c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
-  currentHealth: 1
+  maxHealth: 1500
+  currentHealth: 0
   experience: 1
   number: 0
   bossNumber: 5
@@ -172,3 +172,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d47bcfeb3abff8d41b0bf6a1d38ec5f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  avatarPrefab: {fileID: 0}
+  avatar: {fileID: 0}

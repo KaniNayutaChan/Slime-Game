@@ -551,6 +551,7 @@ public class Player : MonoBehaviour
         isAttacking = false;
         isJumping = false;
 
+        
         if (transform.position.x > baseSkill.transform.position.x)
         {
             knockbackVector.Set(knockback.x, knockback.y);
@@ -560,6 +561,23 @@ public class Player : MonoBehaviour
             knockbackVector.Set(-knockback.x, knockback.y);
         }
 
+        playerRB.velocity = Vector2.zero;
+        playerRB.AddForce(knockbackVector);
+        lockMovementTime = startLockMovementTime;
+    }
+
+    public void Knockback(Transform enemyPos)
+    {
+        if (transform.position.x > enemyPos.position.x)
+        {
+            knockbackVector.Set(knockback.x, knockback.y);
+        }
+        else
+        {
+            knockbackVector.Set(-knockback.x, knockback.y);
+        }
+
+        playerRB.velocity = Vector2.zero;
         playerRB.AddForce(knockbackVector);
         lockMovementTime = startLockMovementTime;
     }

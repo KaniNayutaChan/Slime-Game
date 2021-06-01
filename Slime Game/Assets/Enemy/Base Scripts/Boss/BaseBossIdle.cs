@@ -7,7 +7,7 @@ public class BaseBossIdle : BaseEnemy
     public int debugAttack;
 
     public string[] attackList;
-    int attackToUse;
+    protected int attackToUse;
 
     public float minStartTimeTillAttack;
     public float maxStartTimeTillAttack;
