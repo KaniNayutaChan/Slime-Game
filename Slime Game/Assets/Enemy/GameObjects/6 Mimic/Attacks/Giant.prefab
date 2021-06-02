@@ -51,8 +51,9 @@ MonoBehaviour:
   timeTillDestroy: 10
   owner: {fileID: 0}
   direction: 0
+  timeTillMove: 0
   destroyOnArena: 0
-  speed: 30
+  speed: 15
   rotationSpeed: 0
   forceVector: {x: 0, y: 0, z: 0}
   projectileType: 0
