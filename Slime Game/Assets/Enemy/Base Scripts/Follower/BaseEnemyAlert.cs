@@ -50,7 +50,7 @@ public class BaseEnemyAlert : BaseEnemy
         switch (alertType)
         {
             case AlertType.MoveToPlayer:
-                SetDestinationPlayerX();
+                SetDestinationPlayerX(0);
                 break;
 
             case AlertType.FlyToPlayer:

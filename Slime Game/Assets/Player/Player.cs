@@ -272,8 +272,8 @@ public class Player : MonoBehaviour
             else
             {
                 isHoldingAttack = false;
-                playerRB.velocity = Vector2.zero;
                 Time.timeScale = 1;
+                playerRB.velocity = Vector2.zero;
                 playerRB.AddForce(attackVector.normalized * attackForce);
             }
 
@@ -287,7 +287,6 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.X) && isHoldingAttack)
         {
             isHoldingAttack = false;
-            playerRB.velocity = Vector2.zero;
             Time.timeScale = 1;
             isAttacking = true;
 
@@ -295,6 +294,8 @@ public class Player : MonoBehaviour
             {
                 attackVector.y += 0.3f;
             }
+
+            playerRB.velocity = Vector2.zero;
             playerRB.AddForce(attackVector.normalized * attackForce);
 
             GameObject attack = Instantiate(attackPrefab, transform.position, transform.rotation, transform);
@@ -416,15 +417,12 @@ public class Player : MonoBehaviour
         {
             healTime = startHealTime;
 
-            if(currentHealth + (currentSoul * healMultiplier) > startingHealth + (level * 3))
+            currentHealth += currentSoul * healMultiplier;
+            currentSoul = 0;
+
+            if (currentHealth + (currentSoul * healMultiplier) > startingHealth + (level * 3))
             {
-                currentSoul -= healMultiplier * (startingHealth + (level * 3) - currentHealth);
                 currentHealth = startingHealth + (level * 3);
-            }
-            else
-            {
-                currentHealth += currentSoul * healMultiplier;
-                currentSoul = 0;
             }
 
             SetSizeToHealth();

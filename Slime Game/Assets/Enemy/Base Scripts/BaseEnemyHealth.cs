@@ -33,15 +33,6 @@ public class BaseEnemyHealth : MonoBehaviour
     {
         animator.Play("Death");
 
-        if(Player.instance.currentSoul + maxHealth > Player.instance.startingSoul + (Player.instance.level * 3))
-        {
-            Player.instance.currentSoul = Player.instance.startingSoul + (Player.instance.level * 3);
-        }
-        else
-        {
-            Player.instance.currentSoul += maxHealth;
-        }
-
         Player.instance.experience += experience;
 
         RoomManager.instance.rooms[RoomManager.instance.currentRoomNumber].aliveEnemies[number].enemyNumber = 0;

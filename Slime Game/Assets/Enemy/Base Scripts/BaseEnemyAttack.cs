@@ -77,7 +77,7 @@ public class BaseEnemyAttack : BaseEnemy
                 SetDestinationEnemy(0, 0);
                 break;
             case MoveType.MoveToPlayer:
-                SetDestinationPlayerX();
+                SetDestinationPlayerX(movementVector.y);
                 FaceDestination();
                 break;
 

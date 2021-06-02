@@ -99,7 +99,7 @@ public class BaseBossIdle : BaseEnemy
         switch(idleType)
         {
             case IdleType.MoveToPlayer:
-                SetDestinationPlayerX();
+                SetDestinationPlayerX(0);
                 StopMoving(stopMovingVector.x, stopMovingVector.y);
                 FacePlayer();
                 break;

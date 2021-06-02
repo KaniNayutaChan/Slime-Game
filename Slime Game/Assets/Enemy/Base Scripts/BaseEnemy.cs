@@ -109,9 +109,9 @@ public class BaseEnemy : StateMachineBehaviour
         }
     }
 
-    protected void SetDestinationPlayerX()
+    protected void SetDestinationPlayerX(float y)
     {
-        destination.Set(playerPos.position.x, enemyPos.position.y, enemyPos.position.z);
+        destination.Set(playerPos.position.x, enemyPos.position.y + y, enemyPos.position.z);
     }
 
     protected void SetDestinationPlayer()
