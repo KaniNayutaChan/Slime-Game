@@ -581,9 +581,9 @@ public class Player : MonoBehaviour
             knockbackVector.Set(-knockback.x, knockback.y);
         }
 
+        lockMovementTime = startLockMovementTime;
         playerRB.velocity = Vector2.zero;
         playerRB.AddForce(knockbackVector);
-        lockMovementTime = startLockMovementTime;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -622,7 +622,7 @@ public class Player : MonoBehaviour
 
     void SetSizeToHealth()
     {
-        if (!isShrinking || !isExpanding)
+        if (!isShrinking && !isExpanding)
         {
             sizeVector.Set(0.3f + (0.02f * currentHealth), 0.3f + (0.02f * currentHealth), 0.3f + (0.02f * currentHealth));
             transform.localScale = sizeVector;

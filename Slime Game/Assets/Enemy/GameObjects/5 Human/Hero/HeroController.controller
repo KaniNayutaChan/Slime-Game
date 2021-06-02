@@ -543,8 +543,8 @@ MonoBehaviour:
   - Parry
   - Projectile
   - Giant
-  minStartTimeTillAttack: 1
-  maxStartTimeTillAttack: 2
+  minStartTimeTillAttack: 0
+  maxStartTimeTillAttack: 3
   maxXDestination: 0
   minYDestination: 0
   maxYDestination: 0
