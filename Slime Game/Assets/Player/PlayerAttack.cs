@@ -70,6 +70,8 @@ public class PlayerAttack : MonoBehaviour
                     }
 
                     Player.instance.Knockback(collision.transform);
+
+                    Destroy(gameObject, 0.1f);
                 }
             }
         }

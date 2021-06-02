@@ -598,7 +598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  debugAttack: 0
+  debugAttack: 9
   attackList:
   - Giant
   - Tiny

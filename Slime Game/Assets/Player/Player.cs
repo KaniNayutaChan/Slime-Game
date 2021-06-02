@@ -119,9 +119,13 @@ public class Player : MonoBehaviour
             CheckForJump();
             CheckForAttack();
             CheckForMinimise();
-            CheckForHeal();
             CheckForSpell();
             CheckForBarrier();
+
+            if(!isShrinking && !isExpanding)
+            {
+                CheckForHeal();
+            }
         }
 
         CheckForIFrames();
@@ -146,6 +150,11 @@ public class Player : MonoBehaviour
         if (spellCooldown >= 0)
         {
             spellCooldown -= Time.deltaTime;
+        }
+
+        if (shrinkCooldown > 0)
+        {
+            shrinkCooldown -= Time.deltaTime;
         }
     }
 
@@ -464,11 +473,6 @@ public class Player : MonoBehaviour
                 currentAttackDamage *= 2;
             }
         }
-
-        if(shrinkCooldown > 0)
-        {
-            shrinkCooldown -= Time.deltaTime;
-        }
     }
 
     void CheckForSpell()
@@ -561,9 +565,9 @@ public class Player : MonoBehaviour
             knockbackVector.Set(-knockback.x, knockback.y);
         }
 
+        lockMovementTime = startLockMovementTime;
         playerRB.velocity = Vector2.zero;
         playerRB.AddForce(knockbackVector);
-        lockMovementTime = startLockMovementTime;
     }
 
     public void Knockback(Transform enemyPos)
